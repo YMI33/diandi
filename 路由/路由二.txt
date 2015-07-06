@@ -1,0 +1,56 @@
+wlan0 是否和 eth0本质上是一样的？
+不同之处只是一个是通过无线网卡，另一个是通过双绞线来间接不同的网络的？
+
+关于ifconfig
+Common uses for ifconfig include setting the IP address and netmask of a 
+network interface and disabling or enabling an interface.[1] At boot time, 
+many UNIX-like operating systems initialize their network interfaces with 
+shell-scripts that call ifconfig. As an interactive tool, system administrators 
+routinely use the utility to display and analyze network interface parameters. 
+
+Ifconfig command is used to configure network interfaces. ifconfig stands for 
+interface configurator. Ifconfig is widely used to initialize the network interface
+ and to enable or disable the interfaces.
+
+In this article, let us review 7 common usages of ifconfig command.
+
+1. View Network Settings of an Ethernet Adapter
+
+# ifconfig eth0
+
+Ifconfig, when invoked with no arguments will display all the details of currently
+active interfaces. If you give the interface name as an argument, the details of 
+that specific interface will be displayed.
+
+2. Display Details of All interfaces Including Disabled Interfaces
+
+# ifconfig -a
+
+3. Disable an Interface
+
+# ifconfig eth0 down
+
+4. Enable an Interface
+
+# ifconfig eth0 up
+
+5. Assign ip-address to an Interface
+
+Assign 192.168.2.2 as the IP address for the interface eth0.
+
+# ifconfig eth0 192.168.2.2
+
+
+Change Subnet mask of the interface eth0.
+
+# ifconfig eth0 netmask 255.255.255.0
+
+
+Change Broadcast address of the interface eth0.
+
+# ifconfig eth0 broadcast 192.168.2.255
+
+
+Assign ip-address, netmask and broadcast at the same time to interface eht0.
+
+# ifconfig eth0 192.168.2.2 netmask 255.255.255.0 broadcast 192.168.2.255

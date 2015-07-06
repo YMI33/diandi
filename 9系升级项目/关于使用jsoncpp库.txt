@@ -1,0 +1,20 @@
+关于使用jsoncpp库：
+
+1. sourceforge上下载源码包。
+
+2. 转到makefiles\vs71运行jsoncpp.sln。
+
+3. 加载项目成功后，选择release模式，怎么编译这个lib很关键：
+	1. 项目配置-》c/c++-> 代码生成 -》运行库 选择 “多线程 DLL(/MD)”
+	2. 项目配置-》常规 -》 公共语言运行时支持 选择 “无公共语言运行时支持”，下面的选择 “无全程序优化”
+
+4. 重新生成一下lib_json项目。就OK了。之后在build\vs71\release\lib_json下可以看到生成的lib文件了（json_vc71_libmt.lib）。
+
+如何使用呢？
+
+1. 将lib文件拷贝到我们的工程目录下（也就是源代码目录），然后新建一个文件夹jsoncpp把所有涉及的头文件放在里面。
+
+2. 加入头文件include "jsoncpp/json.h"，以及加一句
+	#pragma comment(lib, "json_vc71_libmt.lib")
+
+3. ok, 代码中就可以用json库了。

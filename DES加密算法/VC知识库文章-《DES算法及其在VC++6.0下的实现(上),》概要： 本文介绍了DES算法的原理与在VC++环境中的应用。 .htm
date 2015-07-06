@@ -1,0 +1,1183 @@
+
+<!-- saved from url=(0039)http://www.vckbase.com/index.php/wv/425 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/ga.js"></script><script src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shares.php" charset="utf-8"></script><script src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shares.php" charset="utf-8"></script><link href="http://www.vckbase.com/Public/sEdit/themes/default/default.css" rel="stylesheet"></head><body><div style="display: none; position: absolute; " class=""><div class="aui_outer"><table class="aui_border"><tbody><tr><td class="aui_nw"></td><td class="aui_n"></td><td class="aui_ne"></td></tr><tr><td class="aui_w"></td><td class="aui_c"><div class="aui_inner"><table class="aui_dialog"><tbody><tr><td colspan="2" class="aui_header"><div class="aui_titleBar"><div class="aui_title" style="cursor: move; "></div><a class="aui_close" href="javascript:/*artDialog*/;">×</a></div></td></tr><tr><td class="aui_icon" style="display: none; "><div class="aui_iconBg" style="background-image: none; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: initial initial; background-repeat: initial initial; "></div></td><td class="aui_main" style="width: auto; height: auto; "><div class="aui_content" style="padding-top: 20px; padding-right: 25px; padding-bottom: 20px; padding-left: 25px; "></div></td></tr><tr><td colspan="2" class="aui_footer"><div class="aui_buttons" style="display: none; "></div></td></tr></tbody></table></div></td><td class="aui_e"></td></tr><tr><td class="aui_sw"></td><td class="aui_s"></td><td class="aui_se" style="cursor: se-resize; "></td></tr></tbody></table></div></div><link href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis_counter.css" rel="stylesheet" type="text/css"><script src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis.php" charset="utf-8"></script><link href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis_counter.css" rel="stylesheet" type="text/css"><script src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis.php" charset="utf-8"></script><link href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis_share.css" rel="stylesheet" type="text/css"><iframe style="position: absolute; opacity: 0; display: none; " frameborder="0"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; top: 50%; left: 50%; overflow-x: auto; overflow-y: auto; display: none; "></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow-x: auto; overflow-y: auto; "></div><iframe style="display: none; " frameborder="0" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis_utility.htm"></iframe><link href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis_share.css" rel="stylesheet" type="text/css"><iframe style="position: absolute; opacity: 0; display: none; " frameborder="0"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; top: 50%; left: 50%; overflow-x: auto; overflow-y: auto; display: none; "></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow-x: auto; overflow-y: auto; "></div><iframe style="display: none; " frameborder="0" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jiathis_utility.htm"></iframe>﻿
+
+
+
+<title>VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要："本文介绍了DES算法的原理与在VC++环境中的应用。"</title>
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/base.css">
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/homebase.css">
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/inside.css">
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/right.css">
+<link type="text/css" rel="stylesheet" href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shCore.css">
+<link type="text/css" rel="stylesheet" href="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shThemeDefault.css">
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jquery.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/vckbase.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/kindeditor.js"></script>
+<script charset="utf-8" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/zh_CN.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shCore.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shBrushCpp.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/shBrushCSharp.js"></script>
+<link rel="stylesheet" href="http://www.vckbase.com/Public/adialog/skins/green.css?4.1.4"><script charset="utf-8" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jquery.artDialog.js"></script>
+<script charset="utf-8" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/iframeTools.js"></script>
+<script type="text/javascript">
+		SyntaxHighlighter.config.clipboardSwf = '/Public/syhi/scripts/clipboard.swf';
+		SyntaxHighlighter.all();
+		var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="comm"]', {
+					allowFileManager : false,
+					allowFlashUpload : false,
+					allowMediaUpload : false
+				});
+				
+			});
+			$(document).ready(function(){ 
+       $('.newsEnd-c img').each(function(){ 
+           if($(this).width() > 620){ 
+              $(this).height(600*$(this).height()/$(this).width()).width(600).addClass('newsEnd-c-img'); 
+           } 
+       }); 
+});
+		function yyjs(id,uname){
+			$("#commyysub").show();
+			$("#commyysubun").html('引用 '+uname+' 的评论');
+			commform.yyid.value=id;
+		}
+		function qxyyjs(){
+			$("#commyysub").hide();
+			$("#commyysubun").html('');
+			commform.yyid.value=0;
+		}
+	</script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/Public/web/js/PNG.js"></script>
+<script>
+PNG.fix('.png');
+</script>
+<![endif]-->
+
+
+<div class="headmain">
+	<div class="headwrap">
+		<div class="menu"><a href="http://www.vckbase.com/" class="smalllogo"><img class="png" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/headsmalllogo.png" border="0"></a><a href="http://www.vckbase.com/" class="">首页</a><a href="http://www.vckbase.com/index.php/video" class="">视频教程</a><a href="http://www.vckbase.com/index.php/news" class="">新闻</a><a href="http://www.vckbase.com/index.php/wenku" class="Activation">文章</a><!--<a href="/index.php/fun" class="">函数库</a>--><a href="http://www.vckbase.com/index.php/code" class="">代码</a><a href="http://www.vckbase.com/index.php/maz/" class="">在线杂志</a></div>
+		<div class="menuright">
+        <li class="one"><a href="http://www.vckbase.com/index.php/public/login.html">会员登陆</a>&nbsp;&nbsp;	<a href="http://www.vckbase.com/index.php/public/register.html">注册</a> </li></div>
+		<div class="headbg"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/menubgother.png" class="png"></div>
+		
+		<div class="haedsearch">
+		<form name="searchform" method="post" action="http://www.vckbase.com/index.php/search">
+		<div class="searchselect">
+		<select name="stype">
+		<option value="1">文章</option>
+		
+		<option value="3">代码</option>
+        <option value="4">视频教程</option>
+		</select>
+
+		</div>
+		
+		<div class="searchbg">
+	<input type="text" name="a1" class="searchtext">
+	<input type="submit" class="searchsend" value="">
+		  </div>
+		<input type="hidden" name="__hash__" value="789207e55acf576800b4eb10e32c6492"></form>
+		</div>
+		<div class="logo"><a href="http://www.vckbase.com/index.php/wenku"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/articlelogo.png" border="0" class="png"></a></div>
+		
+		<div class="headfabu"><ul> <li><a href="http://www.vckbase.com/index.php/wenku/creat"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/fabuarticle.png" border="0" class="png"></a></li>
+		<li></li>
+		</ul> </div>
+		<div class="headatten" style=" left:110px; top:138px;"><ul><li>更多精彩VC知识，请关注微博：</li><li><a href="http://www.weibo.com/vckbase" target="_blank"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/icon1big.png" border="0" class="png"></a></li><li><a href="http://t.qq.com/vckbase2012" target="_blank"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/icon2big.png" border="0" class="png"></a></li></ul> </div>
+
+	</div>
+</div>
+
+<div class="pageposition">
+
+<div class="p-positionMain">当前位置：<a href="http://www.vckbase.com/">首页</a>  &gt;  <a href="http://www.vckbase.com/index.php/wenku/index">文章列表</a>  &gt;  DES算法及其在VC++6.0下的实现(上)</div>
+
+</div>
+<div class="InsideContetwrap">
+
+<div style="width:980px; margin: 0 auto"><br>
+<a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank"><img border="0" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/670X100.jpg"></a><br><br></div>
+
+<div class="mainwrap">
+<div class="mainleft">
+	 
+<div class="newsmain">
+<h3>DES算法及其在VC++6.0下的实现(上) </h3>
+
+
+<div class="Share"><!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jiathis_separator jtico jtico_tsina">新浪微博</span></a>
+	<a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jiathis_separator jtico jtico_tqq">腾讯微博</span></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_20" title="累计分享1次">1</span></a>
+</div>
+<div class="weiboFav"></div>
+<div class="FavIcon"><a href="http://www.vckbase.com/index.php/public/shouchangart/atp/1/atpid/425" target="noref">收藏</a></div>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END --></div>
+<div class="article_Sum">
+<div class="article_SumLeft">
+<dl>
+<dt>发布日期：</dt><dd>2003-04-03 14:38</dd>
+<dt>浏览次数：</dt><dd>918次</dd>
+<!--<dt>下载次数：</dt><dd>1000次</dd>-->
+<dt>标　　签：</dt><dd>C++</dd>
+<dt>文章评分：</dt><dd><span><ul><li></li><li></li><li class="pf2"></li><li class="pf3"></li><li class="pf3"></li><li class="jf-text"><font>5</font>.0</li></ul></span></dd>
+<dt>操　　作：</dt><dd><a href="http://www.vckbase.com/index.php/cv/186" class="downicon">下载源文件</a><a href="javascript:window.print();" class="printicon">打印</a></dd>
+</dl>
+
+</div>
+<div class="article_SumRight">
+<dl>
+<dt><a href="http://www.vckbase.com/index.php/p/2617"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/avatar.php" border="0" width="64" height="64"></a></dt>
+<dd><a href="http://www.vckbase.com/index.php/p/2617"><strong>朱彦军</strong></a> </dd><dd><span>称号：</span>未设置</dd><dd><span>简介：</span>...</dd>
+
+
+
+</dl>
+
+</div>
+<div class="article_SumCenter">
+<ul>
+<li class="sz1">文章概要：</li>
+<li>本文介绍了DES算法的原理与在VC++环境中的应用。</li>
+</ul>
+
+</div>
+
+<div class="clear"></div>
+</div>
+<div class="newsEnd-c"><table class="ke-zeroborder" border="0" cellspacing="0" cellpadding="0" width="100%">
+	
+		<tbody><tr>
+			<td>
+				<p align="left">
+					本文程序运行效果图如下：
+				</p>
+				<p align="left">
+					<img alt="" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1330592793.gif" width="386" height="219">&nbsp;
+				</p>
+				<p align="left">
+					<strong>正文：</strong> 
+				</p>
+				<p align="left">
+					当今社会是信息化的社会。为了适应社会对计算机数据安全保密越来越高的要求，美国国家标准局(NBS)于1997年公布了一个由IBM公司研制的一种加密算法，并且确定为非机要部门使用的数据加密标准，简称DES(Data Encrypton Standard)。自公布之日起，DES算法作为国际上商用保密通信和计算机通信的最常用算法，一直活跃在国际保密通信的舞台上，扮演了十分突出的角色。现将DES算法简单介绍一下，并给出实现DES算法的VC源代码。
+				</p>
+				<p align="left">
+					DES算法由加密、解密和子密钥的生成三部分组成。
+				</p>
+				<p align="left">
+					<strong>一．加密</strong> 
+				</p>
+				<p align="left">
+					DES算法处理的数据对象是一组64比特的明文串。设该明文串为m=m1m2…m64 (mi=0或1)。明文串经过64比特的密钥K来加密，最后生成长度为64比特的密文E。其加密过程图示如下：
+				</p>
+				<p align="left">
+					<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1330592793(1).gif" width="537" height="917">&nbsp;
+				</p>
+				<p align="left">
+					<strong>DES算法加密过程</strong> 
+				</p>
+				<p align="left">
+					对DES算法加密过程图示的说明如下：待加密的64比特明文串m，经过IP置换后，得到的比特串的下标列表如下：
+				</p>
+				<table border="1" cellspacing="0" bordercolor="#666666" cellpadding="0">
+					
+						<tbody><tr bgcolor="#ffffff">
+							<td rowspan="8" width="57">
+								IP
+							</td>
+							<td width="62">
+								58
+							</td>
+							<td width="57">
+								50
+							</td>
+							<td width="59">
+								42
+							</td>
+							<td width="61">
+								34
+							</td>
+							<td width="58">
+								26
+							</td>
+							<td width="60">
+								18
+							</td>
+							<td width="59">
+								10
+							</td>
+							<td width="57">
+								2
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								60
+							</td>
+							<td>
+								52
+							</td>
+							<td>
+								44
+							</td>
+							<td>
+								36
+							</td>
+							<td>
+								28
+							</td>
+							<td>
+								20
+							</td>
+							<td>
+								12
+							</td>
+							<td>
+								4
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								62
+							</td>
+							<td>
+								54
+							</td>
+							<td>
+								46
+							</td>
+							<td>
+								38
+							</td>
+							<td>
+								30
+							</td>
+							<td>
+								22
+							</td>
+							<td>
+								14
+							</td>
+							<td>
+								6
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								64
+							</td>
+							<td>
+								56
+							</td>
+							<td>
+								48
+							</td>
+							<td>
+								40
+							</td>
+							<td>
+								32
+							</td>
+							<td>
+								24
+							</td>
+							<td>
+								16
+							</td>
+							<td>
+								8
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								57
+							</td>
+							<td>
+								49
+							</td>
+							<td>
+								41
+							</td>
+							<td>
+								33
+							</td>
+							<td>
+								25
+							</td>
+							<td>
+								17
+							</td>
+							<td>
+								9
+							</td>
+							<td>
+								1
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								59
+							</td>
+							<td>
+								51
+							</td>
+							<td>
+								43
+							</td>
+							<td>
+								35
+							</td>
+							<td>
+								27
+							</td>
+							<td>
+								19
+							</td>
+							<td>
+								11
+							</td>
+							<td>
+								3
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								61
+							</td>
+							<td>
+								53
+							</td>
+							<td>
+								45
+							</td>
+							<td>
+								37
+							</td>
+							<td>
+								29
+							</td>
+							<td>
+								21
+							</td>
+							<td>
+								13
+							</td>
+							<td>
+								5
+							</td>
+						</tr>
+						<tr bgcolor="#ffffff">
+							<td>
+								63
+							</td>
+							<td>
+								55
+							</td>
+							<td>
+								47
+							</td>
+							<td>
+								39
+							</td>
+							<td>
+								31
+							</td>
+							<td>
+								23
+							</td>
+							<td>
+								15
+							</td>
+							<td>
+								7
+							</td>
+						</tr>
+					
+				</tbody></table>
+				<p>
+					该比特串被分为32位的L0和32位的R0两部分。R0子密钥K1(子密钥的生成将在后面讲)经过变换f(R0,K1)（f变换将在下面讲）输出32位的比特串f1,f1与L0做不进位的二进制加法运算。运算规则为：
+				</p>
+				<p>
+					<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1330592793(2).gif" width="212" height="21"> 
+				</p>
+				<p>
+					f1与L0做不进位的二进制加法运算后的结果赋给R1，R0则原封不动的赋给L1。L1与R0又做与以上完全相同的运算，生成L2，R2…… 一共经过16次运算。最后生成R16和L16。其中R16为L15与f(R15,K16)做不进位二进制加法运算的结果，L16是R15的直接赋值。
+				</p>
+				<p>
+					R16与L16合并成64位的比特串。值得注意的是R16一定要排在L16前面。R16与L16合并后成的比特串，经过置换IP-1后所得比特串的下标列表如下：
+				</p>
+				<p>
+					<table border="1" cellspacing="0" bordercolor="#666666" cellpadding="0">
+						
+							<tbody><tr bgcolor="white">
+								<td rowspan="8" width="59">
+									IP-1
+								</td>
+								<td width="59">
+									40
+								</td>
+								<td width="59">
+									8
+								</td>
+								<td width="59">
+									48
+								</td>
+								<td width="59">
+									16
+								</td>
+								<td width="59">
+									56
+								</td>
+								<td width="59">
+									24
+								</td>
+								<td width="59">
+									64
+								</td>
+								<td width="59">
+									32
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									39
+								</td>
+								<td width="59">
+									7
+								</td>
+								<td width="59">
+									47
+								</td>
+								<td width="59">
+									15
+								</td>
+								<td width="59">
+									55
+								</td>
+								<td width="59">
+									23
+								</td>
+								<td width="59">
+									63
+								</td>
+								<td width="59">
+									31
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									38
+								</td>
+								<td width="59">
+									6
+								</td>
+								<td width="59">
+									46
+								</td>
+								<td width="59">
+									14
+								</td>
+								<td width="59">
+									54
+								</td>
+								<td width="59">
+									22
+								</td>
+								<td width="59">
+									62
+								</td>
+								<td width="59">
+									30
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									37
+								</td>
+								<td width="59">
+									5
+								</td>
+								<td width="59">
+									45
+								</td>
+								<td width="59">
+									13
+								</td>
+								<td width="59">
+									53
+								</td>
+								<td width="59">
+									21
+								</td>
+								<td width="59">
+									61
+								</td>
+								<td width="59">
+									29
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									36
+								</td>
+								<td width="59">
+									4
+								</td>
+								<td width="59">
+									44
+								</td>
+								<td width="59">
+									12
+								</td>
+								<td width="59">
+									52
+								</td>
+								<td width="59">
+									20
+								</td>
+								<td width="59">
+									60
+								</td>
+								<td width="59">
+									28
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									35
+								</td>
+								<td width="59">
+									3
+								</td>
+								<td width="59">
+									43
+								</td>
+								<td width="59">
+									11
+								</td>
+								<td width="59">
+									51
+								</td>
+								<td width="59">
+									19
+								</td>
+								<td width="59">
+									59
+								</td>
+								<td width="59">
+									27
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									34
+								</td>
+								<td width="59">
+									2
+								</td>
+								<td width="59">
+									42
+								</td>
+								<td width="59">
+									10
+								</td>
+								<td width="59">
+									50
+								</td>
+								<td width="59">
+									18
+								</td>
+								<td width="59">
+									58
+								</td>
+								<td width="59">
+									26
+								</td>
+							</tr>
+							<tr bgcolor="white">
+								<td width="59">
+									33
+								</td>
+								<td width="59">
+									1
+								</td>
+								<td width="59">
+									41
+								</td>
+								<td width="59">
+									9
+								</td>
+								<td width="59">
+									49
+								</td>
+								<td width="59">
+									17
+								</td>
+								<td width="59">
+									57
+								</td>
+								<td width="59">
+									25
+								</td>
+							</tr>
+						
+					</tbody></table>
+				</p>
+				<p>
+					经过置换IP-1后生成的比特串就是密文e.。
+				</p>
+				<p>
+					下面再讲一下变换f(Ri-1,Ki)。
+				</p>
+				<p>
+					它的功能是将32比特的输入再转化为32比特的输出。其过程如图所示：
+				</p>
+				<p>
+					<img style="width:554px;height:271px;" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1330592793(3).gif" width="664" height="271"> 
+				</p>
+				<p>
+					对f变换说明如下：输入Ri-1(32比特)经过变换E后，膨胀为48比特。膨胀后的比特串的下标列表如下：
+				</p>
+				<table border="1" cellspacing="0" bordercolor="#666666" cellpadding="0" width="410">
+					
+						<tbody><tr height:18.75pt??="">
+						<td rowspan="8" width="64">
+							E:
+						</td>
+						<td valign="top" width="58">
+							32
+						</td>
+						<td valign="top" width="58">
+							1
+						</td>
+						<td valign="top" width="58">
+							2
+						</td>
+						<td valign="top" width="58">
+							3
+						</td>
+						<td valign="top" width="58">
+							4
+						</td>
+						<td valign="top" width="58">
+							5
+						</td>
+							</tr>
+<tr height:18.75pt??="">
+							<td valign="top" width="58">
+								4
+							</td>
+							<td valign="top" width="58">
+								5
+							</td>
+							<td valign="top" width="58">
+								6
+							</td>
+							<td valign="top" width="58">
+								7
+							</td>
+							<td valign="top" width="58">
+								8
+							</td>
+							<td valign="top" width="58">
+								9
+							</td>
+						</tr>
+<tr height:18.75pt??="">
+						<td valign="top" width="58">
+							8
+						</td>
+						<td valign="top" width="58">
+							9
+						</td>
+						<td valign="top" width="58">
+							10
+						</td>
+						<td valign="top" width="58">
+							11
+						</td>
+						<td valign="top" width="58">
+							12
+						</td>
+						<td valign="top" width="58">
+							13
+						</td>
+							</tr>
+<tr height:18.75pt??="">
+							<td valign="top" width="58">
+								12
+							</td>
+							<td valign="top" width="58">
+								13
+							</td>
+							<td valign="top" width="58">
+								14
+							</td>
+							<td valign="top" width="58">
+								15
+							</td>
+							<td valign="top" width="58">
+								16
+							</td>
+							<td valign="top" width="58">
+								17
+							</td>
+						</tr>
+<tr height:18.75pt??="">
+						<td valign="top" width="58">
+							16
+						</td>
+						<td valign="top" width="58">
+							17
+						</td>
+						<td valign="top" width="58">
+							18
+						</td>
+						<td valign="top" width="58">
+							19
+						</td>
+						<td valign="top" width="58">
+							20
+						</td>
+						<td valign="top" width="58">
+							21
+						</td>
+							</tr>
+<tr height:18.75pt??="">
+							<td valign="top" width="58">
+								20
+							</td>
+							<td valign="top" width="58">
+								21
+							</td>
+							<td valign="top" width="58">
+								22
+							</td>
+							<td valign="top" width="58">
+								23
+							</td>
+							<td valign="top" width="58">
+								24
+							</td>
+							<td valign="top" width="58">
+								25
+							</td>
+						</tr>
+<tr height:18.75pt??="">
+						<td valign="top" width="58">
+							24
+						</td>
+						<td valign="top" width="58">
+							25
+						</td>
+						<td valign="top" width="58">
+							26
+						</td>
+						<td valign="top" width="58">
+							27
+						</td>
+						<td valign="top" width="58">
+							28
+						</td>
+						<td valign="top" width="58">
+							29
+						</td>
+							</tr>
+<tr height:18.75pt??="">
+							<td valign="top" width="58">
+								28
+							</td>
+							<td valign="top" width="58">
+								29
+							</td>
+							<td valign="top" width="58">
+								30
+							</td>
+							<td valign="top" width="58">
+								31
+							</td>
+							<td valign="top" width="58">
+								32
+							</td>
+							<td valign="top" width="58">
+								31
+							</td>
+						</tr>
+					
+				</tbody></table>
+				<p>
+					膨胀后的比特串分为8组，每组6比特。各组经过各自的S盒后，又变为4比特(具体过程见后)，合并后又成为32比特。该32比特经过P变换后，其下标列表如下：
+				</p>
+				<table border="1" cellspacing="0" bordercolor="#666666" cellpadding="0">
+					
+						<tbody><tr height:15.75pt??="">
+						<td rowspan="8" width="36">
+							P:
+						</td>
+						<td valign="top" width="60">
+							16
+						</td>
+						<td valign="top" width="60">
+							7
+						</td>
+						<td valign="top" width="60">
+							20
+						</td>
+						<td valign="top" width="60">
+							21
+						</td>
+							</tr>
+<tr height:15.75pt??="">
+							<td valign="top" width="60">
+								29
+							</td>
+							<td valign="top" width="60">
+								12
+							</td>
+							<td valign="top" width="60">
+								28
+							</td>
+							<td valign="top" width="60">
+								17
+							</td>
+						</tr>
+<tr height:15.75pt??="">
+						<td valign="top" width="60">
+							1
+						</td>
+						<td valign="top" width="60">
+							15
+						</td>
+						<td valign="top" width="60">
+							23
+						</td>
+						<td valign="top" width="60">
+							26
+						</td>
+							</tr>
+<tr height:15.75pt??="">
+							<td valign="top" width="60">
+								5
+							</td>
+							<td valign="top" width="60">
+								18
+							</td>
+							<td valign="top" width="60">
+								31
+							</td>
+							<td valign="top" width="60">
+								10
+							</td>
+						</tr>
+<tr height:15.75pt??="">
+						<td valign="top" width="60">
+							2
+						</td>
+						<td valign="top" width="60">
+							8
+						</td>
+						<td valign="top" width="60">
+							24
+						</td>
+						<td valign="top" width="60">
+							14
+						</td>
+							</tr>
+<tr height:15.75pt??="">
+							<td valign="top" width="60">
+								32
+							</td>
+							<td valign="top" width="60">
+								27
+							</td>
+							<td valign="top" width="60">
+								3
+							</td>
+							<td valign="top" width="60">
+								9
+							</td>
+						</tr>
+<tr height:15.75pt??="">
+						<td valign="top" width="60">
+							19
+						</td>
+						<td valign="top" width="60">
+							13
+						</td>
+						<td valign="top" width="60">
+							30
+						</td>
+						<td valign="top" width="60">
+							6
+						</td>
+							</tr>
+<tr height:15.75pt??="">
+							<td valign="top" width="60">
+								22
+							</td>
+							<td valign="top" width="60">
+								11
+							</td>
+							<td valign="top" width="60">
+								4
+							</td>
+							<td valign="top" width="60">
+								25
+							</td>
+						</tr>
+					
+				</tbody></table>
+				<p>
+					经过P变换后输出的比特串才是32比特的f (Ri-1,Ki)。
+				</p>
+				<p>
+					下面再讲一下S盒的变换过程。任取一S盒。见图：
+				</p>
+				<p>
+					<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1330592793(4).gif" width="88" height="96">&nbsp;
+				</p>
+				<p>
+					在其输入b1,b2,b3,b4,b5,b6中，计算出x=b1*2+b6, y=b5+b4*2+b3*4+b2*8，再从Si表中查出x 行，y 列的值Sxy。将Sxy化为二进制，即得Si盒的输出。（S表如图所示）
+				</p>
+				<p>
+					<img style="width:594px;height:961px;" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1330592794.gif" width="609" height="961">&nbsp;
+				</p>
+				<p>
+					至此，DES算法加密原理讲完了。在VC++6.0下的程序源代码为：
+				</p>
+<div id="highlighter_448492" class="syntaxhighlighter "><div class="bar                      "><div class="toolbar"><a href="http://www.vckbase.com/index.php/wv/425#viewSource" title="view source" style="width: 16px; height: 16px; " class="item viewSource">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_448492_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_448492" menu="false" src="/Public/syhi/scripts/clipboard.swf"></div><a href="http://www.vckbase.com/index.php/wv/425#printSource" title="print" style="width: 16px; height: 16px; " class="item printSource">print</a><a href="http://www.vckbase.com/index.php/wv/425#about" title="?" style="width: 16px; height: 16px; " class="item about">?</a></div></div><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;=64;i++)</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 162px !important;"><code class="plain">m1[i]=m[ip[i-1]];</code><code class="comments">//64位明文串输入，经过IP置换。</code></span></span></div></div></div>
+				<p>
+					下面进行迭代。由于各次迭代的方法相同只是输入输出不同，因此只给出其中一次。以第八次为例：
+				</p>
+<div id="highlighter_243895" class="syntaxhighlighter "><div class="bar                                                                                                                                                                                    show"><div class="toolbar"><a href="http://www.vckbase.com/index.php/wv/425#viewSource" title="view source" style="width: 16px; height: 16px; " class="item viewSource">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_243895_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_243895" menu="false" src="/Public/syhi/scripts/clipboard.swf"></div><a href="http://www.vckbase.com/index.php/wv/425#printSource" title="print" style="width: 16px; height: 16px; " class="item printSource">print</a><a href="http://www.vckbase.com/index.php/wv/425#about" title="?" style="width: 16px; height: 16px; " class="item about">?</a></div></div><div class="lines"><div class="line alt1"><code class="number">01.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="comments">//进行第八次迭代。首先进行S盒的运算，输入32位比特串。</code></span></span></div><div class="line alt2"><code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;=48;i++)</code><code class="comments">//经过E变换扩充，由32位变为48位</code></span></span></div><div class="line alt1"><code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 54px !important;"><code class="plain">RE1[i]=R7[E[i-1]];</code></span></span></div><div class="line alt2"><code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;=48;i++)</code><code class="comments">//与K8按位作不进位加法运算</code></span></span></div><div class="line alt1"><code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 54px !important;"><code class="plain">RE1[i]=RE1[i]+K8[i];</code></span></span></div><div class="line alt2"><code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;=48;i++)</code></span></span></div><div class="line alt1"><code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword bold">if</code><code class="plain">(RE1[i]==2)</code></span></span></div><div class="line alt1"><code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 90px !important;"><code class="plain">RE1[i]=0;</code></span></span></div><div class="line alt2"><code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;7;i++)</code><code class="comments">//48位分成8组</code></span></span></div><div class="line alt2"><code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s11[i]=RE1[i];</code></span></span></div><div class="line alt2"><code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s21[i]=RE1[i+6];</code></span></span></div><div class="line alt1"><code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s31[i]=RE1[i+12];</code></span></span></div><div class="line alt2"><code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s41[i]=RE1[i+18];</code></span></span></div><div class="line alt1"><code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s51[i]=RE1[i+24];</code></span></span></div><div class="line alt2"><code class="number">18.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s61[i]=RE1[i+30];</code></span></span></div><div class="line alt1"><code class="number">19.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s71[i]=RE1[i+36];</code></span></span></div><div class="line alt2"><code class="number">20.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">s81[i]=RE1[i+42];</code></span></span></div><div class="line alt1"><code class="number">21.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code><code class="comments">//下面经过S盒，得到8个数。S1,s2,s3,s4,s5,s6,s7,s8分别为S表</code></span></span></div><div class="line alt2"><code class="number">22.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[1]=s1[s11[6]+s11[1]*2][s11[5]+s11[4]*2+s11[3]*4+s11[2]*8];</code></span></span></div><div class="line alt1"><code class="number">23.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[2]=s2[s21[6]+s21[1]*2][s21[5]+s21[4]*2+s21[3]*4+s21[2]*8];</code></span></span></div><div class="line alt2"><code class="number">24.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[3]=s3[s31[6]+s31[1]*2][s31[5]+s31[4]*2+s31[3]*4+s31[2]*8];</code></span></span></div><div class="line alt1"><code class="number">25.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[4]=s4[s41[6]+s41[1]*2][s41[5]+s41[4]*2+s41[3]*4+s41[2]*8];</code></span></span></div><div class="line alt2"><code class="number">26.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[5]=s5[s51[6]+s51[1]*2][s51[5]+s51[4]*2+s51[3]*4+s51[2]*8];</code></span></span></div><div class="line alt1"><code class="number">27.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[6]=s6[s61[6]+s61[1]*2][s61[5]+s61[4]*2+s61[3]*4+s61[2]*8];</code></span></span></div><div class="line alt2"><code class="number">28.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[7]=s7[s71[6]+s71[1]*2][s71[5]+s71[4]*2+s71[3]*4+s71[2]*8];</code></span></span></div><div class="line alt1"><code class="number">29.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">s[8]=s8[s81[6]+s81[1]*2][s81[5]+s81[4]*2+s81[3]*4+s81[2]*8];</code></span></span></div><div class="line alt2"><code class="number">30.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=0;i&lt;8;i++)</code><code class="comments">//8个数变换输出二进制</code></span></span></div><div class="line alt1"><code class="number">31.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">32.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword bold">for</code><code class="plain">(j=1;j&lt;5;j++)</code></span></span></div><div class="line alt1"><code class="number">33.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">34.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 90px !important;"><code class="plain">temp[j]=s[i+1]%2;</code></span></span></div><div class="line alt1"><code class="number">35.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 90px !important;"><code class="plain">s[i+1]=s[i+1]/2;</code></span></span></div><div class="line alt2"><code class="number">36.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">37.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword bold">for</code><code class="plain">(j=1;j&lt;5;j++)</code></span></span></div><div class="line alt2"><code class="number">38.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 90px !important;"><code class="plain">f[4*i+j]=temp[5-j];</code></span></span></div><div class="line alt1"><code class="number">39.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">40.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;33;i++)</code><code class="comments">//经过P变换</code></span></span></div><div class="line alt1"><code class="number">41.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 54px !important;"><code class="plain">frk[i]=f[P[i-1]];</code><code class="comments">//S盒运算完成</code></span></span></div><div class="line alt2"><code class="number">42.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;33;i++)</code><code class="comments">//左右交换</code></span></span></div><div class="line alt1"><code class="number">43.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 54px !important;"><code class="plain">L8[i]=R7[i];</code></span></span></div><div class="line alt2"><code class="number">44.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword bold">for</code><code class="plain">(i=1;i&lt;33;i++)</code><code class="comments">//R8为L7与f(R,K)进行不进位二进制加法运算结果</code></span></span></div><div class="line alt1"><code class="number">45.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">46.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">R8[i]=L7[i]+frk[i];</code></span></span></div><div class="line alt1"><code class="number">47.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword bold">if</code><code class="plain">(R8[i]==2)</code></span></span></div><div class="line alt2"><code class="number">48.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 90px !important;"><code class="plain">R8[i]=0;</code></span></span></div><div class="line alt1"><code class="number">49.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div></div></div>
+				<p>
+					其它各次迭代类似，可以依此类推。
+				</p>
+				<p>
+					<strong>《DES算法及其在VC++6.0下的实现(下)》</strong><strong> 
+				</strong></p><strong>
+</strong>
+			</td>
+		</tr>
+	
+</tbody></table>
+</div>
+<div class="Share"><!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jiathis_separator jtico jtico_tsina">新浪微博</span></a>
+	<a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jiathis_separator jtico jtico_tqq">腾讯微博</span></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_29" title="累计分享1次">1</span></a>
+</div>
+<div class="weiboFav"></div>
+<div class="FavIcon"><a href="http://www.vckbase.com/index.php/public/shouchangart/atp/1/atpid/425" target="noref">收藏</a></div>
+<script type="text/javascript" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END --></div>
+
+</div>
+
+	<div style="margin-top:15px"><a href="http://www.mansuo.net/" target="_blank"><img border="0" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/云平台.png"></a></div>
+	<div class="commect margintop20">
+		<div class="commectTitle"><span>评论</span> <a href="http://www.vckbase.com/index.php/wenku/allcomm/wid/425.html">共<b>0</b>个评论</a></div>
+		<div class="commectList">
+								<div class="clear"></div>
+		</div>
+		
+		<div class="commectHf"><form name="commform" action="http://www.vckbase.com/index.php/wenku/docomm" method="post" target="commpost">
+			<div class="commectHfTtitle">发表评论</div>
+			<div class="QuoteWrap" id="commyysub" style="display:none;">
+				<div class="QuoteContent1" id="commyysubun"></div> <div><a href="javascript:;" onclick="qxyyjs()">取消引用</a></div>
+						<div class="clear"></div>
+				</div>
+			<div class="CommentLogin">
+			<ul><li>用户名：
+			</li><li><input type="text" name="username" class="commLotx" value=""></li><li>密码：</li><li><input type="password" name="password" value="" class="commLotx"></li><li></li><li id="rtxtxt" style="color:red"></li><li>还没有帐号？</li><li><a href="http://www.vckbase.com/index.php/public/register.html">立即注册</a></li></ul></div>
+			<div class="commectHfText"><div class="ke-container ke-container-default" style="width: 768px; "><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="emoticons" title="插入表情" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons" unselectable="on"></span></span><span class="ke-outline" data-name="code" title="插入程序代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code" unselectable="on"></span></span></div><div style="display: block; height: 100px; " class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px; "></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 98px; display: none; "></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="comm" style="display: none; "></textarea><input type="hidden" name="wkid" value="425"><input type="hidden" name="yyid" value="0"></div>
+			<div class="commectHfSend"><ul><li>最多还可以输入<span>100</span>字</li><li class="submit1"><input type="submit" value="  "></li></ul></div><input type="hidden" name="__hash__" value="789207e55acf576800b4eb10e32c6492"></form>
+			<iframe name="commpost" style="display:none"></iframe>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+
+	
+		
+	
+	
+</div>
+
+<div class="mainright"> 
+<div class="r-b-main-title"><div class="r-b-m-t r-b-m-icon3">最新动态<font style="font-size:12px; font-style:normal; font-weight:normal">-</font></div></div>
+<div style="margin-top:10px;font-size:12px; line-height:20px;word-wrap:break-word;"><p>
+<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/jian.gif">
+<strong>【VIP年会员制套餐】</strong>
+<a href="http://www.chuanke.com/zhuanji-2-467.html" target="_blank"><br>只要具有C/C++语法基础，就可以在短短几个月内迅速打造成为C/C++技术牛人！本系列课程的主讲人都是知名产品的创始人，实力雄厚，培训效果立竿见影。学完后无需我们推荐工作，您自己就可以轻松找到好工作！</a>
+<br>
+</p><p>
+<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/news.gif">
+<strong>【<a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank"><font color="#FF0000">DirectUI企业级版本优惠活动！！！</font></a>】</strong><br>
+<a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank">从12月20日起至1月20日，企业级的所有版本优惠如下：<br>
+企业版8.5折，控件源码版8.5折，平台控件源码版8折，旗舰版8折，铂金版7.5折。欲购从速！！！</a><br>
+</p><p>
+<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/hot.gif">
+<strong>【C/C++软件工程师实战能力集训大纲】</strong><br>
+2013-4-26 VC知识库发布了C/C++业界的“本草纲目”<a href="http://www.vckbase.com/index.php/nv/455.html" target="_blank">《C/C++软件工程师实战能力集训大纲》详细介绍 作者:VC知识库</a><br>
+</p><p>
+<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/news.gif">
+<strong>【牛人都在千人一号群! 加群三步走!!!】</strong><br>
+第一步：请必须加VC知识库QQ：2334274564 为好友;<br>
+第二步：请必须关注本站微博：<a href="http://t.qq.com/vckbase2012" target="_blank"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/icon2big.png" border="0" class="png"></a>      <a href="http://www.weibo.com/vckbase" target="_blank"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/icon1big.png" border="0" class="png"></a>;<br>
+第三步：申请加入群：312987540.（必须将关注微博截屏发到QQ方可通过！）<br>
+</p><p>
+<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/hot.gif">
+<strong>【<font color="#FF0000">最新2013:</font><a href="http://www.ucancode.com/index.htm" target="_blank"> 100%VC++大型工控仿真建模CAD源码下载！</a>】</strong><br>
+全部100% VC++源码提供： E-Form++全新大型SCADA &amp; HMI解决方案源码、CAD解决方案源码、Gis解决方案源码 、电力石油化工仿真与图形建模解决方案源码、大量其他高级制图VC++源码下载!<br>
+</p><p>
+<img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/news.gif">
+<strong>【2013/12/12 新视频发布】</strong>
+<br>
+<a href="http://www.vckbase.com/index.php/video/listview/fid/164/sid/182" target="_blank">1、《C++设计模式》第八讲（下）.
+时长:70分钟,主讲人:步磊峰.【58元】</a>
+<br>
+<a href="http://www.vckbase.com/index.php/video/listview/fid/164/sid/179" target="_blank">1、《C++设计模式》第七讲（下）.
+时长:44分钟,主讲人:步磊峰.【48元】</a>
+<br>
+<!--<p/>
+<img src=http://www.vckbase.com/Public/Uploads/ad/hot.gif>
+<strong>【VC知识库网校】</strong><br/>
+本站在传课网上的网校地址：<a href=http://www.chuanke.com/s1265063.html target="_blank">
+http://www.chuanke.com/s1265063.html</a><br/>
+
+<p/>
+<img src=http://www.vckbase.com/Public/Uploads/ad/news.gif>
+<strong>【最新文章发布】</strong><br/>
+2013-4-20 发布<a href=http://www.vckbase.com/index.php/wv/1778.html target="_blank">《Windows Shell扩展（Shell Extensions）指南》，作者：scorpio172</a><br/>-->
+</p></div>
+<div class="ad3"><a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank"><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/304X220.jpg" border="0"></a></div>
+<div class="r-b-main ">
+			<div class="r-b-main-title"><div class="r-b-m-t r-b-m-icon3">相关文章</div>			
+		</div>
+		<div class="r-b-main-content"><ul>
+		<li>• <a href="http://www.vckbase.com/index.php/wv/1676">DES算法的介绍和实现(中) </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1461">移动存储安全 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1371">轻松实现DES算法查看器 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1326">Ceb解除打印屏蔽实战 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1291">基于SHA-256的HMAC文件校验器 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1023">模拟信息加密流程图简介 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/999">关于数据校验 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/887">浅谈利用RSA算法防止非法注册机的制作 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/802">加密它：用新的高级加密标准（AES）保持你的数据安全 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/791">关于小型CA系统的若干说明和DLL源码 </a></li>		</ul></div>
+	</div>
+	
+	<script>
+	function wkph(mt){
+		$("li.dangqian").removeClass('dangqian');
+		$("#"+mt+"li").addClass('dangqian');
+		$("#weekdiv").hide();
+		$("#mouthdiv").hide();
+		$("#totaldiv").hide();
+		$("#"+mt+"div").show();
+	}
+	</script>
+
+	<div style="margin-top:10px"><a href="http://www.bcgsoft.com/" target="_blank"><img border="0" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/1351573740.jpg"></a></div>
+ <div class="r-b-main ">
+			<div class="r-b-main-title"><div class="r-b-m-t r-b-m-icon1">文章排行</div>			<div class="r-b-m-t-tab">
+ <ul><li class="dangqian" id="weekli"><a href="javascript:;" onclick="wkph(&#39;week&#39;);">周</a></li>
+ <li id="mouthli"><a href="javascript:;" onclick="wkph(&#39;mouth&#39;);">月</a></li>
+ <li id="totalli"><a href="javascript:;" onclick="wkph(&#39;total&#39;);">总</a></li>
+ </ul>
+ 			</div>
+		</div>
+		
+		
+		<div class="r-b-main-content" id="weekdiv">
+		<dl><dt><div class="dlblod"><a href="http://www.vckbase.com/index.php/wv/1282">在VC项目中使用自定义资源</a></div><div class="dlblod1">在VC环境中除了我们所常用的Dialog、Menu和Bitmap等标准资源类型之外，它还支持自定义资源类型（Custom Resource），我们自定义的资源类型能做些什么呢？呵呵，用处多多。...<a href="http://www.vckbase.com/index.php/wv/1282">查看全文&gt;&gt;</a></div></dt><dd><a href="http://www.vckbase.com/index.php/wv/1550">改变 CListCtrl、CHeaderCtrl 高度、字体、颜色和背景</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/124">使用ADO实现BLOB数据的存取 -- ADO开发实践之二</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1391">用 VC++建立 Windows 服务程序</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/84">一个优秀的网格控件CGridCtrl</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/300">Windows Socket 网络编程(二) —— 套接字编程原理</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1778">Windows Shell扩展（Shell Extensions）指南</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1414">多线程编程之二——MFC中的多线程开发</a></dd><div class="clear"></div></dl>			</div>
+			<div class="r-b-main-content" id="mouthdiv" style="display:none">
+		<dl><dt><div class="dlblod"><a href="http://www.vckbase.com/index.php/wv/1282">在VC项目中使用自定义资源</a></div><div class="dlblod1">在VC环境中除了我们所常用的Dialog、Menu和Bitmap等标准资源类型之外，它还支持自定义资源类型（Custom Resource），我们自定义的资源类型能做些什么呢？呵呵，用处多多。...<a href="http://www.vckbase.com/index.php/wv/1282">查看全文&gt;&gt;</a></div></dt><dd><a href="http://www.vckbase.com/index.php/wv/124">使用ADO实现BLOB数据的存取 -- ADO开发实践之二</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1391">用 VC++建立 Windows 服务程序</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1550">改变 CListCtrl、CHeaderCtrl 高度、字体、颜色和背景</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/84">一个优秀的网格控件CGridCtrl</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1414">多线程编程之二——MFC中的多线程开发</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/300">Windows Socket 网络编程(二) —— 套接字编程原理</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1315">理解 COM 套间</a></dd><div class="clear"></div></dl>			</div>
+			<div class="r-b-main-content" id="totaldiv" style="display:none">
+		<dl><dt><div class="dlblod"><a href="http://www.vckbase.com/index.php/wv/300">Windows Socket 网络编程(二) —— 套接字编程原理</a></div><div class="dlblod1">本文介绍了套接字编程的基本知识。...<a href="http://www.vckbase.com/index.php/wv/300">查看全文&gt;&gt;</a></div></dt><dd><a href="http://www.vckbase.com/index.php/wv/313">系统托盘编程完全指南（三）</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/344">CButtonST使用技巧（二）</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/306">仿制金山毒霸专杀工具界面</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/303">系统理解Win32 API和MFC(下)</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/339">如何实现工具栏的下拉箭头按钮</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/434">如何播放 WAV 文件？</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/426">DES算法及其在VC++6.0下的实现(下)</a></dd><div class="clear"></div></dl>			</div>
+			
+			
+	
+		<div class="ad1"><!--<a href=\"http://bbs.vckbase.com/viewthread.php?tid=16934\" target=\\\"_blank\\\"><img  border=\"0\" src=\"/Public/Uploads/ad/1338890764.jpg\"></a>--></div>
+	</div>
+</div>
+</div>
+<div class="clear"> </div>
+</div>
+<iframe name="noref" style="display:none"></iframe>
+<div id="footer">
+	<div class="footer">
+ 
+	<dl class="d1"><dt>关于VC知识库  </dt>
+	<dd>VC知识库成立14年来，一直把提升C/C++程序员的能力作为自己的使命！视频大讲堂在两年内将打造成中国最丰富最专业的在线培训平台。
+</dd></dl>
+	
+		<dl class="d2"><dt>学习</dt>
+	<dd><ul><li><a href="http://www.vckbase.com/index.php/video/index/fid/87.html">《VC++实战调试技巧》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/89.html">《Boost深入剖析之使用技巧》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/57.html">《Windows窗口高级编程》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/42.html">《GDI/GDI+从入门到精通》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/1">更多&gt;&gt;</a></li>
+	</ul>
+</dd></dl>
+	
+	<dl class="d3">
+		<dt>联系我们</dt>
+				<dd><a href="http://www.vckbase.com/index.php/help/about.html">关于我们</a></dd>
+				
+				<dd><a href="http://www.vckbase.com/index.php/help/contact.html">联系我们</a> </dd>
+				
+				<dd><a href="http://www.vckbase.com/index.php/help/Copyright.html">版权声明</a></dd>
+	  </dl>
+ <dl class="d4"><dt>关注</dt><dd><a href="http://www.weibo.com/vckbase">新浪微博</a></dd>
+ <dd><a href="http://t.qq.com/vckbase2012">腾讯微博</a></dd>
+
+ </dl>
+ 
+ 
+<dl class="d5"><dt><img src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/footerLogo.png" class="png"></dt>
+  <dd>
+
+	    <form name="searchform" method="post" action="http://www.vckbase.com/index.php/search">
+		<div class="searchselect">
+		<select name="stype">
+		<option value="1">文章</option>
+		
+		<option value="3">代码</option>
+        <option value="4">视频教程</option>
+		</select>
+          </div>
+		  
+		<div class="footersearchbg">
+		  <input type="text" name="a1" class="searchtext1">
+		  <input type="submit" class="searchsend" value="">
+		  </div>
+	    <input type="hidden" name="__hash__" value="789207e55acf576800b4eb10e32c6492"></form>
+  </dd></dl>
+
+	</div>
+	
+	
+<div class="footer2">	Copyright © 1999－2013 vckbase.com, all rights reserved <script src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/stat.php" language="JavaScript"></script><script src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=3835396" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./VC知识库文章-《DES算法及其在VC++6.0下的实现(上),》概要： 本文介绍了DES算法的原理与在VC++环境中的应用。 _files/pic.gif"></a>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32644448-1']);
+  _gaq.push(['_setDomainName', 'vckbase.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>  苏ICP备12027359号</div>
+</div>
+
+
+<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; "></div></body></html>

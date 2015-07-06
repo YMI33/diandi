@@ -1,0 +1,56 @@
+UNIX历史
+
+初创期
+　　	Unix的诞生和Multics（Multiplexed Information andComputingSystem）是有一定渊源的。
+	Multics是由麻省理工学院，AT&T贝尔实验室和通用电气合作进行的操作系统项目，被设计运行
+	在GE-645大型主机上，但是由于整个目标过于庞大，糅合了太多的特性，Multics虽然发布了一
+	些产品，但是性能都很低，最终以失败而告终。
+	
+　　	AT&T最终撤出了投入Multics项目的资源，其中一个开发者，Ken Thompson则继续为GE-645开
+	发软件，并最终编写了一个太空旅行游戏。经过实际运行后，他发现游戏速度很慢而且耗费昂贵
+	——每次运行会花费75美元。在DennisRitchie的帮助下，Thompson用PDP-7的汇编语言重写了这个游
+	戏，并使其在DECPDP-7上运行起来。这次经历加上Multics项目的经验，促使Thompson开始了一个
+	DECPDP-7上的新操作系统项目。Thompson和Ritchie领导一组开发者，开发了一个新的多任务操作
+	系统。这个系统包括命令解释器和一些实用程序，这个项目被称为UNICS（Uniplexed Information 
+	and ComputingSystem），因为它可以支持同时的多用户操作。后来这个名字被改为UNIX。
+	
+	
+发展期
+　　	最初的Unix是用汇编语言编写的，一些应用是由叫做B语言的解释型语言和汇编语言混合编写的。
+	B语言在进行系统编程时不够强大，所以Thompson和Ritchie对其进行了改造，并与1971年共同发明了
+	C语言。1973年Thompson和Ritchie用C语言重写了Unix。在当时，为了实现最高效率，系统程序都是
+	由汇编语言编写，所以Thompson和Ritchie此举是极具大胆创新和革命意义的。用C语言编写的Unix代
+	码简洁紧凑、易移植、易读、易修改，为此后Unix的发展奠定了坚实基础。1974年，Thompson和Ritchie
+	合作在ACM通信上发表了一片关于UNIX的文章，这是UNIX第一次出现在贝尔实验室以外。此后UNIX被政府
+	机关，研究机构，企业和大学注意到，并逐渐流行开来。
+	
+　　	1975年，UNIX发布了4、5、6三个版本。1978年，已经有大约600台计算机在运行UNIX。1979年，版
+	本7发布，这是最后一个广泛发布的研究型UNIX版本。20世纪80年代相继发布的8、9、10版本只授权给
+	了少数大学。此后这个方向上的研究导致了Plan 9的出现，这是一个新的分布式操作系统。
+	
+　　	1982年，AT&T基于版本7开发了UNIX System Ⅲ的第一个版本，这是一个商业版本仅供出售。为了解
+	决混乱的UNIX版本情况，AT&T综合了其他大学和公司开发的各种UNIX，开发了UNIX System V Release 1。
+	这个新的UNIX商业发布版本不再包含源代码，所以加州大学Berkeley分校继续开发BSD UNIX，作为
+	UNIX System III和V的替代选择。BSD对UNIX最重要的贡献之一是TCP/IP。BSD有8个主要的发行版中包含
+	了TCP/IP：4.1c、4.2、4.3、4.3-Tahoe、4.3-Reno、Net2、4.4以及4.4-lite。这些发布版中的TCP/IP代
+	码几乎是现在所有系统中TCP/IP实现的前辈，包括AT&T System V UNIX和Microsoft Windows。其他一些公
+	司也开始为其自己的小型机或工作站提供商业版本的UNIX系统，有些选择System V作为基础版本，有些则
+	选择了BSD。BSD的一名主要开发者，Bill Joy，在BSD基础上开发了SunOS，并最终创办了Sun Microsystems。
+	
+　　	1991年，一群BSD开发者（Donn Seeley、Mike Karels、BillJolitz 和 Trent Hein）离开了加州大学，
+	创办了Berkeley Software Design, Inc(BSDI)。BSDI是第一家在便宜常见的Intel平台上提供全功能商业
+	BSD UNIX的厂商。后来Bill Jolitz离开了BSDI，开始了386BSD的工作。386BSD被认为是FreeBSD、OpenBSD 
+	和 NetBSD的先辈。
+　　	AT&T继续为UNIX SystemV增加了文件锁定，系统管理，作业控制，流和远程文件系统。1987到1989年，
+	AT&T决定将Xenix（微软开发的一个x86-pc上的UNIX版本），BSD，SunOS和System V融合为System V Release4（SVR4）。
+	这个新发布版将多种特性融为一体，结束了混乱的竞争局面。1993年以后，大多数商业UNIX发行商都基于
+	SVR4开发自己的UNIX变体了。
+	
+	
+
+现况
+　　	UNIX System V Release4发布后不久，AT&T就将其所有UNIX权利出售给了Novell。Novell期望以此来对抗
+	微软的WindowsNT，但其核心市场受到了严重伤害，最终Novell将SVR4的权利出售给了X/OPENConsortium，
+	后者是定义UNIX标准的产业团体。最后X/OPEN和OSF/1合并，创建了Open Group。OpenGroup定义的多个标
+	准定义着什么是以及什么不是UNIX。实际的UNIX代码则辗转到了Santa Cruz Operation，这家公司后来出
+	售给了Caldera Systems。Caldera原来也出售Linux系统，交易完成后，新公司又被重命名为SCO Group。

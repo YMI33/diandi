@@ -1,0 +1,40 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<body>
+<form action="http://192.168.50.195:8000/bosh/" method="post" enctype="text/plain">
+<input type="text" name="request" value="&lt;bosh sess='someone@company.com/someres' todo='poll'/&gt;" size="200">
+<input type="submit" value="poll">
+</form><br/>
+
+<!-- <su xmlns='com:ctl' from='Hey@ecouser.net/397'><ctl td='GetDeviceInfo'/></su> -->
+<form action="http://192.168.50.195:8000/bosh/" method="post" enctype="text/plain">
+获取电量
+<input type="text" name="request" value="&lt;bosh sess='someone@company.com/someres' todo='req'&gt;&lt;iq from='someone@company.com/someres' to='helixiao_test@gcb9.ecorobot.net/atom'&gt;&lt;ctl td='GetBatteryInfo'/&gt;&lt;/iq&gt;&lt;/bosh&gt;" size="200">
+<input type="submit" value="发送">
+</form>
+
+<form action="http://192.168.50.195:8000/bosh/" method="post" enctype="text/plain">
+获取用户信息
+<input type="text" name="request" value="&lt;bosh sess='someone@company.com/someres' todo='req'&gt;&lt;iq from='someone@company.com/someres' to='helixiao_test@gcb9.ecorobot.net/atom'&gt;&lt;ctl td='GetUserInfo'/&gt;&lt;/iq&gt;&lt;/bosh&gt;" size="200">
+<input type="submit" value="发送">
+</form>
+
+<form action="http://192.168.50.195:8000/bosh/" method="post" enctype="text/plain">
+添加用户
+<input type="text" name="request" value="&lt;ctl&gt;&lt;/ctl&gt;" size="200">
+<input type="submit" value="发送">
+</form>
+
+<form action="http://192.168.50.195:8000/bosh/" method="post" enctype="text/plain">
+删除用户
+<input type="text" name="request" value="&lt;ctl&gt;&lt;/ctl&gt;" size="200">
+<input type="submit" value="发送">
+</form>
+
+<form action="http://192.168.50.195:8000/bosh/" method="post" enctype="text/plain">
+设置AC
+<input type="text" name="request" value="&lt;ctl&gt;&lt;/ctl&gt;" size="200">
+<input type="submit" value="发送">
+</form>
+</body>
+</html>

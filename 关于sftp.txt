@@ -1,0 +1,16 @@
+想在两个ubuntu之间传输文件，非常简单的方法！
+
+sftp:
+
+我在jason上，其ip为192.168.1.101，想给mickey（192.168.1.108）传送东西
+
+sftp mickey@192.168.1.108
+之后会提示你输入mickey的密码
+之后就可以使用了。
+
+lls 显示本机的文件
+ls显示对方的文件
+get下载
+put上传
+
+simple and perfect！

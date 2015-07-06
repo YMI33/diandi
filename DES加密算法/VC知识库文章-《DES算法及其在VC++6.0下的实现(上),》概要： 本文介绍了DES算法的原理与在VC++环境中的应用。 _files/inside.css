@@ -1,0 +1,499 @@
+﻿.InsideContetwrap{ background:url(../images/Insidebg.gif)  repeat-x; min-height:336px; }
+.headwrap{ width:1180px; margin:0 auto; position:relative;height:171px; overflow:hidden; }
+.logo{ position:absolute; left:0; top:52px; z-index:10}
+.headatten{position:absolute; width:300px; height:22px; z-index:6; left:0px; top:144px;}
+.headatten li{ float:left; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; font-size:12px;}
+.headatten li a{ padding: 0 5px;}
+
+
+.headfabu{position:absolute; width:680px; height:32px; z-index:10; left:0px; top:130px;}
+.headfabu li{ float:left; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; font-size:12px; height:32px; line-height:32px;}
+.headfabu li a{ padding: 0 5px;}
+
+
+.ad3{ width:304px; height:220px; margin:20px 0 0 0 ; text-align:right}
+.newstitle{ height:34px; background:#6cb265; line-height:34px;}
+
+.n-title-left{ float:left; margin:0; padding:0; color:#fff; font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:14px; padding: 0 0 0 10px; }
+.n-title-tab{ float:right ; font-size:12px; padding:0 10px; 0 0; color:#fff}
+.n-title-tab a,.n-title-tab a:visited{ color:#fff;}
+.n-title-tab a.boloder{ font-weight:bold}
+.newscontent dl{ padding:18px 10px; background:url(../images/dashed_line.gif) bottom repeat-x; height:116px;}
+.newscontent dt{ float:left; width:100%; font-family:"微软雅黑", Verdana, arial, "宋体"; padding:0 0 8px 0 }
+.newscontent dt a{ float:left; font-size:14px; font-weight:bold}
+.newscontent dt span{ float:right}
+.newscontent dd{ font-size:12px; float:left; width:100%; line-height:23px; overflow:hidden; height:70px; }
+.newscontent dl.photo dd.img1{ width:122px !important; margin:0 15px 0 0; height:92px;}
+.newscontent dl.photo dd.img1 img{ border:1px solid #999}
+.newscontent dl.photo dd{ width:700px !important;}
+.newscontent dl dd.tagLine{ color:#888; height:auto}
+.newscontent dl dd.tagLine a{ padding:0 10px 0 0}
+
+.newsEnd-c h1,.newsEnd-c h2,.newsEnd-c h3{text-align:left !important;color:#000  !important;}
+.newsEnd-c p{margin:0;padding:0; text-indent:30px;}
+
+.pageposition{ width:100%; background:url(../images/position_bg.gif); height:28px; color:#666 }
+.pageposition a,.pageposition:visited{ color:#333}
+.pageposition .p-positionMain{ width:1180px; margin:0 auto; font-size:12px; height:28px; line-height:28px; text-indent:10px; }
+
+.newsmain{ width:846px; border:2px solid #ccc; margin:20px 0 0 0; background:#fff; padding:0 0 20px 0 }
+.newsmain h3{ text-align:center; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#005800; font-size:16px; margin:15px 0 10px}
+.newsmain .newsstrue{ text-align:center; font-size:12px; color:#666; margin: 0 0}
+.newsmain .newsstrue a,.newsmain .newsstrue:visited{ color:#000; text-decoration:none}
+.newsmain .newsstrue a:hover{color:#ff5800; text-decoration:underline}
+.Share{ width:789px; border:1px solid #ccc; margin:20px auto 0; padding:0 0 0 20px; height:38px}
+.FavIcon{ float: right; font-size:12px; padding:0 20px 0 ; background:url(../images/scicon.gif) no-repeat; height:16px; line-height:16px; margin:10px 0 0 0;}
+.weiboFav{ float:left; font-size:12px; line-height:16px; padding:0 0 0 10px; margin:10px 0 0}
+.Share #ckepop{margin:10px 0 0; float:left}
+.Share1{ width:673px; border:1px solid #ccc; margin:20px auto 0; padding:0 0 0 20px; height:38px; }
+.Share1 #ckepop{margin:10px 0 0; float:left}
+.newsEnd-c{ width:789px; margin:20px auto 0; line-height:28px; font-size:14px; overflow:hidden}
+
+.commectTitle{ height:34px; line-height:34px; background:#6cb265;}
+.commectTitle span{ float:left; color:#fff; padding:0 0 0 10px; font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:14px; font-weight:bold}
+.commectTitle a{ float:right; font-size:12px; color:#fff; padding:0 7px 0 0}
+.commectTitleNy{ border-bottom:#bcbcbc 1px solid; height:30px; line-height:30px;}
+.commectTitleNy span{ float:left; color:#000; padding:0 0 0 10px; font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:14px;  font-family:"微软雅黑", Arial, "宋体" }
+.commectTitleNy span b{ color:#ff5800}
+.commectTitleNy a{ float:right; font-size:12px; color:#000; padding:0 7px 0 0}
+.commectList{}
+.commectList dl{ padding:20px 0; float:left; background:url(../images/dashed_line.gif) bottom  repeat-x; }
+.commectList dt{ float:left; text-align:center; width:70px;}
+.commectList dd{ float:right; font-size:12px; width:770px; margin:0 10px 0 0 ;color:#999; display: inline}
+.commectList dd li{ float:left; }
+.commectList dd.commectList-c{ color:#000; line-height:24px; padding:6px 0 ; overflow:hidden}
+.commectList dd li.c-cyy{ float:right}
+.commectHfTtitle{ font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:14px ; color:#000; height:26px; line-height:30px; font-weight:bold; overflow:hidden; padding:5px 0}
+.commectHfText textarea{ width:768px; height:98px; border:1px solid #ccc; padding:0; line-height:24px; margin:0}
+.commectHfSend li{ float:left; font-size:12px; color:#888; height:40px; line-height:40px;}
+.commectHfSend li span{ color:#ff0000; font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:16px; font-weight:bold}
+.commectHfSend li.submit1{float:right;}
+.commectHfSend li.submit1 input{ background:url(/public/web/images/commect_btn.gif); width:80px; height:26px; border:0; margin:10px 0 0; padding:0}
+
+/*文章页面*/
+
+/*文章页面*/
+.articleLeft{ width:260px; float:left; padding:20px 0 0; }
+.articleRight{ width:715px; float:right;padding:20px 0 0 }
+
+.articleLeft1{ width:260px; float:left;margin:0px auto; padding:20px 0 0}
+.articleCenter1{ width:595px; padding:20px 0 0 15px;float:left;}
+.articleCenter2{ width:905px; padding:20px 0 0 15px;float:left;}
+.videoCenter1{ width:861px; padding:20px 0 0 0;float:left;}
+.articleRight1{width:304px;left:0; top:-130px; z-index:25; padding:20px 0  0 880px;}
+.articleRight2{width:304px;padding:20px 0 0 880px;}
+.articleseach1{ font-size:12px;height:200px;}
+
+.leftMenu{ border:2px solid  #ccc; background:#fff }
+.leftMenu dl{ border-bottom:1px solid #ccc}
+.leftMenu dt{ font-family: "微软雅黑", Verdana, arial, "宋体"; font-size:14px; padding:0 0 0 35px; height:40px; line-height:38px; background:url(../images/iconplus.gif)  no-repeat 13px 13px; }
+.leftMenu dl.curr dt{ background:url(../images/iconminus.gif)  no-repeat 13px 13px;border-bottom:1px solid #ccc;}
+.leftMenu dl.curr dd { display:block;}
+.leftMenu dd{ display:none; padding:5px 0 }
+.leftMenu li{ font-size:12px; height:26px; line-height:26px; padding: 0 0 0 37px; background:url(../images/menu_icon.gif) no-repeat 23px center  }
+.leftMenu li a,.leftMenu li:visited{ color:#000}
+.leftMenu li a:hover,.leftMenu li.currli a,.leftMenu li.currli a:visited{ color:#ff5800; font-weight:bold}
+
+
+.articleseach{ font-size:12px;}
+.articleseach-t{ background: url(../images/articlesearch.gif);  height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px}
+.videoseach-t{ background: url(../images/video_title.gif);  height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px;}
+.videoseachview-t{ background: url(../images/video_detail_title.gif); background-repeat:no-repeat;  height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 15px 90px}
+.articlecreate-t{ background: url(../images/createTitle.gif); height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px}
+.articlefun-t{ background: url(../images/funtitle.gif); width:625px; height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px}
+.funct1{ background: url(../images/funct1.gif); width:625px; height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px}
+.articleseach-c{ padding:20px}
+.articleseach-c dt{ float:left; width:65px; height:28px; line-height:28px; color:#333	}
+.articleseach-c dd{ width:600px;height:26px; padding:1px 0 ; line-height:26px;}
+.searchbtn input{ background:url(../images/searchBtn.gif); width:80px; height:26px; border:0; margin:0; padding:0}
+.searchbtn input.s-hover{ background-position:80px 0 }
+.funbtn input{ background:url(../images/funbtn.gif); width:80px; height:26px; border:0; margin:0; padding:0}
+.funbtn input.f-hover{ background-position:80px 0 }
+
+.s-ipt input{ width:405px; height:18px; border:1px solid #ccc}
+.taggz a{ padding:0px 0 5px 30px; background:url(../images/gzicon.gif) no-repeat 10px 0;  }
+
+.GzIcon {padding:0px 0 5px 30px; background:url(../images/gzicon.gif) no-repeat 10px 0; float:right; display:inline; margin:10px 15px 0 0}
+
+.articleList{ margin:10px 0 0 0}
+.articleList dl.photo dd{ width:560px;}
+.articleList dl dt span,{ float:right}
+.articleList dl dt span li,.article_SumLeft dd li{ width:18px; height:18px; float:left; background:url(../images/pf.gif); margin:0 1px; display:inline; overflow:hidden}
+.articleList dl dt span li.pf2,.article_SumLeft dd li.pf2{ background-position:-18px  0;}
+.articleList dl dt span li.pf3,.article_SumLeft dd li.pf3{ background-position:18px  0;}
+.articleList dl dt span li.jf-text,.article_SumLeft dd li.jf-text{ background:none; width:30px; color:#ff0000; font-size:14px; line-height:20px; margin:0 0 0 10px; font-family:Arial, "宋体", "微软雅黑"; height:20px; font-weight:bold}
+.articleList dl dt span li.jf-text font,.article_SumLeft dd li.jf-text font{ font-size:20px;}
+
+.article_Sum{ width:789px;border-bottom:1px solid #ccc; margin:20px auto 0;padding:20px 30px; font-size:12px;}
+.article_SumLeft{ width:320px; float:left}
+.article_SumLeft dt{ float:left; width:60px; height:24px; line-height:24px; color:#666}
+.article_SumLeft dd{ float:left; width: 250px; height:24px;line-height:24px; overflow:hidden}
+.article_SumLeft dd a.downicon{ padding:0 15px 0 22px; background:url(../images/downicon.gif) no-repeat 0 5px; display: inline; float:left}
+.article_SumLeft dd a.printicon{ padding:0 0 0 24px; background:url(../images/printIcon.gif) no-repeat 0 3px; display: inline; float:left;}
+.article_SumRight{ width:260px; float:right}
+.article_SumRight dt{ float:left; width:80px; }
+.article_SumRight dd{ float:left; width:170px; line-height:18px;}
+.article_SumRight dd span{ color:#666}
+.article_SumCenter{ float:left; width:100%; margin:2px 0 0}
+.article_SumCenter li{ float:left; width:720px; line-height:24px;}
+.article_SumCenter li.sz1{width:60px; color:#666}
+.articleCreate-c{ padding:5px 20px;}
+.articleCreate-c dt{ float:left; width:60px; display:block;height:24px; line-height:24px;margin:16px 0 0; color:#333}
+.articleCreate-c dd{ float:right; width:610px; height:24px; margin:16px 0 0;line-height:24px}
+.articleCreate-c dd input{ width:413px;height:22px;}
+.articleCreate-c dd input.textborder{ border:1px solid #abadb3; padding:0; margin:0; width:413px; height:24px; line-height:24px}
+.articleCreate-c dd.gaiyao,.articleCreate-c dt.gaiyao{ height:68px;}
+.articleCreate-c dd.createUptext,.articleCreate-c dt.createUptext{ color:#666; height:22px; line-height:22px; margin:0; padding:0}
+.articleCreate-c dd.gaiyao textarea{ width:520px; height:66px; border:1px solid #abadb3}
+.articleCreate-c dd.zw,.articleCreate-c dt.zw{ height:782px;}
+
+.articleCreate-c dd.zw textarea{ width:610px; height:780px; border:1px solid #abadb3}
+.articleCreate-c dd.sendBtn,.articleCreate-c dt.sendBtn{ margin:5px 0 0}
+.sendBtn input{ width:80px !important; height:26px  !important; background: url(../images/sendBtn.gif); border:none;}
+.sendBtn input.HoverBg{ background-position:-80px 0; }
+.successWrap{ padding:0 0 10px; background:url(../images/dashed_line.gif) repeat-x bottom }
+.successLeft{ float:left; width:100px; text-align:center}
+.successRight{ float:left; width:580px; padding:0 0 0 20px; font-size:14px; line-height:30px;}
+.successRight span{ color:#fd0000}
+
+.nextPost{ padding: 10px 0 20px  125px; font-size:14px; line-height:30px; }
+.nextPost dt{ float:left}
+.nextPost dd{ float:right; width:510px; height:30px;}
+.nextPost dd span{width:16px; height:30px; background:url(../images/backIcon.gif) no-repeat 0 7px; float:left;}
+.nextPost dd span.c-two{background:url(../images/backIcon.gif) no-repeat -16px 7px;}
+.nextPost dd a{ padding:0 0 0 10px;float:left; height:30px; line-height:30px;}
+
+.funTitle{ height:36px; border-bottom:1px solid #bcbcbc; line-height:36px;}
+.funTitle span{ font-size:14px; float:left; text-indent:15px; color:#333}
+.funTitle a{ color:#005800; float:right; padding:0 15px 0 0}
+
+.funMain{ padding:10px 0}
+.funMain li{ width:49%; float:left; height:26px; line-height:26px;}
+.funMain li span a,.funMain li span a:visited{ color:#333}
+.funMain li span  a:hover{  color:#ff5800; text-decoration:underline}
+
+.dwsfunTitle{ height:24px; border-bottom:#bcbcbc 1px solid ; line-height:20px;}
+.dwsfunTitle span{ float:left; font-size:14px; text-indent:15px} 
+.dwsfunTitle dl{ float:right; padding:0 10px 0 0; } 
+.dwsfunTitle dl dt{ float:left; height:20px; line-height:20px; color:#666}
+.dwsfunTitle dl dd{ float:left;  height:18px; background:url(../images/pageline_03.gif) repeat-x  0 1px; border:1px solid #bdbdbd ; text-align:center; line-height:18px; margin:0 5px; display:inline; overflow:hidden}
+.dwsfunTitle dl dd a,.dwsfunTitle dl dd a:visited{  padding:0 3px;height:16px; border:1px solid #f9f9f9; border-top:1px solid #fff; float:left; overflow:hidden; color:#000}
+
+
+.dwsfunTitle dl dd.curpagesz{ float:left;background:url(../images/pageline_05.gif) repeat-x  0 1px; border:1px solid #ac5500 ; text-align:center;}
+.dwsfunTitle dl dd.curpagesz a,.dwsfunTitle dl dd.curpagesz a:visited{  color:#fff; border:1px solid #ffb961; border-top:1px solid #ffeabd}
+.dwstable td{ line-height:20px; color:#333}
+.dwstable span a,.dwstable span a:visited{ color:#333}
+.dwstable span a:hover{  color:#ff5800;}
+/*文章页面结束*/
+
+
+
+
+
+/*SDK函数*/
+.funEndMain{}
+.funEndTitle{ border-bottom:1px solid #bcbcbc; height:30px; line-height:30px; padding:0 10px;}
+.funEndTitle span{ float:left; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#ff5800; font-size:14px;}
+.funEndTitle a{ float: right; padding:0 0 0 24px; background: url(../images/editIcon.gif) no-repeat 0 8px;}
+.funStrue{ width:685px; margin:20px auto 0; padding:0 0 0 10px}
+.funStrue li{ height:24px; line-height:24px; color:#666; }
+.funStrue li span{color:#000}
+.funEntTitle{ width:695px; margin:15px auto 0; height:30px; line-height:30px; background:url(../images/dashed_line.gif) repeat-x bottom ; overflow:hidden}
+.funEntTitle a{  float:right; padding:0 10px 0 0}
+.funEntTitle span{float:left; font-family:"微软雅黑", Verdana, arial, "宋体"; text-indent:10px; font-size:14px; font-weight:bold}
+.funEntTitle cite{ font-style:normal;}
+.funEntContent{ line-height:24px; width:675px; margin:10px auto; padding:0 10px; overflow:hidden}
+.funEntBz{ margin:10px 0 0 0; line-height:20px;}
+.funEntSl{width:695px; margin:0 auto}
+.funEntSl dl{ margin:10px 0 0}
+.funEntSl dl dt{ font-family: "微软雅黑", Verdana, arial, "宋体"; font-size:12px; float:left; color:#000;padding:15px 0 0 10px; font-weight:bold  }
+.funEntSl dl dd{ float:right; background:#fff8da ; width:600px; padding:15px; line-height:16px;}
+
+.addTable{ width:690px; margin:20px auto 0}
+.addTable dl{ width:100%; float:left; position:relative; padding: 6px 0; line-height:22px;}
+.addTable dt{ float:left; width:65px; color:#333}
+.addTable dd { float:left; width:530px; }
+.addTable dd.d3{ position:absolute; width:100px; right:0; bottom:10px ; text-align:center}
+.addTable dd.d3 input{ width:72px; height:22px; line-height:22px;}
+.csBorder{ width:520px; border:1px solid #abadb3}
+
+.csBorder ul{ background:url(../images/dashed_line.gif) repeat-x bottom; width:510px; margin:0 auto; padding:5px 0 10px; }
+.csBorder li{ width:490px; margin:0 auto ; height:24px; line-height:24px; }
+.csBorder li span{ color:#666; float:left; padding:0} 
+.csBorder li input{ border:none; width:410px; padding:0; height:22px; line-height:22px; border:0}
+.addFun-jianjie textarea{ width:516px; height:85px; border:1px solid #abadb3; overflow:hidden; padding:2px ; margin:0; line-height:24px;}
+.addFun-fangfa textarea{ width:516px; height:109px; border:1px solid #abadb3; overflow:hidden; padding:2px ; margin:0; line-height:24px;}
+.addFun-name input{ width:414px; height:22px; border:1px solid #abadb3; float:left}
+
+.addFun-name .gz{padding:0px 0 5px 30px; background:url(../images/gzicon.gif) no-repeat 10px 2px;float:left}
+.addFun-beizhu{ width:490px !important; height:32px;border:1px solid #abadb3; overflow:hidden; padding:8px 15px;}
+.addFun-beizhu span{ float:left; color:#666}
+.addFun-beizhu textarea{ width:420px; overflow:hidden; border:0; line-height:20px; height:40px; }
+.func-shilie{ }
+.func-shilie ul{margin:0  ; float:left; padding:0;}
+.func-shilie li{ line-height:24px; float:left }
+.func-shilie textarea{ width:520px; height:420px; padding:0; margin:0; border:1px solid #ccc ; line-height:22px}
+
+.taggzbg{ position:absolute; width:393px;  border:1px solid #abadb3; left:0; top:25px; background:#fff;  line-height:26px; padding:5px 10px; z-index:555}
+ .taggzbg li{ float:left; margin:5px 4px ; height:20px; line-height:20px; width:auto !important  }
+.taggzbg a,.taggzbg a:visited{ background:none; padding:0 15px; color:#000 ; border:1px solid #6cb265; float:left; height:18px; line-height:18px; font-size:12px; }
+.taggzbg a:hover{ color:#ff5800; text-decoration:underline; background:#fff6cd}
+.articleCreate-c dd.taggz{ position:relative;}
+.vcAddtsTag{  top:28px;}
+.commectHf{ border:1px solid #ccc; background:#f9f9f9; padding:0 20px 15px;}
+.CommentQuote{ font-size:12px; height:22px; line-height:20px;}
+.CommentLogin{ font-size:12px; height:24px; line-height:24px; padding:0 0 5px;   overflow:hidden; }
+.CommentLogin .commLotx{ height:19px; padding:0; margin:0; width:86px; border:1px solid #ddd}
+.CommentLogin .commLosn{}
+.CommentLogin li{ float:left; margin:0 5px 0 0 ; display:inline; color:#555}
+.QuoteWrap{ background:#f9f9f9 url(../images/icon_quote_s.gif) no-repeat 10px 10px; padding:0 0 0 55px;}
+.QuoteContent{ padding:0 56px 14px 0; background:url(../images/icon_quote_e.gif) 95% 90% no-repeat}
+.QuoteContent1{ font-size:14px; line-height:24px; padding:14px 0 0 0; color:#444; width:100%; float:left; overflow:hidden}
+.QuoteContent span{ float:left; color:#999}
+
+.errdiv{border:1px solid #ccc; background:#f9f9f9; padding-left:80px; font-size:18px; height:30px; line-height:30px; color:#FF0000;}
+.editwinbk{position:absolute; left:0%; top:0%; width:100%; height:5000px; background:#000; z-index:1001; -moz-opacity:0.2; opacity:.20; filter:alpha(opacity=20); display:none;}
+.editwin{position:absolute; left:25%; top:25%;width:50%; height:50%; background:#FFFFFF; border:#009900 solid 10px; display:none; padding:20px; z-index:1002; overflow:hidden;}
+
+
+/*codelist*/
+.codeList{}
+.codeList dl{ padding:15px 10px;}
+.codeList dl.my2{background:#eff6ef}
+
+.codeList dt{height:24px; line-height:24px;}
+.codeList dt a{ float:left; font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:14px; margin:0 5px; display:inline}
+.codeList dt a img{ margin:3px 0 0}
+.codeList dt span{ float:left; margin:0 7px; display:inline ; color:#444}
+.codeList dt span.jing{ background:url(../images/hotIcon.gif) -23px 0; width:17px; height:17px; margin:3px 2px 0;}
+.codeList dt span.hotIcon{ background:url(../images/hotIcon.gif); width:17px; height:17px;margin:3px 2px 0;}
+.codeList dd{line-height:24px; color:#888; overflow:hidden}
+.codeList dd.c1{ color:#444; padding:4px 0; }
+
+.article_SumLeft dd.codejifen{ width:80px;}
+.codeBorder{ border:1px solid #86e37d; margin:0 0 10px 0; font-size:12px;}
+.codeBorder2{border:2px solid #d9f2d6; line-height:22px; padding:10px 14px; color:#333}
+.codeBorder2 strong{ color:#ff8314; display:block}
+.codeDownnum{ padding:0}
+.codeTitle{ background:url(../images/phTitle.gif) repeat-x; height:32px; line-height:31px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#2c6e2c; text-indent:10px;}
+.codeEjTitle{ height:24px; line-height:24px; width:234px; margin:6px auto 0; background:#f5f5f5; padding:0 7px; color:#2c6e2c; font-weight:bold}
+.codeEjTitle span{ float:left}
+.codeEjTitle i{ float:right; font-style:normal}
+.codePhList{ background:url(../images/pmicon.gif) no-repeat 8px 6px; padding:0 0 0 30px;}
+.codePhList dt{ height:82px}
+.codePhList dt .dlblod{ line-height:26px; height:26px; overflow:hidden; }
+.codePhList dt .dlblod a{ font-weight:bold ; float:left;width:180px}
+.codePhList dt .dlblod span{ float:right; margin:0 10px 0 0}
+.codePhList dt .dlblod1{ width:185px; overflow:hidden; height:48px;}
+.codePhList dd{ height:24px; line-height:24px; overflow:hidden;}
+.codePhList dd a{ width:170px; float:left; overflow:hidden;width:180px }
+.codePhList dd span{ float:right; width:30px; margin:0 5px 0 0}
+.articleCreate-c dd.jifen{ width:300px;float:left; color:#888; margin-left:3px;}
+.articleCreate-c dd.jifen1{ width:250px;float:left; color:#888}
+
+.articleCreate-c .jifen1 input{ width:auto; float:left}
+.articleCreate-c .codeFile{ height:20px; line-height:20px; padding:10px 0 0 0; }
+.articleCreate-c .codeFileText{ height:20px; line-height:20px; color:#666666}
+.articlecode-t{ background: url(../images/codetitle.gif); background-repeat:no-repeat; width:586px; height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px}
+.articleupCode-t{ background: url(../images/editUpIcon.gif); background-repeat:no-repeat; width:586px; height:22px; font-family:"微软雅黑", Verdana, arial, "宋体"; color:#fff; padding:45px 0 0 90px}
+/*codeEnd*/
+
+/*Question*/
+.Quest_left{ float:left; padding:20px 0 0 0; width:705px; }
+.Quest_right{ width:270px; padding:20px 0 0 0; float:right  }
+.Q_righttag{margin:0 !important; background:#fff;}
+.Q_userContent li{ float:left; width:48px;overflow:hidden; margin:15px 9px 0; line-height:8px; display:inline; font-size:12px}
+.Q_userContent li a{  margin:0; padding:0;}
+.Q_userContent li span{ display:block; margin:0; text-overflow:ellipsis;white-space:nowrap;  width:41px; height:22px; overflow:hidden; text-align:center; line-height:22px;  }
+.QuestListTitle{ background: url(../images/Q_title_05.gif); height:68px;}
+.QuestTitleh1{ float:left; background:url(../images/Q_title_03.gif) no-repeat; height:68px; font-size:12px; color:#fff; font-family:"微软雅黑", Verdana, arial, "宋体" ; padding:0 0 0 92px; line-height:100px; overflow:hidden;}
+.QuestTitleTab{ float:right; padding:0 10px 0 0 }
+.QuestTitleTab li{ float:left; font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:12px;height:30px; margin:38px 0px 0 0; line-height:30px; }
+.QuestTitleTab li.TabCurrent{  background:url(../images/Q_title_08.gif);  }
+.QuestTitleTab li a,.QuestTitleTab li a:visited{ display:block;  height:30px; padding:0 15px; color:#fff; float:left}
+.QuestTitleTab li.TabCurrent a,.QuestTitleTab li.TabCurrent a:visited{background:url(../images/Q_title_08.gif) 100% 30px ; color:#000}
+.QuestListContent dl{ width:100%; float:left; padding:10px 0;background: url(../images/dashed_line.gif) bottom repeat-x;}
+.QuestListContent dl dd h2{ font-size:16px; font-family:"微软雅黑", Verdana, arial, "宋体"}
+.QuestListContent dl dt{ float:left; background:url(../images/jifenBg.gif); width:93px; height:73px; text-align:center; font-family:"微软雅黑", Verdana, arial, "宋体"; margin:0 10px; display:inline}
+.QuestListContent dl dt span{ display:block; color:#005800; font-size:16px; height:34px; line-height:38px; overflow:hidden}
+.QuestListContent dl dt a,.QuestListContent dl dt a:visited{ display:block; font-size:12px; color:#ff6600; height:20px; line-height:20px;}
+.QuestListContent dl dd{ float:left; width:580px;}
+.QuestListTag{ margin:15px 0 0; color:#444;font-size:12px;}
+
+.QuestListTag li.QuestTimeTag{ float:left; }
+.QuestListTag li.QuestTimeTag a{ background:#21611b; color:#fff;overflow:hidden; padding:2px 7px; margin:0 2px 0 4px;}
+.QuestListTag .QuestTimeTag   a.huida{ color:#ff4e00; background:none}
+.QuestListTag li.QuestTime{ float:right} 
+.QuestTiwen{ border:1px solid #6cb265; height:1%}
+.QuestTiwenBor2{ border:3px solid #c9e4c6; background:#fff; padding: 6px; overflow:hidden; font-size:14px; line-height:20px; color:#444; height:1%;}
+.QuestTiwenBor2 h4{ font-family: "微软雅黑", Verdana, arial, "宋体"; font-size:16px; color:#0c6e03; font-weight:normal}
+.QuestTiwenContent{ padding:10px 0; overflow:hidden}
+.addLeft{padding:20px 0 0; width:260px; float:left}	
+.addRight{ padding:20px 0 0; float:right; width:715px;}
+.addTagWrap{ border:1px solid #98d092}
+.addTagnBorder{ border:3px solid #c6e6c2; padding:10px; background:#fff; line-height:28px}
+.addTagTitle{ font-family: "微软雅黑", Verdana, arial, "宋体"; font-size:16px; color:#000}
+.addTips{border:1px solid #98d092}
+.addTipsChild{ border:3px solid #c6e6c2; line-height:28px; font-size:14px; color:#444; padding:7px 9px;}
+.addRightTitle{ background: url(../images/Q_title_05.gif); height:68px;}
+.addRightTitle a,.addRightTitle a:visited{ color:#fff; background:url(../images/addTitle_03.gif) no-repeat; float:left; height:24px;text-indent:92px; padding:44px 0 0 0; font-family: "微软雅黑", Verdana, arial, "宋体"; font-size:12px;}
+.addRightTitle span{ float:right; height:68px; background:url(../images/addTitle_05.gif); width:175px;}
+.addTabFloatText{ float:left; width:62px; text-align:right; font-size:12px;}
+.addRightContent{ padding:20px 0 0 15px; }
+.addRightContent li{ height:34px; line-height:34px; color:#333; float:left; width:100%}
+.addRightContent li input,.addRightContent li select{ border:1px solid #abadb3; margin:5px 0 0 0}
+.addquestTitle{ width:414px; height:22px; padding:0; line-height:22px; margin:0}
+.addquestTag{ width:308px; height:22px; padding:0; margin:0; line-height:22px;}
+.addTabFloatl{ float: left; position:relative}
+.addTagbz{ font-size:12px; color:#888}
+.heightAuto{ height:auto !important}
+.addRightSend input{ border:0 !important }
+.addTagContent{ font-family:"微软雅黑", Verdana, arial, "宋体"}
+.QuestScAnswer{ border:1px solid #ffa6a7;height:1%;}
+.QuestScAnswerBor2{ border:3px solid #ffe9e9; padding:6px;height:1%;}
+.QuestScAnswerBor2 h4{ font-size:14px; color:#444;}
+.QuestScAnsweContent{ font-size:14px; color:#444; margin:10px 0; line-height:24px; overflow:hidden}
+.QuestAllAnswer{ border:1px solid #b1d4ee;height:1%;}
+.QuestAllAnswerBor2{ border:3px solid #e2f1fd; padding:5px 0 10px; height:1%; }
+.QuestAllAnswerBor2 h4{ font-size:14px; color:#444; padding:0 8px;line-height:28px;}
+.QuestAllAnswerList{ font-size:14px; margin: 0}
+.QuestAllAnswerList dl{ padding:10px 8px; float:left; width:681px; border-bottom:1px  dashed #51acf0} 
+.QuestAllAnswerList dt{ float:left; width:60px; }
+.QuestAllAnswerList dd{ float:right; width:620px}
+.Questbasic{ font-size:12px;}
+.QuestbasicLeft{ float:left; width:460px; height:51px; border:1px solid #ddd; overflow:hidden; }
+.QuestbasicLeft li{ width:100%; height:24px; line-height:28px; text-indent:10px; overflow:hidden;} 
+.QuestbasicLeft li span{ color:#0a6e00}
+.QuestbasicLeft li a{ color:#444}
+.Gold{ background:url(../images/questIcon1.gif) no-repeat 0 -26px; padding:5px 0 5px 20px;}
+.Favorites{ background:url(../images/questIcon1.gif) no-repeat 0 3px; padding:5px 0 5px 20px;}
+.QuestbasicRight{ float:right; width:212px; height:43px; border:1px solid #ddd; overflow:hidden; padding:8px  0 0 0 }
+.QuestbasicRight dt{ float:left; margin:0 10px 0 8px; display:inline}
+.QuestbasicRight dd{ float:left ; width:160px; height:20px; line-height:18px;}
+.QuestScAnsweBasic{ font-size:12px;}
+.QuestScAnsweBasicLeft{ float:left; width:460px; height:46px; border:1px solid #ddd; overflow:hidden; padding:5px 0 0 0 ; color:#444}
+.QuestScAnsweBasicLeft li{ width:48%; float:left; height:18px; line-height:18px ; overflow:hidden; padding:0 0 0 2%}
+.ding{  background:url(../images/questIcon1.gif) no-repeat 0 -92px; padding:5px 0 5px 20px;}
+.cai{ background:url(../images/questIcon1.gif) no-repeat 0 -55px; padding:5px 0 5px 20px;}
+.QuestScAnsweBasicRight{ float:right; width:212px; height:43px; border:1px solid #ddd; overflow:hidden; padding:8px  0 0 0  }
+.QuestAllAnswerList{}
+.questuserInfo{}
+.questuserInfo a,.questuserInfo a:visited{ color:#222}
+.questallContent{ color:#929292; line-height:24px; overflow:hidden}
+.questallTime{ float:left; font-size:12px; color:#a3a3a3}
+.questallTiptag{ float:right; font-size:12px; color:#a3a3a3} 
+.questallTiptag a,.questallTiptag a:visited{ color:#a3a3a3} 
+.clbtn{ width:83px; height:24px; background:url(../images/clbtn.gif); padding:0; border:0; margin:0; color:#fff; cursor:pointer}
+.QuestHuifuTitle{font-family:"微软雅黑", Verdana, arial, "宋体"; color:#333; font-weight:bold}
+.questuestlogin li{ float:left; margin:0 8px 0 0; display:inline}
+.questuestlogin{width:100%; height:30px; font-size:12px; line-height:24px; padding:3px 0}
+.QuestLoginbtn{ background:url(../images/commSend.gif); width:58px; height:24px; border:0; margin:0 0 0 10px;}
+.QuestLoginInput{ width: 86px; height:19px; border:1px solid #ddd}
+.QuestJdBtn{ margin:8px 0 0 0; font-size:12px;}
+.QuestJdBtn li{ float:left; line-height:24px; margin:0 10px 0 0 }
+/*Question End*/
+/*在线杂志*/
+.zazhiMain{ width:990px; margin:0 auto; padding:20px 0 0}
+.zazhiListContent{ font-size:12px; padding:15px 0 0 0; position:relative}
+.zazhiListContent dl.zazhilb dt,.zazhiListContent dl.zazhilb dd{ width:100%; float:left}
+.zazhiListContent ul{ width:100% ; float:left ;  }
+.zazhiListContent li{ float:left; display:inline }
+.zazhiListContent li.zazhiCheck{ width:40px; text-align:center; padding:3px 0 0}
+.zazhiListContent li.zazhiJournal{ width:207px;}
+.zazhiListContent li.zazhiSize{ width:109px; text-align:center}
+.zazhiListContent li.zazhiAuthor{ margin-left:30px; width:147px; text-align:center}
+.zazhiListContent li.zazhiNum{ width:113px; text-align:center}
+.zazhiListContent li.zazhiOther{ margin-left:110px; width:234px;}
+.zazhiListContent li.zazhiJournal a,.zazhiListContent li.zazhiJournal:visited{ color:#111;}
+.zazhiListContent li.zazhiJournal a:hover{ color:#f09450}
+.zazhiListContent li.zazhiOther a,.zazhiListContent li.zazhiOther a:visited{ padding:0 30px 0 0; color:#111}
+.zazhiListContent li.zazhiOther a:hover{ color:#f09450}
+.zazhiSubTitle{ height:26px; line-height:28px; color:#fff; font-weight:bold ; background:#6cb265; overflow:hidden}
+.zazhiL1{ height:30px; line-height:30px;color:#111;
+ }
+
+.zazhiL1 li.zazhiCheck{padding:5px 0 0}
+.zazhiL2{ height:30px; line-height:30px; border:1px solid #ddd; background:#f5f5f5;color:#111}
+.zazhiL2 li.zazhiCheck{padding:5px 0 0}
+.zazhiDown{ margin:16px 0 }
+.zazhiDown input { width:80px; height:26px; font-family:"微软雅黑", Verdana, arial, "宋体";padding:0 ; font-size:12px; margin:0 20px 0 0; background:url(../images/DownBg.gif) no-repeat; border:none; cursor:pointer}
+.zazhiDown input.downhoverBtn{ background:url(../images/DownBg.gif) no-repeat -80px 0 }
+.DownpopUp{ position:absolute;left:200px;top:80px;width:522px; display:none}
+.DownpopUp .PopTitle{ font-family: "微软雅黑", Verdana, arial, "宋体"; font-size:14px; color:#0d6c03; left:15px; top:8px; position: absolute; line-height:15px;}
+.DownpopUp .PopClose{ position:absolute; width:14px; height:10px; right:15px;top:10px;}
+.DownpopBg{ background:url(../images/popBg_06.png); padding:10px 15px; font-size:14px; font-family:Arial, "宋体", "微软雅黑" ; color:#222}
+.DownpopBg li{ clear:both;white-space:nowrap;    line-height:30px;}
+.DownpopBg li a,.DownpopBg li a:visited{ color:#222; display:block; height:30px;}
+.DownpopBg ul li ul{ padding:0 0 0 14px; }
+.DownpopBg ul li.zazhiplus a{ background:url(../images/tabIcon.gif) no-repeat 0 9px; padding:0 0 0 20px}
+.DownpopBg ul li.zazhiplus ul{ display:none}
+.DownpopBg ul li.zazhijian a{ background:url(../images/tabIcon.gif) no-repeat 0 -24px; padding:0 0 0 20px}
+.DownpopBg ul li.zazhifile a { background:url(../images/tabIcon.gif) no-repeat 0 -55px; padding:0 0 0 20px}
+.popupBtn{ margin:0; width:512px;  background:url(../images/popBg_06.png); padding:8px 0 4px 10px; border-top:1px solid #c4dcc2}
+/*在线杂志end*/
+
+/*404页面*/
+.wrap404{ border:1px solid #c9c9c9; width:988px; margin:20px auto}
+.wrap404bor2{ border:5px solid #fff; width:978px;height:440px; background:#fff9ea}
+.orange404{ font-size:20px; color:#ff6600; font-style: italic; font-family:"微软雅黑", Verdana, arial, "宋体"; font-weight:bold; margin:40px  0 0 30px;}
+.listquest404{ line-height:26px; color:#444 ; margin:20px 0 5px 40px;font-size:14px;}
+.listquest404 a,.listquest404 a:visited{ font-weight:bold; color:#2c6e2c;}
+.sysfont{ margin:30px 0 0 40px; color:#444; font-size:14px;}
+.sysfont a,.sysfont a:visited{font-weight:bold; color:#2c6e2c;}
+.searchbg404{ width:310px; margin:10px 0 0 40px;height:30px; }
+.selectBtn404{ float:left; width:76px; height:24px; background:url(../images/selectBtn.gif); padding:0; margin:0}
+.selectBtn404 select{ border:0; background:none; font-family: "微软雅黑", Verdana, arial, "宋体"; padding:0; margin:2px 0; width:73px; height:20px; }
+/*404页面End*/
+
+/*关于我们*/
+.aboutWrap{ width:988px; border:1px solid #509b49; margin:20px auto 0}
+.aboutLeft{ background:#eef5ed; width:256px; border-right:1px solid #509b49; padding:1px; float:left; height:600px;display:inline}
+.a_leftTitle{ width:254px; height:30px; border:1px solid #509b49; background:#73af6d; line-height:30px; font-family: "微软雅黑", Verdana, arial, "宋体"; color:#444; font-size:14px; color:#fff; text-indent:10px;}
+.a_leftMenu{ position:relative;}
+.a_leftMenu ul{ position: absolute; top:0; right:-2px; width:258px; height:340px; }
+.a_leftMenu li{ float:right; width:244px;  height:42px; line-height:42px; margin:10px 0 0} 
+
+.a_leftMenu li a,.a_leftMenu li a:visited{ text-decoration:none; display:block; width:100%  }
+.a_leftMenu li a font,.a_leftMenu li a:visited font{ font-size:14px; font-weight:bold; color:#444;    padding:0 10px 0 25px ; }
+.a_leftMenu li a span,.a_leftMenu li a:visited span{ color:#bbb; font-family: Geneva, Arial, Helvetica, sans-serif;}
+.a_leftMenu li a:hover,.a_leftMenu li.ab_currTab a,.a_leftMenu li.ab_currTab a:visited{ background:url(../images/currbg.gif) no-repeat}
+.aboutRight{ float:right; width:700px; margin:0 10px 0 0; display:inline; font-size:14px;padding:0}
+.ab_rightTitle{ background: url(../images/aboutTitleline.gif) repeat-x bottom; height:40px; line-height:40px;font-size:16px;}
+
+.ab_rightTitle font{ color:#074800; font-family:"微软雅黑", Verdana, arial, "宋体"; padding:0 10px 0 30px; background:url(../images/aboutIcon.gif) 15px 3px no-repeat}
+.ab_rightTitle span{ font-family:Verdana, Arial, Helvetica, sans-serif; color:#bababa}
+.ab_rightContent{ padding:7px  5px 200px; color:#444; line-height:24px; }
+.ab_rightContent p{ margin:0; padding:0; text-indent:30px;}
+.ab_rightContent .ab_dlActivation{ }
+.ab_rightContent .ab_dlActivation dt{ color:#fff000; background:#6cb265 url(../images/helpIcon2.gif)  no-repeat ; }
+.ab_rightContent .ab_dlActivation dd{ display:block }
+
+.ab_rightContent dd{ padding:10px 10px; display:none}
+.ab_rightContent dd a{ font-weight:bold}
+.ab_rightContent dt{ height:30px;  line-height:30px; text-indent:30px; font-weight:bold; margin:0 0 0; cursor:pointer; background:url(../images/helpIcon2.gif)  0 -30px no-repeat #f0f0f0}
+.ab_rightContent dl{ float:left;width:100%; margin:0 0 10px 0 }
+
+
+.ab_feedTitle{ font-family:"微软雅黑", Verdana, arial, "宋体"; font-size:14px; color:#333}
+.ab_feedtext{ font-size:12px; color:#999}
+.ab_orange{ color:#ff7200; padding:0 5px 0 0 }
+.ab_Feedinput{ background:url(../images/feedinput.gif); width:300px; height:22px; padding:1px 6px; border:0;  margin:0 ; line-height:22px;}
+.ab_Feedtext{ width:580px; height:270px;}
+
+.viewList {}
+.viewList ul{}
+.viewList ul li {}
+.viewList ul li dl{ padding:20px 0 20px 0; background:url(/Public/web/images/dashed_line.gif) bottom repeat-x; }
+.viewList ul li dl dt{float:left; padding-right:15px;}
+.viewList ul li dl dd{}
+.downIcon{}
+
+
+.viewtitle {}
+.viewtitle ul{}
+.viewtitle ul li {}
+.viewtitle ul li dl{ padding:20px 0 20px 0; background:url(/Public/web/images/dashed_line.gif) bottom repeat-x; }
+.viewtitle ul li dl dt{float:left; padding-right:15px;}
+.viewtitle ul li dl dd{}
+/*关于我们END*/

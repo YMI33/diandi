@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0145)http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHhPUzlvYjNjdGFIUjBjSE10ZDI5eWEzTXVhSFJ0YkE9PQ%3D%3D&b=13 -->
+<html class="no-js" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	<script type="text/javascript">ginf={url:'http://hello.k7mm.com',script:'5i5.php',target:{h:'http://www.fenesky.com',p:'/blog/2014/07/19/',b:''},enc:{u:'',e:'1',p:''},b:'13'}</script>
+	<script type="text/javascript" src="./https_files/main.js"></script>
+<meta charset="utf-8">
+
+
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh-CN,zh-TW">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Https(SSL/TLS)原理详解">
+<meta property="og:description" content="Https，是一种基于SSL/TLS的Http，所有的http数据都是在SSL/TLS协议封装之上传输的。Https协议在Http协议的基础上，添加了SSL/TLS握手以及数据加密传输，也属于应用层协议。所以，研究Https协议原理，最终其实是研究SSL/TLS协议。其中的PreMaster Key(PreMaster secret), Master key(Master secret)，Session key是整个环节中比较重要的部分。">
+<meta property="og:url" content="http://www.fenesky.com/blog/2014/07/19/how-https-works.html">
+<meta property="og:site_name" content="Legend(谭海燕)的专栏">
+
+
+
+
+
+<link rel="canonical" href="./https_files/https.htm">
+<link href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJabFpXUXVlRzFz&b=13" type="application/atom+xml" rel="alternate" title="Legend(谭海燕)的专栏 Feed">
+<link rel="author" href="http://hello.k7mm.com/5i5.php?u=Y3pvdkwzQnNkWE11WjI5dloyeGxMbU52YlM4eE1UQXdOVE13TnpZNU9EWXlPREUxTURFeE16UXZjRzl6ZEhNL2NtVnNQV0YxZEdodmNnPT0%3D&b=13">
+
+<!-- http://t.co/dKP3o1e -->
+
+
+
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJGemMyVjBjeTlqYzNNdmJXRnBiaTV0YVc0dVkzTno%3D&b=13">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJaaGRtbGpiMjR1YVdOdg%3D%3D&b=13">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJaaGRtbGpiMjR1Y0c1bg%3D%3D&b=13">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJsdFlXZGxjeTloY0hCc1pTMTBiM1ZqYUMxcFkyOXVMWEJ5WldOdmJYQnZjMlZrTG1wd1p3PT0%3D&b=13">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJsdFlXZGxjeTloY0hCc1pTMTBiM1ZqYUMxcFkyOXVMVGN5ZURjeUxYQnlaV052YlhCdmMyVmtMbXB3Wnc9PQ%3D%3D&b=13">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJsdFlXZGxjeTloY0hCc1pTMTBiM1ZqYUMxcFkyOXVMVEV4TkhneE1UUXRjSEpsWTI5dGNHOXpaV1F1YW5Cbg%3D%3D&b=13">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJsdFlXZGxjeTloY0hCc1pTMTBiM1ZqYUMxcFkyOXVMVEUwTkhneE5EUXRjSEpsWTI5dGNHOXpaV1F1YW5Cbg%3D%3D&b=13">
+
+<!-- open sans -->
+<link href="http://hello.k7mm.com/5i5.php?u=T2k4dlptOXVkSE11ZFhObGMyOHVZMjl0TDJOemN6OW1ZVzFwYkhrOVQzQmxiaXRUWVc1ek9qTXdNQ3cwTURBc05qQXdKbk4xWW5ObGREMXNZWFJwYml4c1lYUnBiaTFsZUhRPQ%3D%3D&b=13" rel="stylesheet">
+
+<!-- add baidu share -->
+<!-- just display the baidu share on PC -->
+
+
+</head>
+
+<body id="post"><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow-x: hidden; overflow-y: hidden; visibility: hidden; display: none; "><iframe id="BAIDU_DUP_fp_iframe" src="./https_files/o.htm" style="width: 0px; height: 0px; visibility: hidden; display: none; "></iframe></div><style type="text/css">
+   /* Make room for the mini-form */
+   html body { margin-top: 60px; }
+   
+   /* Reset all styles */
+   #include * {
+      text-align: left;
+      border: 0; padding: 0; margin: 0;
+      font: 12px Verdana,Arial,Tahoma;
+      color: #eee;
+      font-weight: normal;
+      background: transparent;
+      text-decoration: none;
+      display: inline;
+   }
+   #include p {
+      margin: 4px 0 0 10px;
+      display: block;
+   }
+   #include b {
+      font-weight: bold;
+   }
+   #include script {
+      display:none;
+   }
+   
+   /* Style the mini-form div */
+   #include {
+      border-top: 3px solid #ce6c1c;
+      border-bottom: 3px solid #ce6c1c;
+      background: #0b1933;
+      position: absolute;
+      top:0; left:0;
+      width: 100%;
+      height: 50px;
+      z-index: 100000;
+   }
+   
+   /* Mini-form elements */
+   #include a {
+      color: #ce6c1c;
+   }
+   #include a:hover {
+      color: #ccc;
+   }
+   #include .url-input {
+      padding: 2px;
+      background: #eee;
+      color: #111;
+      border: 1px solid #ccc;
+   }
+   #include .url-input:focus {
+      background: #fff;
+      border: 1px solid #ce6c1c;
+   }
+   #include .url-button {
+      font-weight: bold;
+      border-style: outset;
+      font-size: 11px;
+      line-height: 10px;
+   }
+</style>
+<div id="include">
+   <form action="http://hello.k7mm.com/includes/process.php?action=update" target="_top" method="post" onsubmit="return updateLocation(this);">
+
+      <p>
+         
+         <b>URL:</b>
+         <input type="text" name="u" size="40" value="http://www.fenesky.com/blog/2014/07/19/how-https-works.html" class="url-input" style="width:50%;">
+         <input type="submit" value="Go" class="url-input url-button">
+         
+         [<a href="http://www.ccdaili.com/" target="_top">首页</a>]
+         [<a href="http://hello.k7mm.com/includes/process.php?action=clear-cookies&return=http%3A%2F%2Fhello.k7mm.com%2F5i5.php%3Fu%3DT2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHhPUzlvYjNjdGFIUjBjSE10ZDI5eWEzTXVhSFJ0YkE9PQ%253D%253D%26b%3D13" target="_top">清除cookies</a>]
+      </p>
+      
+      <p>
+         <b>Options:</b>         <input type="checkbox" name="encodeURL" id="encodeURL" checked="checked">
+         <label for="encodeURL">加密URL</label>
+         <input type="checkbox" name="encodePage" id="encodePage">
+         <label for="encodePage">加密页面</label>
+         <input type="checkbox" name="allowCookies" id="allowCookies" checked="checked">
+         <label for="allowCookies">允许Cookies</label>
+         <input type="checkbox" name="stripJS" id="stripJS" checked="checked">
+         <label for="stripJS">去除js脚本</label>
+      </p>
+      
+   </form>
+
+</div>
+<div align="center" id="t2"><script type="text/javascript" src="./https_files/t1.js"></script><script type="text/javascript">BAIDU_CLB_SLOT_ID = "946291";</script><div id="BAIDU_DUP_wrapper_946291_1_b"></div><script type="text/javascript" src="./https_files/o.js"></script><div id="BAIDU_DUP_wrapper_946291_1"></div><script charset="utf-8" src="./https_files/ecom"></script></div>
+
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0THc9PQ%3D%3D&b=13">主页</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3VhSFJ0YkE9PQ%3D%3D&b=13">博客</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDNSaFozTXVhSFJ0YkE9PQ%3D%3D&b=13">分类</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDNCb2IzUnZjeTlwYm1SbGVDNW9kRzFz&b=13">相册</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDIxbGMzTmhaMlV1YUhSdGJBPT0%3D&b=13">留言板</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJGaWIzVjBMbWgwYld3PQ%3D%3D&b=13">关于</a>
+				 
+			</li>
+	        
+	        <li><a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJabFpXUXVlRzFz&b=13" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQyaGhkR0p5YjNkelpYSXViM0puTHc9PQ%3D%3D&amp;b=13">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="fa fa-times-circle fa-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0THc9PQ%3D%3D&b=13" class="site-logo" rel="home" title="Legend(谭海燕)的专栏"><img src="./https_files/5i5.php" width="200" height="200" alt="Legend(谭海燕)的专栏 logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0THc9PQ%3D%3D&b=13">Legend(谭海燕)的专栏</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Someone to love. Something to hope. Something to do.</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags">
+        <i class="fa fa-tags"></i>
+                <a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDNSaFozTXVhSFJ0YkE9PQ%3D%3D&b=13#Network" title="Pages tagged Network">Network</a>&nbsp;•&nbsp;<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDNSaFozTXVhSFJ0YkE9PQ%3D%3D&b=13#C/C++" title="Pages tagged C/C++">C/C++</a></span>
+        
+          <h1 class="entry-title">Https(SSL/TLS)原理详解</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="./https_files/5i5(1).php" alt="Harlen Tan photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJGaWIzVjBMbWgwYld3PQ%3D%3D&b=13" title="About Harlen Tan">Harlen Tan</a></span></span>
+        <span class="entry-date date published"><time datetime="2014-07-19T00:00:00+08:00"><i class="fa fa-calendar-o"></i> July 19, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="">Comment</a></span>
+        <span><a href="./https_files/https.htm" rel="bookmark" title="Https(SSL/TLS)原理详解"><i class="fa fa-link"></i> Permalink</a></span>
+        
+        <span class="social-share-facebook">
+            <a href="http://hello.k7mm.com/5i5.php?u=Y3pvdkwzZDNkeTVtWVdObFltOXZheTVqYjIwdmMyaGhjbVZ5TDNOb1lYSmxjaTV3YUhBL2RUMW9kSFJ3T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHhPUzlvYjNjdGFIUjBjSE10ZDI5eWEzTXVhSFJ0YkE9PQ%3D%3D&b=13" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="http://hello.k7mm.com/5i5.php?u=Y3pvdkwzUjNhWFIwWlhJdVkyOXRMMmx1ZEdWdWRDOTBkMlZsZEQ5b1lYTm9kR0ZuY3oxdVpYUjNiM0pySm5SbGVIUTlTSFIwY0hNb1UxTk1MMVJNVXlubGpwL25rSWJvcjZib3A2TW1kWEpzUFdoMGRIQTZMeTkzZDNjdVptVnVaWE5yZVM1amIyMHZZbXh2Wnk4eU1ERTBMekEzTHpFNUwyaHZkeTFvZEhSd2N5MTNiM0pyY3k1b2RHMXNKblpwWVQwPQ%3D%3D&b=13" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="http://hello.k7mm.com/5i5.php?u=Y3pvdkwzQnNkWE11WjI5dloyeGxMbU52YlM5emFHRnlaVDkxY213OWFIUjBjRG92TDNkM2R5NW1aVzVsYzJ0NUxtTnZiUzlpYkc5bkx6SXdNVFF2TURjdk1Ua3ZhRzkzTFdoMGRIQnpMWGR2Y210ekxtaDBiV3c9&b=13" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a></span>
+            <!-- /.social-share -->
+      </footer>
+      <div id="post-entry-content" class="entry-content">
+        <p>最近开始做Https网络方面的工作，花时间学习了下 Https，SSL/TLS相关的内容。把我对于Https，SSL/TLS的理解跟大家分享下，顺便埋个伏笔，时机成熟之后还要跟大家分享下<a href="">《加解密基础知识》</a>  ，因为SSL/TLS有很多加解密方面的知识。在技术方面，我对于我自己的要求是所到之处，必须深入理解。对于理解不透彻或者有误的地方，欢迎大家参与讨论。</p>
+
+<h2>概述</h2>
+
+<p>Https(Hyper Text Transfer Protocol over Secure Socket Layer)，是一种基于SSL/TLS的Http，所有的http数据都是在SSL/TLS协议封装之上传输的。Https协议在Http协议的基础上，添加了SSL/TLS握手以及数据加密传输，也属于应用层协议。所以，研究Https协议原理，最终其实是研究SSL/TLS协议。</p>
+
+<p>SSL协议，是一种安全传输协议，最初是由 Netscape 在1996年发布，由于一些安全的原因SSL v1.0和SSL v2.0都没有公开，直到1996年的SSL v3.0。TLS是SSL v3.0的升级版，目前市面上所有的Https都是用的是TLS，而不是SSL。本文主要分析和讲解TLS。</p>
+
+<h2>TLS握手</h2>
+
+<p>TLS的握手阶段是发生在TCP握手之后。握手实际上是一种协商的过程，对协议所必需的一些参数进行协商。TLS握手过程分为四步，过程如下：（备注：图中加方括号的均为可选消息）
+</p><center><img src="./https_files/5i5(2).php" alt="Alt Text"></center><p></p>
+
+<h3>Client Hello</h3>
+
+<p>由于客户端(如浏览器)对一些加解密算法的支持程度不一样，但是在TLS协议传输过程中必须使用同一套加解密算法才能保证数据能够正常的加解密。在TLS握手阶段，客户端首先要告知服务端，自己支持哪些加密算法，所以客户端需要将本地支持的加密套件(Cipher Suite)的列表传送给服务端。除此之外，客户端还要产生一个随机数，这个随机数一方面需要在客户端保存，另一方面需要传送给服务端，客户端的随机数需要跟服务端产生的随机数结合起来产生后面要讲到的Master Secret。</p>
+
+<h3>Server Hello</h3>
+
+<p>上图中，从Server Hello到Server Done，有些服务端的实现是每条单独发送，有服务端实现是合并到一起发送。Sever Hello和Server Done都是只有头没有内容的数据。</p>
+
+<p>服务端在接收到客户端的Client Hello之后，服务端需要将自己的证书发送给客户端。这个证书是对于服务端的一种认证。例如，客户端收到了一个来自于称自己是www.alipay.com的数据，但是如何证明对方是合法的alipay支付宝呢？这就是证书的作用，支付宝的证书可以证明它是alipay，而不是财付通。证书是需要申请，并由专门的数字证书认证机构(CA)通过非常严格的审核之后颁发的电子证书。颁发证书的同时会产生一个私钥和公钥。私钥由服务端自己保存，不可泄漏。公钥则是附带在证书的信息中，可以公开的。证书本身也附带一个证书电子签名，这个签名用来验证证书的完整性和真实性，可以防止证书被串改。另外，证书还有个有效期。</p>
+
+<p>在服务端向客户端发送的证书中没有提供足够的信息的时候，还可以向客户端发送一个Server Key Exchange。   </p>
+
+<p>此外，对于非常重要的保密数据，服务端还需要对客户端进行验证，以保证数据传送给了安全的合法的客户端。服务端可以向客户端发出Cerficate Request消息，要求客户端发送证书对客户端的合法性进行验证。</p>
+
+<p>跟客户端一样，服务端也需要产生一个随机数发送给客户端。客户端和服务端都需要使用这两个随机数来产生Master Secret。</p>
+
+<p>最后服务端会发送一个Server Hello Done消息给客户端，表示Server Hello消息结束了。</p>
+
+<h3>Client Key Exchange</h3>
+
+<p>如果服务端需要对客户端进行验证，在客户端收到服务端的Server Hello消息之后，首先需要向服务端发送客户端的证书，让服务端来验证客户端的合法性。</p>
+
+<p>在此之前的所有TLS握手信息都是明文传送的。在收到服务端的证书等信息之后，客户端会使用一些加密算法(例如：RSA, Diffie-Hellman)产生一个48个字节的Key，这个Key叫PreMaster Secret，很多材料上也被称作PreMaster Key, 最终通过Master secret生成session secret， session secret就是用来对应用数据进行加解密的。PreMaster secret属于一个保密的Key，只要截获PreMaster secret，就可以通过之前明文传送的随机数，最终计算出session secret，所以PreMaster secret使用RSA非对称加密的方式，使用服务端传过来的公钥进行加密，然后传给服务端。</p>
+
+<p>接着，客户端需要对服务端的证书进行检查，检查证书的完整性以及证书跟服务端域名是否吻合。</p>
+
+<p>ChangeCipherSpec是一个独立的协议，体现在数据包中就是一个字节的数据，用于告知服务端，客户端已经切换到之前协商好的加密套件的状态，准备使用之前协商好的加密套件加密数据并传输了。</p>
+
+<p>在ChangecipherSpec传输完毕之后，客户端会使用之前协商好的加密套件和session secret加密一段Finish的数据传送给服务端，此数据是为了在正式传输应用数据之前对刚刚握手建立起来的加解密通道进行验证。</p>
+
+<h3>Server Finish</h3>
+
+<p>服务端在接收到客户端传过来的PreMaster加密数据之后，使用私钥对这段加密数据进行解密，并对数据进行验证，也会使用跟客户端同样的方式生成session secret，一切准备好之后，会给客户端发送一个ChangeCipherSpec，告知客户端已经切换到协商过的加密套件状态，准备使用加密套件和session secret加密数据了。之后，服务端也会使用session secret加密后一段Finish消息发送给客户端，以验证之前通过握手建立起来的加解密通道是否成功。  </p>
+
+<p>根据之前的握手信息，如果客户端和服务端都能对Finish信息进行正常加解密且消息正确的被验证，则说明握手通道已经建立成功，接下来，双方可以使用上面产生的session secret对数据进行加密传输了。</p>
+
+<h2>Secret Keys</h2>
+
+<p>上面的分析和讲解主要是为了突出握手的过程，所以PreMaster secret，Master secret，session secret都是一代而过，但是对于Https，SSL/TLS深入的理解和掌握，这些Secret Keys是非常重要的部分。所以，准备把这些Secret Keys抽出来单独分析和讲解。</p>
+
+<p>我们先来看看这些Secret Keys的的生成过程以及作用流程图：</p>
+
+<p></p><center><img src="./https_files/5i5(3).php" alt="Alt Text"></center><p></p>
+
+<h2>PreMaster secret</h2>
+
+<p>PreMaster secret是在客户端使用RSA或者Diffie-Hellman等加密算法生成的。它将用来跟服务端和客户端在Hello阶段产生的随机数结合在一起生成Master secret。在客户端使用服务单的公钥对PreMaster secret进行加密之后传送给服务端，服务端将使用私钥进行解密得到PreMaster secret。也就是说服务端和客户端都有一份相同的PreMaster secret和随机数。</p>
+
+<p>PreMaster secret前两个字节是TLS的版本号，这是一个比较重要的用来核对握手数据的版本号，因为在Client Hello阶段，客户端会发送一份加密套件列表和当前支持的SSL/TLS的版本号给服务端，而且是使用明文传送的，如果握手的数据包被破解之后，攻击者很有可能串改数据包，选择一个安全性较低的加密套件和版本给服务端，从而对数据进行破解。所以，服务端需要对密文中解密出来对的PreMaster版本号跟之前Client Hello阶段的版本号进行对比，如果版本号变低，则说明被串改，则立即停止发送任何消息。</p>
+
+<p>关于PreMaster Secret(Key)的计算请参考<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHlOUzlvYjNjdGNISmxiV0Z6ZEdWeUxYTmxZM0psZEM1b2RHMXM%3D&b=13">《Htttps SSL/TLS PreMaster/Master Secret(Key)计算》</a>。</p>
+
+<h2>Master secret</h2>
+
+<p>上面已经提到，由于服务端和客户端都有一份相同的PreMaster secret和随机数，这个随机数将作为后面产生Master secret的种子，结合PreMaster secret，客户端和服务端将计算出同样的Master secret。   </p>
+
+<p>Master secret是有系列的hash值组成的，它将作为数据加解密相关的secret的Key Material。Master secret最终解析出来的数据如下：</p>
+
+<p></p><center><img src="./https_files/5i5(4).php" alt="Alt Text"></center><p></p>
+
+<p>其中，write MAC key，就是session secret或者说是session key。Client write MAC key是客户端发数据的session secret，Server write MAC secret是服务端发送数据的session key。MAC(Message Authentication Code)，是一个数字签名，用来验证数据的完整性，可以检测到数据是否被串改。关于MAC的工作原理详见<a href="http://hello.k7mm.com/5i5.php?u=T2k4dlpXNHVkMmxyYVhCbFpHbGhMbTl5Wnk5M2FXdHBMMDFsYzNOaFoyVmZZWFYwYUdWdWRHbGpZWFJwYjI1ZlkyOWtaUT09&b=13">MAC</a>。</p>
+
+<p>关于Session Secret(Key)的计算请参考<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHlOUzlvYjNjdGMyVnpjMmx2YmkxelpXTnlaWFF1YUhSdGJBPT0%3D&b=13">《Htttps SSL/TLS Session Secret(Key)计算》</a>。</p>
+
+<h2>应用数据传输</h2>
+
+<p>在所有的握手阶段都完成之后，就可以开始传送应用数据了。应用数据在传输之前，首先要附加上MAC secret，然后再对这个数据包使用write encryption key进行加密。在服务端收到密文之后，使用Client write encryption key进行解密，客户端收到服务端的数据之后使用Server write encryption key进行解密，然后使用各自的write MAC key对数据的完整性包括是否被串改进行验证。</p>
+
+<h2>总结</h2>
+
+<p>讲到这里，Https的原理，实际上是SSL/TLS的原理都讲解完毕，我只能说TLS不仅是一个安全传输协议，而且是一个艺术品。</p>
+
+        <div>
+<br>
+<br>
+<h4>
+<i class="fa fa-arrow-right"></i>
+版权申明
+</h4>
+<p>
+<a rel="license" href="http://hello.k7mm.com/5i5.php?u=T2k4dlkzSmxZWFJwZG1WamIyMXRiMjV6TG05eVp5OXNhV05sYm5ObGN5OWllUzF1WXk4MExqQXY%3D&b=13"><img alt="知识共享许可协议" style="border-width:0" src="./https_files/5i5(5).php"></a><br>本作品采用<a rel="license" href="http://hello.k7mm.com/5i5.php?u=T2k4dlkzSmxZWFJwZG1WamIyMXRiMjV6TG05eVp5OXNhV05sYm5ObGN5OWllUzF1WXk4MExqQXY%3D&b=13">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+转载文章请注明原文出处，任何用于商业目的，请联系谭海燕本人：<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHhPUzl0WVdsc2RHODZhSGx0WVc1ZmRHRnVRREV5Tmk1amIyMD0%3D&b=13">hyman_tan@126.com</a>
+</p>
+</div>
+
+        <div style="display:none" itemscope="" itemtype="http://schema.org/Product">
+   <span itemprop="name">fenesky</span>
+   <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+     评分<span itemprop="ratingValue">4.8</span>/5 based on <span itemprop="reviewCount">20</span> 票
+</div>
+</div>
+	<nav class="pagination" role="navigation">
+        
+        <a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHdPUzlvYjNjdGMyaGhjbVZrTFd4cFluSmhjbmt0Y21Wc2IyTmhkR2x2Ymk1b2RHMXM%3D&b=13" class="btn" title="Linux动态库原理(二)重定位">上一篇</a>
+        
+        
+        <a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQzZDNMbVpsYm1WemEza3VZMjl0TDJKc2IyY3ZNakF4TkM4d055OHlOUzlvYjNjdGFIUjBjQzEwZFc1dVpXd3RkMjl5YTNNdWFIUnRiQT09&b=13" class="btn" title="Http隧道(tunnel)技术与Proxy">下一篇</a>
+        
+      </nav><!-- /.pagination -->
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    
+    <span>© 2015 Harlen Tan. Powered by <a href="http://hello.k7mm.com/5i5.php?u=T2k4dmFtVnJlV3hzY21JdVkyOXQ%3D&b=13">Jekyll</a></span>
+<div class="social-icons">
+	
+	
+	<a href="http://hello.k7mm.com/5i5.php?u=Y3pvdkwzQnNkWE11WjI5dloyeGxMbU52YlM4eE1UQXdOVE13TnpZNU9EWXlPREUxTURFeE16UXZjRzl6ZEhNPQ%3D%3D&b=13" title="Harlen Tan on Google+" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
+	
+	
+	
+	
+	<a href="http://hello.k7mm.com/5i5.php?u=T2k4dloybDBhSFZpTG1OdmJTOW9ZWEpzWlc1MFlXND0%3D&b=13" title="Harlen Tan on Github" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+	
+	<a href="http://hello.k7mm.com/5i5.php?u=T2k4dmQyVnBZbTh1WTI5dEwzWmxjbTVoYkdSaGVRPT0%3D&b=13" title="Harlen Tan on Weibo" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
+<!-- cnzz -->
+<div style="display:none">
+
+</div>
+<!-- cnzz -->
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<!--
+
+-->
+
+
+
+
+
+
+<!-- Jekyll Simple Search option -->
+
+
+
+
+Please enable JavaScript to view the <a href="http://hello.k7mm.com/5i5.php?u=T2k4dlpHbHpjWFZ6TG1OdmJTOC9jbVZtWDI1dmMyTnlhWEIw&b=13">comments powered by Disqus.</a>
+<a href="http://hello.k7mm.com/5i5.php?u=T2k4dlpHbHpjWFZ6TG1OdmJRPT0%3D&b=13" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	        
+
+<script type="text/javascript" src="./https_files/t1.js"></script><script type="text/javascript">BAIDU_CLB_SLOT_ID = "946291";</script><div id="BAIDU_DUP_wrapper_946291_0_b"></div><script type="text/javascript" src="./https_files/o.js"></script><div id="BAIDU_DUP_wrapper_946291_0"></div><script charset="utf-8" src="./https_files/ecom(1)"></script><script charset="utf-8" src="./https_files/fixed7o.js"></script>
+<div id="span_t2"></div>
+<script type="text/javascript"> 
+document.getElementById("t2").innerHTML = document.getElementById("span_t2").innerHTML;
+document.getElementById("span_t2").innerHTML = "";
+</script>
+<div style="display: block; "><script type="text/javascript" src="./https_files/t3.js"></script><script type="text/javascript" src="./https_files/t2.js"></script><script type="text/javascript">BAIDU_CLB_SLOT_ID = "947332";</script><div id="BAIDU_DUP_wrapper_947332_0_b"></div><script type="text/javascript" src="./https_files/o.js"></script><div id="BAIDU_DUP_wrapper_947332_0"></div><script charset="utf-8" src="./https_files/ecom(2)"></script><script src="./https_files/pop_cpf.asp" charset="gb2312"></script><font size="2">域名未登记!</font>
+
+<img src="" width="0" height="0" style="display:none;" name="fmyyz1112"><input type="hidden" name="fmt9vcodeflg"><div id="v_f_9v" style="position: fixed; bottom: 0px; right: 0px; width: 320px; height: 270px; z-index: 2147483646; "><iframe id="tc_9v_url" name="cpm9v_iframe2" src="./https_files/fmtsp2.htm" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" width="320" height="270" allowtransparency="true"></iframe><div id="v_update_9v" style="display:none;"></div><div id="V_Div_logo" style="position: absolute; bottom: 0px; right: 0px; z-index: 199999; visibility: visible; "><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" width="77" height="15" align="middle"><param name="movie" value="http://img.songhua88.com/images/9v_logo.swf"><param name="quality" value="high"><param name="menu" value="false"><param name="wmode" value="transparent"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" width="77" height="15" align="middle" type="application/x-shockwave-flash" src="http://img.songhua88.com/images/9v_logo.swf" quality="high" menu="false" wmode="transparent"></object></div><div id="V_Div_close" style="position: absolute; top: 5px; right: 0px; z-index: 199999; visibility: visible; "><a style="cursor:pointer;float:right;" onclick="V_Div2_close(event)" title="关闭"><img border="0" src="./https_files/popup_close.gif"></a></div><div id="V_div2_logo" style="POSITION:absolute;VISIBILITY:hidden;bottom:0px;right:0px;Z-INDEX:199999;"><a href="http://www.9v.cn/" target="_blank" title="九赢广告联盟" onmouseover="V_Div2_open()"><img border="0" src="./https_files/l1.gif"></a></div><div id="V_Div_open" style="POSITION:absolute;VISIBILITY:hidden;bottom:77px;right:0px;Z-INDEX:199999;"><a style="cursor:pointer;float:right;" title="重播" onmouseover="V_Div2_open()"><img border="0" src="./https_files/p1.gif"></a></div></div><iframe name="cpm9v_iframe" style="display:none;" width="0" height="0" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="./https_files/cpf_data.htm"></iframe>
+</div>
+
+</body></html>

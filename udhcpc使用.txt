@@ -1,0 +1,6 @@
+http://www.360doc.com/content/14/0724/18/2613145_396790509.shtml
+你需要的只是udhcpc script
+
+Udhcpc is a very small DHCP client program geared towards embedded systems. The letters are an abbreviation for Micro - DHCP - Client (μDHCPc). The program tries to be fully functional and RFC 2131 compliant.
+
+It was once packaged with a similarly small DHCP server program named udhcpd, with the package called udhcp. It is now maintained as part of Busybox.

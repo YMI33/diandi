@@ -1,0 +1,14 @@
+在公司由于需要通过代理才能上网，故在终端下设置了代理。代理设置在当前用户的环境变量下即 ～/.bashrc。
+通过 export http_proxy=http://host:port设置。
+结果到家无需通过代理上网，于是我将～/.bashrc下添加的那条语句删除。但终端的apt-get还是不能用，终端还是通过代理来访问网络的。
+
+解决办法：
+
+1、  删除该用户下的环境变量下的 ～/.bashrc export http_proxy=http://host:port
+2、  删除系统的 /etc/apt/apt.conf 所有涉及到你设置的代理地址都删除
+3、  检查系统环境  env|grep http_proxy  如果存在，则删除/etc/environment下所有涉及到你设置的代理地址。
+
+最后可用
+
+PS:
+可能还需要：unset http_proxy

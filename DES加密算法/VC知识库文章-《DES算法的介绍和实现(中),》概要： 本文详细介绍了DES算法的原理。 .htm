@@ -1,0 +1,528 @@
+
+<!-- saved from url=(0045)http://www.vckbase.com/index.php/wv/1676.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shares.php" charset="utf-8"></script><script src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shares.php" charset="utf-8"></script><link href="http://www.vckbase.com/Public/sEdit/themes/default/default.css" rel="stylesheet"></head><body><div style="display: none; position: absolute; " class=""><div class="aui_outer"><table class="aui_border"><tbody><tr><td class="aui_nw"></td><td class="aui_n"></td><td class="aui_ne"></td></tr><tr><td class="aui_w"></td><td class="aui_c"><div class="aui_inner"><table class="aui_dialog"><tbody><tr><td colspan="2" class="aui_header"><div class="aui_titleBar"><div class="aui_title" style="cursor: move; "></div><a class="aui_close" href="javascript:/*artDialog*/;">×</a></div></td></tr><tr><td class="aui_icon" style="display: none; "><div class="aui_iconBg" style="background-image: none; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: initial initial; background-repeat: initial initial; "></div></td><td class="aui_main" style="width: auto; height: auto; "><div class="aui_content" style="padding-top: 20px; padding-right: 25px; padding-bottom: 20px; padding-left: 25px; "></div></td></tr><tr><td colspan="2" class="aui_footer"><div class="aui_buttons" style="display: none; "></div></td></tr></tbody></table></div></td><td class="aui_e"></td></tr><tr><td class="aui_sw"></td><td class="aui_s"></td><td class="aui_se" style="cursor: se-resize; "></td></tr></tbody></table></div></div><link href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis_counter.css" rel="stylesheet" type="text/css"><script src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis.php" charset="utf-8"></script><link href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis_counter.css" rel="stylesheet" type="text/css"><script src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis.php" charset="utf-8"></script><link href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis_share.css" rel="stylesheet" type="text/css"><iframe style="position: absolute; opacity: 0; display: none; " frameborder="0"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; top: 50%; left: 50%; overflow-x: auto; overflow-y: auto; display: none; "></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow-x: auto; overflow-y: auto; "></div><iframe style="display: none; " frameborder="0" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis_utility.htm"></iframe><link href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis_share.css" rel="stylesheet" type="text/css"><iframe style="position: absolute; opacity: 0; display: none; " frameborder="0"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; top: 50%; left: 50%; overflow-x: auto; overflow-y: auto; display: none; "></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow-x: auto; overflow-y: auto; "></div><iframe style="display: none; " frameborder="0" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jiathis_utility.htm"></iframe>﻿
+
+
+
+<title>VC知识库文章-《DES算法的介绍和实现(中),》概要："本文详细介绍了DES算法的原理。"</title>
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/base.css">
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/homebase.css">
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/inside.css">
+<link rel="stylesheet" type="text/css" href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/right.css">
+<link type="text/css" rel="stylesheet" href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shCore.css">
+<link type="text/css" rel="stylesheet" href="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shThemeDefault.css">
+<script type="text/javascript" async="" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/ga.js"></script><script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jquery.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/vckbase.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/kindeditor.js"></script>
+<script charset="utf-8" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/zh_CN.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shCore.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shBrushCpp.js"></script>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/shBrushCSharp.js"></script>
+<link rel="stylesheet" href="http://www.vckbase.com/Public/adialog/skins/green.css?4.1.4"><script charset="utf-8" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jquery.artDialog.js"></script>
+<script charset="utf-8" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/iframeTools.js"></script>
+<script type="text/javascript">
+		SyntaxHighlighter.config.clipboardSwf = '/Public/syhi/scripts/clipboard.swf';
+		SyntaxHighlighter.all();
+		var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="comm"]', {
+					allowFileManager : false,
+					allowFlashUpload : false,
+					allowMediaUpload : false
+				});
+				
+			});
+			$(document).ready(function(){ 
+       $('.newsEnd-c img').each(function(){ 
+           if($(this).width() > 620){ 
+              $(this).height(600*$(this).height()/$(this).width()).width(600).addClass('newsEnd-c-img'); 
+           } 
+       }); 
+});
+		function yyjs(id,uname){
+			$("#commyysub").show();
+			$("#commyysubun").html('引用 '+uname+' 的评论');
+			commform.yyid.value=id;
+		}
+		function qxyyjs(){
+			$("#commyysub").hide();
+			$("#commyysubun").html('');
+			commform.yyid.value=0;
+		}
+	</script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/Public/web/js/PNG.js"></script>
+<script>
+PNG.fix('.png');
+</script>
+<![endif]-->
+
+
+<div class="headmain">
+	<div class="headwrap">
+		<div class="menu"><a href="http://www.vckbase.com/" class="smalllogo"><img class="png" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/headsmalllogo.png" border="0"></a><a href="http://www.vckbase.com/" class="">首页</a><a href="http://www.vckbase.com/index.php/video" class="">视频教程</a><a href="http://www.vckbase.com/index.php/news" class="">新闻</a><a href="http://www.vckbase.com/index.php/wenku" class="Activation">文章</a><!--<a href="/index.php/fun" class="">函数库</a>--><a href="http://www.vckbase.com/index.php/code" class="">代码</a><a href="http://www.vckbase.com/index.php/maz/" class="">在线杂志</a></div>
+		<div class="menuright">
+        <li class="one"><a href="http://www.vckbase.com/index.php/public/login.html">会员登陆</a>&nbsp;&nbsp;	<a href="http://www.vckbase.com/index.php/public/register.html">注册</a> </li></div>
+		<div class="headbg"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/menubgother.png" class="png"></div>
+		
+		<div class="haedsearch">
+		<form name="searchform" method="post" action="http://www.vckbase.com/index.php/search">
+		<div class="searchselect">
+		<select name="stype">
+		<option value="1">文章</option>
+		
+		<option value="3">代码</option>
+        <option value="4">视频教程</option>
+		</select>
+
+		</div>
+		
+		<div class="searchbg">
+	<input type="text" name="a1" class="searchtext">
+	<input type="submit" class="searchsend" value="">
+		  </div>
+		<input type="hidden" name="__hash__" value="15aaf68239af74e50d35c737da120e61"></form>
+		</div>
+		<div class="logo"><a href="http://www.vckbase.com/index.php/wenku"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/articlelogo.png" border="0" class="png"></a></div>
+		
+		<div class="headfabu"><ul> <li><a href="http://www.vckbase.com/index.php/wenku/creat"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/fabuarticle.png" border="0" class="png"></a></li>
+		<li></li>
+		</ul> </div>
+		<div class="headatten" style=" left:110px; top:138px;"><ul><li>更多精彩VC知识，请关注微博：</li><li><a href="http://www.weibo.com/vckbase" target="_blank"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/icon1big.png" border="0" class="png"></a></li><li><a href="http://t.qq.com/vckbase2012" target="_blank"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/icon2big.png" border="0" class="png"></a></li></ul> </div>
+
+	</div>
+</div>
+
+<div class="pageposition">
+
+<div class="p-positionMain">当前位置：<a href="http://www.vckbase.com/">首页</a>  &gt;  <a href="http://www.vckbase.com/index.php/wenku/index">文章列表</a>  &gt;  DES算法的介绍和实现(中)</div>
+
+</div>
+<div class="InsideContetwrap">
+
+<div style="width:980px; margin: 0 auto"><br>
+<a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank"><img border="0" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/670X100.jpg"></a><br><br></div>
+
+<div class="mainwrap">
+<div class="mainleft">
+	 
+<div class="newsmain">
+<h3>DES算法的介绍和实现(中) </h3>
+
+
+<div class="Share"><!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jiathis_separator jtico jtico_tsina">新浪微博</span></a>
+	<a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jiathis_separator jtico jtico_tqq">腾讯微博</span></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_20" title="累计分享4次">4</span></a>
+</div>
+<div class="weiboFav"></div>
+<div class="FavIcon"><a href="http://www.vckbase.com/index.php/public/shouchangart/atp/1/atpid/1676" target="noref">收藏</a></div>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END --></div>
+<div class="article_Sum">
+<div class="article_SumLeft">
+<dl>
+<dt>发布日期：</dt><dd>2012-06-28 13:26</dd>
+<dt>浏览次数：</dt><dd>4291次</dd>
+<!--<dt>下载次数：</dt><dd>1000次</dd>-->
+<dt>标　　签：</dt><dd>C++</dd>
+<dt>文章评分：</dt><dd><span><ul><li class="pf3"></li><li class="pf3"></li><li class="pf3"></li><li class="pf3"></li><li class="pf3"></li><li class="jf-text"><font>0</font>.0</li></ul></span></dd>
+<dt>操　　作：</dt><dd><a href="javascript:window.print();" class="printicon">打印</a></dd>
+</dl>
+
+</div>
+<div class="article_SumRight">
+<dl>
+<dt><a href="http://www.vckbase.com/index.php/p/0"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/avatar.php" border="0" width="64" height="64"></a></dt>
+<dd><a href="http://www.vckbase.com/index.php/p/0"><strong>吴真</strong></a> </dd><dd><span>称号：</span>未设置</dd><dd><span>简介：</span>未设置</dd>
+
+
+
+</dl>
+
+</div>
+<div class="article_SumCenter">
+<ul>
+<li class="sz1">文章概要：</li>
+<li>本文详细介绍了DES算法的原理。</li>
+</ul>
+
+</div>
+
+<div class="clear"></div>
+</div>
+<div class="newsEnd-c"><p>（接上）</p>
+<p><b>1.2.8 数据整理</b> 
+</p>
+表9
+      <table width="320" border="0" cellspacing="1" cellpadding="0" bgcolor="#666666">
+        <tbody><tr bgcolor="#FFFFFF"> 
+          <td>40</td>
+          <td>8</td>
+          <td>48</td>
+          <td>16</td>
+          <td>56</td>
+          <td>24</td>
+          <td>64</td>
+          <td>32</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>39</td>
+          <td>7</td>
+          <td>47</td>
+          <td>15</td>
+          <td>55</td>
+          <td>23</td>
+          <td>63</td>
+          <td>31</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>38</td>
+          <td>6</td>
+          <td>46</td>
+          <td>14</td>
+          <td>54</td>
+          <td>22</td>
+          <td>62</td>
+          <td>30</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>37</td>
+          <td>5</td>
+          <td>45</td>
+          <td>13</td>
+          <td>53</td>
+          <td>21</td>
+          <td>61</td>
+          <td>29</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>36</td>
+          <td>4</td>
+          <td>44</td>
+          <td>12</td>
+          <td>52</td>
+          <td>20</td>
+          <td>60</td>
+          <td>28</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>35</td>
+          <td>3</td>
+          <td>43</td>
+          <td>11</td>
+          <td>51</td>
+          <td>19</td>
+          <td>59</td>
+          <td>27</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>34</td>
+          <td>2</td>
+          <td>42</td>
+          <td>10</td>
+          <td>50</td>
+          <td>18</td>
+          <td>58</td>
+          <td>26</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>33</td>
+          <td>1</td>
+          <td>41</td>
+          <td>9</td>
+          <td>49</td>
+          <td>17</td>
+          <td>57</td>
+          <td>25</td>
+        </tr>
+      </tbody></table>
+      <p>为保证加密和解密的对称性,DES算法的前15次迭代每完成一次迭代都要交换left和right的值,第16次迭代不交换两者的数值. 到此把32位的left和right合并成64位的Data</p>
+      <p>        <img src="http://public/uploads/images/0/img_20120628131239.gif" width="313" height="22"> </p>
+      <p>根据表9重新调整Data的位值</p>
+      <p>数据的原第40位换到第一位,原第8位换到第二位，...，依此类推,最后的得到新的64位.</p>
+      <p>      <img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/img_20120628131306.gif" width="164" height="20"> </p>
+      <p>Data即为密文. </p>
+      <p><b> 1.3 数据的解密</b></p>
+      <p>数据解密的算法与加密算法相同,区别在于1.2.3步中和数据进行按位异或的密钥的使用顺序不同,在加密中是按照第i次迭代就采用第i次迭代生成的密钥进行异或,而解密时第i次迭代就采用第17-i次迭代生成的密钥和数据进行异或.</p>
+      <p>        <b>二.算法实现</b></p>
+      <p>笔者用c语言编写了的基于DES算法的核心加密解密程序并针对不同的加密解密需求封装了6个接口函数.</p>
+      <p><b> 2. 1 算法实现接口函数的介绍</b></p>
+      <p><b>2.1.1 int des(char *data, char *key,int readlen)</b></p>
+      <p>参数:</p>
+      <p>1.存放待加密明文的内存指针(长度为readlen,可能经过填充;</p>
+      <p>2.存放用户输入的密钥内存的指针</p>
+      <p>3.待加密明文的长度(8字节的倍数)</p>
+      <p>功能: </p>
+      <p>生成加密密钥,把待加密的明文数据分割成64位的块,逐块完成16次迭代加密,密文存放在data所指向的内存中.</p>
+      <p><b>2.1.2 int Ddes(char *data, char *key,int readlen)</b></p>
+      <p>参数:</p>
+      <p>1.存放待解密文的内存指针(长度为readlen,可能经过填充;</p>
+      <p>2.存放用户输入的密钥内存的指针</p>
+      <p>3.待解密文的长度( 8字节的倍数)</p>
+      <p>功能: </p>
+      <p>生成解密密钥,把待解密文分割成64位的块,逐块完成16次迭代解密,解密后的明文存放在data所指向的内存中.</p>
+      <p><b>2.1.3 int des3(char *data, char *key, int n ,int readlen)</b></p>
+      <p>参数:</p>
+      <p>1.存放待加密明文的内存指针(长度为readlen,可能经过填充;</p>
+      <p>2.存放用户输入的密钥内存的指针</p>
+      <p>3.用户指定进行多少层加密</p>
+      <p>4.待加密明文的长度(8字节的倍数)</p>
+      <p>功能: </p>
+      <p>生成加密密钥,把待加密的明文分割成64位的块,把第i-1层加密后的密文作为第i层加密的明文输入,根据用户指定的加密层数进行n层加密,最终生成的密文存放在data所指向的内存中.</p>
+      <p>说明:</p>
+      <p>用户仅仅输入一条密钥,所有的加密密钥都是由这条密钥生成.</p>
+      <p><b>2.1.4 int Ddes3(char *data, char*key, int n ,int readlen)</b></p>
+      <p>参数:</p>
+      <p>1.存放待解密文的内存指针(长度为readlen,可能经过填充;</p>
+      <p>2.存放用户输入的密钥内存的指针</p>
+      <p>3.用户指定进行多少层解密</p>
+      <p>4.待解密文的长度(8字节的倍数)</p>
+      <p>功能: </p>
+      <p>生成解密密钥,把待解密文分割成64位的块,把第i-1层解密后的"明文"作为第i层解密的密文输入,根据用户指定的解密层数进行n层解密,最终生成的明文存放在data所指向的内存中.</p>
+      <p>说明:</p>
+      <p>用户仅仅输入一条密钥,所有的解密密钥都是由这条密钥生成.</p>
+      <p><b>2.1.5 int desN(char*data,char**key,int n_key,int readlen)</b></p>
+      <p>参数:</p>
+      <p>1.存放待加密明文的内存指针(长度为readlen,可能经过填充;</p>
+      <p>2.存放用户输入的密钥内存的指针</p>
+      <p>3.用户指定了多少条密钥</p>
+      <p>4.待加密明文的长度(8字节的倍数)</p>
+      <p>功能: </p>
+      <p>生成加密密钥,把待加密的明文分割成64位的块,把第i-1层加密后的密文作为第i层加密的明文输入,根据用户指定的加密层数进行n层加密,最终生成的密文存放在data所指向的内存中.</p>
+      <p>说明:</p>
+      <p>这里用户通过输入的密钥条数决定加密的层数,每轮16次迭代加密所使用的加密密钥是由用户自定的对应密钥生成.</p>
+      <p><b>2.1.6 int DdesN(char*data,char**key,intn_key,int readlen)</b></p>
+      <p>参数:</p>
+      <p>1.存放待解密文的内存指针(长度为readlen,可能经过填充;</p>
+      <p>2.存放用户输入的密钥内存的指针</p>
+      <p>3.用户指定了多少条密钥</p>
+      <p>4.待解密文的长度(8字节的倍数)</p>
+      <p>功能: </p>
+      <p>生成解密密钥,把待解密文分割成64位的块,把第i-1层解密后的”明文”作为第i层解密的密文输入,根据用户指定的解密层数进行n层解密,最终生成的明文存放在data所指向的内存中.</p>
+      <p>说明:</p>
+      <p>这里用户通过输入的密钥条数决定解密的层数,每轮16次迭代加密所使用的解密密钥是由用户自定的对应密钥生成.</p>
+      <p><b> 源代码说明:</b></p>
+      <p>这是一个有关DES算法实现文件加密工具的代码,我把算法实现的代码封装在了一个DLL中.工程中已经把环境设置好了,无论选择Debug版本还是Release版本只需直接编译就行了.使用时把.exe文件和.dll文件拷贝到同一个目录中即可</p>
+      <p><b>DES算法的介绍和实现(下)</b></p>
+      <p>作者信息: </p>
+      <p>地址:西安沣惠南路8号西安大唐电信数据通信部(邮编 710075) </p>
+      <p>电话:029-8379381 </p>
+      <p>E-Mail:hitwz@163.com </p>
+  
+
+
+</div>
+<div class="Share"><!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jiathis_separator jtico jtico_tsina">新浪微博</span></a>
+	<a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jiathis_separator jtico jtico_tqq">腾讯微博</span></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_28" title="累计分享4次">4</span></a>
+</div>
+<div class="weiboFav"></div>
+<div class="FavIcon"><a href="http://www.vckbase.com/index.php/public/shouchangart/atp/1/atpid/1676" target="noref">收藏</a></div>
+<script type="text/javascript" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END --></div>
+
+</div>
+
+	<div style="margin-top:15px"><a href="http://www.mansuo.net/" target="_blank"><img border="0" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/云平台.png"></a></div>
+	<div class="commect margintop20">
+		<div class="commectTitle"><span>评论</span> <a href="http://www.vckbase.com/index.php/wenku/allcomm/wid/1676.html">共<b>0</b>个评论</a></div>
+		<div class="commectList">
+								<div class="clear"></div>
+		</div>
+		
+		<div class="commectHf"><form name="commform" action="http://www.vckbase.com/index.php/wenku/docomm" method="post" target="commpost">
+			<div class="commectHfTtitle">发表评论</div>
+			<div class="QuoteWrap" id="commyysub" style="display:none;">
+				<div class="QuoteContent1" id="commyysubun"></div> <div><a href="javascript:;" onclick="qxyyjs()">取消引用</a></div>
+						<div class="clear"></div>
+				</div>
+			<div class="CommentLogin">
+			<ul><li>用户名：
+			</li><li><input type="text" name="username" class="commLotx" value=""></li><li>密码：</li><li><input type="password" name="password" value="" class="commLotx"></li><li></li><li id="rtxtxt" style="color:red"></li><li>还没有帐号？</li><li><a href="http://www.vckbase.com/index.php/public/register.html">立即注册</a></li></ul></div>
+			<div class="commectHfText"><div class="ke-container ke-container-default" style="width: 768px; "><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="emoticons" title="插入表情" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons" unselectable="on"></span></span><span class="ke-outline" data-name="code" title="插入程序代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code" unselectable="on"></span></span></div><div style="display: block; height: 100px; " class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px; "></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 98px; display: none; "></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="comm" style="display: none; "></textarea><input type="hidden" name="wkid" value="1676"><input type="hidden" name="yyid" value="0"></div>
+			<div class="commectHfSend"><ul><li>最多还可以输入<span>100</span>字</li><li class="submit1"><input type="submit" value="  "></li></ul></div><input type="hidden" name="__hash__" value="15aaf68239af74e50d35c737da120e61"></form>
+			<iframe name="commpost" style="display:none"></iframe>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+
+	
+		
+	
+	
+</div>
+
+<div class="mainright"> 
+<div class="r-b-main-title"><div class="r-b-m-t r-b-m-icon3">最新动态<font style="font-size:12px; font-style:normal; font-weight:normal">-</font></div></div>
+<div style="margin-top:10px;font-size:12px; line-height:20px;word-wrap:break-word;"><p>
+<img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/jian.gif">
+<strong>【VIP年会员制套餐】</strong>
+<a href="http://www.chuanke.com/zhuanji-2-467.html" target="_blank"><br>只要具有C/C++语法基础，就可以在短短几个月内迅速打造成为C/C++技术牛人！本系列课程的主讲人都是知名产品的创始人，实力雄厚，培训效果立竿见影。学完后无需我们推荐工作，您自己就可以轻松找到好工作！</a>
+<br>
+</p><p>
+<img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/news.gif">
+<strong>【<a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank"><font color="#FF0000">DirectUI企业级版本优惠活动！！！</font></a>】</strong><br>
+<a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank">从12月20日起至1月20日，企业级的所有版本优惠如下：<br>
+企业版8.5折，控件源码版8.5折，平台控件源码版8折，旗舰版8折，铂金版7.5折。欲购从速！！！</a><br>
+</p><p>
+<img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/hot.gif">
+<strong>【C/C++软件工程师实战能力集训大纲】</strong><br>
+2013-4-26 VC知识库发布了C/C++业界的“本草纲目”<a href="http://www.vckbase.com/index.php/nv/455.html" target="_blank">《C/C++软件工程师实战能力集训大纲》详细介绍 作者:VC知识库</a><br>
+</p><p>
+<img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/news.gif">
+<strong>【牛人都在千人一号群! 加群三步走!!!】</strong><br>
+第一步：请必须加VC知识库QQ：2334274564 为好友;<br>
+第二步：请必须关注本站微博：<a href="http://t.qq.com/vckbase2012" target="_blank"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/icon2big.png" border="0" class="png"></a>      <a href="http://www.weibo.com/vckbase" target="_blank"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/icon1big.png" border="0" class="png"></a>;<br>
+第三步：申请加入群：312987540.（必须将关注微博截屏发到QQ方可通过！）<br>
+</p><p>
+<img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/hot.gif">
+<strong>【<font color="#FF0000">最新2013:</font><a href="http://www.ucancode.com/index.htm" target="_blank"> 100%VC++大型工控仿真建模CAD源码下载！</a>】</strong><br>
+全部100% VC++源码提供： E-Form++全新大型SCADA &amp; HMI解决方案源码、CAD解决方案源码、Gis解决方案源码 、电力石油化工仿真与图形建模解决方案源码、大量其他高级制图VC++源码下载!<br>
+</p><p>
+<img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/news.gif">
+<strong>【2013/12/12 新视频发布】</strong>
+<br>
+<a href="http://www.vckbase.com/index.php/video/listview/fid/164/sid/182" target="_blank">1、《C++设计模式》第八讲（下）.
+时长:70分钟,主讲人:步磊峰.【58元】</a>
+<br>
+<a href="http://www.vckbase.com/index.php/video/listview/fid/164/sid/179" target="_blank">1、《C++设计模式》第七讲（下）.
+时长:44分钟,主讲人:步磊峰.【48元】</a>
+<br>
+<!--<p/>
+<img src=http://www.vckbase.com/Public/Uploads/ad/hot.gif>
+<strong>【VC知识库网校】</strong><br/>
+本站在传课网上的网校地址：<a href=http://www.chuanke.com/s1265063.html target="_blank">
+http://www.chuanke.com/s1265063.html</a><br/>
+
+<p/>
+<img src=http://www.vckbase.com/Public/Uploads/ad/news.gif>
+<strong>【最新文章发布】</strong><br/>
+2013-4-20 发布<a href=http://www.vckbase.com/index.php/wv/1778.html target="_blank">《Windows Shell扩展（Shell Extensions）指南》，作者：scorpio172</a><br/>-->
+</p></div>
+<div class="ad3"><a href="http://www.uipower.com/index.php?m=content&c=index&a=lists&catid=9&Index=7" target="_blank"><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/304X220.jpg" border="0"></a></div>
+<div class="r-b-main ">
+			<div class="r-b-main-title"><div class="r-b-m-t r-b-m-icon3">相关文章</div>			
+		</div>
+		<div class="r-b-main-content"><ul>
+		<li>• <a href="http://www.vckbase.com/index.php/wv/1676">DES算法的介绍和实现(中) </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1461">移动存储安全 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1371">轻松实现DES算法查看器 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1326">Ceb解除打印屏蔽实战 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1291">基于SHA-256的HMAC文件校验器 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/1023">模拟信息加密流程图简介 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/999">关于数据校验 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/887">浅谈利用RSA算法防止非法注册机的制作 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/802">加密它：用新的高级加密标准（AES）保持你的数据安全 </a></li><li>• <a href="http://www.vckbase.com/index.php/wv/791">关于小型CA系统的若干说明和DLL源码 </a></li>		</ul></div>
+	</div>
+	
+	<script>
+	function wkph(mt){
+		$("li.dangqian").removeClass('dangqian');
+		$("#"+mt+"li").addClass('dangqian');
+		$("#weekdiv").hide();
+		$("#mouthdiv").hide();
+		$("#totaldiv").hide();
+		$("#"+mt+"div").show();
+	}
+	</script>
+
+	<div style="margin-top:10px"><a href="http://www.bcgsoft.com/" target="_blank"><img border="0" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/1351573740.jpg"></a></div>
+ <div class="r-b-main ">
+			<div class="r-b-main-title"><div class="r-b-m-t r-b-m-icon1">文章排行</div>			<div class="r-b-m-t-tab">
+ <ul><li class="dangqian" id="weekli"><a href="javascript:;" onclick="wkph(&#39;week&#39;);">周</a></li>
+ <li id="mouthli"><a href="javascript:;" onclick="wkph(&#39;mouth&#39;);">月</a></li>
+ <li id="totalli"><a href="javascript:;" onclick="wkph(&#39;total&#39;);">总</a></li>
+ </ul>
+ 			</div>
+		</div>
+		
+		
+		<div class="r-b-main-content" id="weekdiv">
+		<dl><dt><div class="dlblod"><a href="http://www.vckbase.com/index.php/wv/1282">在VC项目中使用自定义资源</a></div><div class="dlblod1">在VC环境中除了我们所常用的Dialog、Menu和Bitmap等标准资源类型之外，它还支持自定义资源类型（Custom Resource），我们自定义的资源类型能做些什么呢？呵呵，用处多多。...<a href="http://www.vckbase.com/index.php/wv/1282">查看全文&gt;&gt;</a></div></dt><dd><a href="http://www.vckbase.com/index.php/wv/1550">改变 CListCtrl、CHeaderCtrl 高度、字体、颜色和背景</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/124">使用ADO实现BLOB数据的存取 -- ADO开发实践之二</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1391">用 VC++建立 Windows 服务程序</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/84">一个优秀的网格控件CGridCtrl</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/300">Windows Socket 网络编程(二) —— 套接字编程原理</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1778">Windows Shell扩展（Shell Extensions）指南</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1414">多线程编程之二——MFC中的多线程开发</a></dd><div class="clear"></div></dl>			</div>
+			<div class="r-b-main-content" id="mouthdiv" style="display:none">
+		<dl><dt><div class="dlblod"><a href="http://www.vckbase.com/index.php/wv/1282">在VC项目中使用自定义资源</a></div><div class="dlblod1">在VC环境中除了我们所常用的Dialog、Menu和Bitmap等标准资源类型之外，它还支持自定义资源类型（Custom Resource），我们自定义的资源类型能做些什么呢？呵呵，用处多多。...<a href="http://www.vckbase.com/index.php/wv/1282">查看全文&gt;&gt;</a></div></dt><dd><a href="http://www.vckbase.com/index.php/wv/124">使用ADO实现BLOB数据的存取 -- ADO开发实践之二</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1391">用 VC++建立 Windows 服务程序</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1550">改变 CListCtrl、CHeaderCtrl 高度、字体、颜色和背景</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/84">一个优秀的网格控件CGridCtrl</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1414">多线程编程之二——MFC中的多线程开发</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/300">Windows Socket 网络编程(二) —— 套接字编程原理</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/1315">理解 COM 套间</a></dd><div class="clear"></div></dl>			</div>
+			<div class="r-b-main-content" id="totaldiv" style="display:none">
+		<dl><dt><div class="dlblod"><a href="http://www.vckbase.com/index.php/wv/300">Windows Socket 网络编程(二) —— 套接字编程原理</a></div><div class="dlblod1">本文介绍了套接字编程的基本知识。...<a href="http://www.vckbase.com/index.php/wv/300">查看全文&gt;&gt;</a></div></dt><dd><a href="http://www.vckbase.com/index.php/wv/313">系统托盘编程完全指南（三）</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/344">CButtonST使用技巧（二）</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/306">仿制金山毒霸专杀工具界面</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/303">系统理解Win32 API和MFC(下)</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/339">如何实现工具栏的下拉箭头按钮</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/434">如何播放 WAV 文件？</a></dd><dd><a href="http://www.vckbase.com/index.php/wv/426">DES算法及其在VC++6.0下的实现(下)</a></dd><div class="clear"></div></dl>			</div>
+			
+			
+	
+		<div class="ad1"><!--<a href=\"http://bbs.vckbase.com/viewthread.php?tid=16934\" target=\\\"_blank\\\"><img  border=\"0\" src=\"/Public/Uploads/ad/1338890764.jpg\"></a>--></div>
+	</div>
+</div>
+</div>
+<div class="clear"> </div>
+</div>
+<iframe name="noref" style="display:none"></iframe>
+<div id="footer">
+	<div class="footer">
+ 
+	<dl class="d1"><dt>关于VC知识库  </dt>
+	<dd>VC知识库成立14年来，一直把提升C/C++程序员的能力作为自己的使命！视频大讲堂在两年内将打造成中国最丰富最专业的在线培训平台。
+</dd></dl>
+	
+		<dl class="d2"><dt>学习</dt>
+	<dd><ul><li><a href="http://www.vckbase.com/index.php/video/index/fid/87.html">《VC++实战调试技巧》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/89.html">《Boost深入剖析之使用技巧》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/57.html">《Windows窗口高级编程》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/42.html">《GDI/GDI+从入门到精通》</a></li>
+<li><a href="http://www.vckbase.com/index.php/video/index/fid/1">更多&gt;&gt;</a></li>
+	</ul>
+</dd></dl>
+	
+	<dl class="d3">
+		<dt>联系我们</dt>
+				<dd><a href="http://www.vckbase.com/index.php/help/about.html">关于我们</a></dd>
+				
+				<dd><a href="http://www.vckbase.com/index.php/help/contact.html">联系我们</a> </dd>
+				
+				<dd><a href="http://www.vckbase.com/index.php/help/Copyright.html">版权声明</a></dd>
+	  </dl>
+ <dl class="d4"><dt>关注</dt><dd><a href="http://www.weibo.com/vckbase">新浪微博</a></dd>
+ <dd><a href="http://t.qq.com/vckbase2012">腾讯微博</a></dd>
+
+ </dl>
+ 
+ 
+<dl class="d5"><dt><img src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/footerLogo.png" class="png"></dt>
+  <dd>
+
+	    <form name="searchform" method="post" action="http://www.vckbase.com/index.php/search">
+		<div class="searchselect">
+		<select name="stype">
+		<option value="1">文章</option>
+		
+		<option value="3">代码</option>
+        <option value="4">视频教程</option>
+		</select>
+          </div>
+		  
+		<div class="footersearchbg">
+		  <input type="text" name="a1" class="searchtext1">
+		  <input type="submit" class="searchsend" value="">
+		  </div>
+	    <input type="hidden" name="__hash__" value="15aaf68239af74e50d35c737da120e61"></form>
+  </dd></dl>
+
+	</div>
+	
+	
+<div class="footer2">	Copyright © 1999－2013 vckbase.com, all rights reserved <script src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/stat.php" language="JavaScript"></script><script src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=3835396" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./VC知识库文章-《DES算法的介绍和实现(中),》概要： 本文详细介绍了DES算法的原理。 _files/pic.gif"></a>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32644448-1']);
+  _gaq.push(['_setDomainName', 'vckbase.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>  苏ICP备12027359号</div>
+</div>
+
+
+<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; "></div></body></html>

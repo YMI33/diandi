@@ -1,0 +1,9 @@
+以后需要在windows下写C程序，直接就在cygwin中，路径：c/cygwin/Cygwin.bat。
+
+C:\cygwin\home中的c d e就是windows下的c d e盘。
+
+你的主目录是C:\cygwin\home\lixiao.he，不是helixiao!!
+
+参考资料：
+http://oldratlee.com/post/2012-12-22/stunning-cygwin
+http://www.cnblogs.com/xd502djj/archive/2010/08/05/1793404.html

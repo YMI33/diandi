@@ -1,0 +1,22 @@
+在输入每条mdsctl net '{...}'时：
+
+MDSCtlInit--》 初始化 MDSctl
+	0 MDSCtlStdinReadable, this, 
+	当标准输入可读时，就调用MDSCtlStdinReadable, 
+
+	1 MDSCtlStdoutWriteable, this, 
+	当标准输出可写时，就调用MDSCtlStdoutWriteable, 
+
+
+	CFCmdCtlInit(&this->cmdCtl, NULL)
+	初始化cf_cmd(服务器)
+
+	CFCmdCtlConnect(&this->cmdCtl, "/tmp/mds_cmd.sock")
+	初始化cf_cmd的通讯端口 "/tmp/mds_cmd.sock"，并建立连接
+
+	CFCmdSvrSockReadable 
+
+MDSCtlRun--> 开始运行MDSctl
+	等待请求的bodySize,bodyPtr
+	CFCmdCtlGetResponseBodySize(...)
+	CFCmdCtlGetResponseBodyPtr(...)

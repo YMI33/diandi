@@ -1,0 +1,108 @@
+讲得非常好，终于知道了为什么要这个set_user_id了！
+
+ref: http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/SetUserID.html
+Set-User-ID Permission for Executable Files
+
+Technical Overview
+
+First, some review:
+
+Each Unix file has a set of permissions--read, write and execute--for (a) the owner, (b) the group and (c) all other users. Typing ls with the `-l' option will display these permissions; e.g.
+
+-rwxr-x--x
+for a file would mean that the owner has read/write/execute permission, the others in the group can read and execute but not write, and all others can execute only
+
+footnote: The first `-' means that this file is not a directory.
+.
+The chmod command can be used to change any of these permissions. For example,
+
+chmod go+r Z
+would result in adding read permission on the file Z to all in the group and all other users. Also, one can compactly implement a group of complex changes by using numeric codes, with each permission's presence or absence being indicated by 1 or 0, respectively. The permission set above,
+
+-rwxr-x--x
+would then be represented as 111101001. Octal notation--grouping bits in 3-bit sets--is then used in the chmod command: To set these permissions for the file W, we would type
+
+chmod 751 W
+However, in many applications, this type of permission structure--e.g. giving a given user either full permission to read a given file, or no permission at all to read the file--is too coarse. For this reason, Unix includes another permission bit, the set-user-ID bit. If this bit is set for an executable file, then whenever a user other than the owner executes the file, that user acquires all the file read/write/execute privileges of the owner in accessing any of the owner's other files!
+
+At first this sounds horrifying. But keep in mind that the owner is still in control, because he/she can control what the program does. The other users derive their access rights on the owner's file only via this program, so all the owner has to do is make sure that the program's capabilities are very limited. In fact, that is the whole point of having set-user-ID bits: We can tailor the program to implement a very specialized set of permissions, thus giving much more flexibility than do the basic read/write/execute permissions that Unix supplies.
+
+To set the set-user-ID bit for a file, type
+
+chmod u+s filenmae
+Make sure that you have set group-other execute permission too; it would be nice to have group-other read permission as well. All of this can be done with the single statement
+
+chmod 4755 filename
+Example Program
+
+Below is the source code for the program CheckReceiveMail which I put in the Reader's ecs4059 home directory. Recall that by executing this program anyone can check to see whether the Reader has received his/her mail.
+
+Of course, another way to accomplish this goal would have been for the Reader to have typed
+
+chmod go+r /usr/spool/mail/ecs4059
+since the file /usr/spool/mail/ecs4059 is the mail file for ecs4059. But this would have obvious drawbacks: All users would be able to read any of the Reader's messages. Some of these may be personal, and in any case the senders of any of the messages may not be pleased to know that anyone, not just the Reader, could read them.
+
+So, the more refined approach was to write the program below. Note that after compiling it, we need to use chmod to set its set-user-ID bit. I did so with the command
+
+chmod 4755 CheckReceiveMail
+  1  
+  2  
+  3  #include <stdio.h>
+  4  
+  5  
+  6  #define MaxLine 200  
+  7  
+  8  
+  9  char Line[MaxLine],  /* one line from mail file */
+ 10       LoginName[50];  /* user's login name, e.g. ecs4001 */
+ 11  
+ 12  
+ 13  int LoginNameLength;
+ 14  
+ 15  
+ 16  FILE *FPtr;
+ 17  
+ 18  
+ 19  ReadLine()  /* read one line from mail file */
+ 20  
+ 21  {  int I = 0;  char C;
+ 22  
+ 23     while (1)  {
+ 24        if (fscanf(FPtr,"%c",&C) == -1) return 0;
+ 25        Line[I++] = C;
+ 26        if (C == '\n')  {
+ 27           Line[I] = 0;
+ 28           return 1;
+ 29        }
+ 30     }
+ 31  }
+ 32  
+ 33  
+ 34  main()
+ 35  
+ 36  {  char C;
+ 37  
+ 38     strcpy(LoginName,getlogin());
+ 39     LoginNameLength = strlen(LoginName);
+ 40     FPtr = fopen("/usr/spool/mail/ecs4059","r");
+ 41     while (1)  {
+ 42        if (!ReadLine()) break;
+ 43        if (!strncmp(Line,"From ",5))
+ 44           if (!strncmp(Line+5,LoginName,LoginNameLength))
+ 45              printf("%s",Line);
+ 46     }
+ 47  }
+ 48
+Analysis:
+
+Line 38: Here we call the library function getlogin(), which returns a pointer to the user's login name. Suppose the user is ecs4048; then this function will return a pointer to the string ``ecs4048'', and we will now copy this string to the character array LoginName for use below.
+
+Line 39: We need to record the number of characters in the login name for later use (Line 44).
+
+Line 40: Open the Reader's mail file. Again, this is not as dangerous as it seems, because we have written the program so that it will only print out one special kind of information to the user (Lines 43-45).
+
+Lines 41-46: In this loop, the program looks at the file one line at a time, searching for lines which begin with `From', e.g.
+
+From ecs4048 Wed May 13 20:58:37 1992
+Whenever the program finds such a line (Line 43), it will check to see if the word following `From' is equal to LoginName (Line 44), and if so, print out that line.
+

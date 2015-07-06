@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://d.qceg.net/ad/4608.asp?uid=28895 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<meta http-equiv="refresh" content="88">
+<title>无标题文档</title>
+<!-- 获取投放请求处理JS，建议放置在head内 -->
+<script charset="utf-8" type="text/javascript" async="" src="mz_ad_render_C.js"></script><script charset="utf-8" type="text/javascript" async="" src="ax"></script><script charset="utf-8" src="mz_ad_serving.js"></script><script type="text/javascript">
+
+	(function (doc) {
+		var js = doc.createElement("script"),
+		fs = doc.getElementsByTagName("script")[0];
+		js.charset = "utf-8";
+		js.src = "http://js.miaozhen.com/mz_ad_serving.js";
+		fs.parentNode.insertBefore(js, fs);
+	})(document);
+</script>
+</head>
+
+<body style="margin:0px;" marginwidth="0" marginheight="0">
+<!-- 秒针投放系统ID=1的广告位所在页面位置 -->
+
+
+<div id="MZADX_677"></div>
+<!-- 获取具体广告位请求JS，建议放在body闭合结束前 -->
+<script type="text/javascript">
+	(function (win) {
+		var params = {};
+		params["l"] = [677];		//Miaozhen ad placement id ARRAY
+		params["r"] = "1";		//version
+		params["_srv"] = "MZADX";
+              params["_callback"] = function (flag1, flag2) {
+	             // 调用网盟自定义回调函数
+                 if(flag1){}else{
+                    custom_callback();
+                 }
+
+	       }; 
+		__mz_rpq = win.__mz_rpq || []; 
+		__mz_rpq.push(params);
+	})(window);
+</script>
+
+
+<script type="text/javascript">
+function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
+{
+	var now = new Date(); 
+	var endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1); 
+	var leftTime=endDate.getTime()-now.getTime(); 
+    var exp  = new Date();    //new Date("December 31, 9998");
+    exp.setTime(exp.getTime() +leftTime);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+function getCookie(name)//取cookies函数       
+{
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+
+}
+
+    function custom_callback() {
+
+	var link_fmt;
+	var tc_n=parseInt(50*Math.random());
+	if (!getCookie('f77')){link_fmt="http://f205.tbjfw.com/code/pop_myfmt.asp?usid=3654&udip=3654&pid=265037&styid=0&dicstrfmtv=0&no1noadok=1&u_uid=28895";SetCookie ("f77", "1")}
+	//else if (getCookie('f77')=="1"){link_fmt="http://f.k2xs.com/fe.asp";SetCookie ("f77", "2")}
+
+
+	else{link_fmt="http://f205.tbjfw.com/code/pop_myfmt.asp?usid=3654&udip=3654&pid=265037&styid=0&dicstrfmtv=0&no1noadok=1&u_uid=28895";}
+	
+	
+
+//link_fmt="http://f205.tbjfw.com/code/pop_myfmt.asp?usid=3654&udip=3654&pid=265037&styid=0&dicstrfmtv=0&no1noadok=1&u_uid=28895";
+		document.getElementById('tc_9v_iframe').style.visibility='visible';  
+		document.getElementById('tc_9v_iframe').style.display='inline'; 
+		document.getElementById('fmt_9v_iframe').style.width='320px';
+		document.getElementById('fmt_9v_iframe').style.height='270px';
+		document.getElementById("tc_9v_iframe").src=link_fmt;
+
+    }
+</script>
+<div id="fmt_9v_iframe" style="position: absolute; visibility: hidden; z-index: 199999; width: 320px; height: 270px; ">
+<iframe id="tc_9v_iframe" style="position: absolute; visibility: visible; display: inline; " marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" width="320px" height="270px" allowtransparency="true" src="pop_myfmt.htm"></iframe> 
+</div>
+<div style="display:none"><script src="stat.php" language="JavaScript"></script><script src="core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=5132526" target="_blank" title="站长统计">站长统计</a></div>
+
+
+</body></html>

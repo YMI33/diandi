@@ -1,0 +1,7 @@
+visualmark.vim 下载地址http://www.vim.org/scripts/download_script.php?src_id=4700
+
+将visualmark.vim复制到C:\Program Files\Vim\vim72\plugin。
+用gvim打开源码文件，将光标定位在需要添加书签的地方，按下ctrl+F2，即添加了书签。
+
+
+使用F2在书签之间正向切换，shift+F2反向切换。

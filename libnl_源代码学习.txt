@@ -1,0 +1,97 @@
+ static struct nl_cache_ops rtnl_route_ops = {
+01740         .co_name                = "route/route",
+01741         .co_size                = sizeof(struct rtnl_route),
+01742         .co_hdrsize             = sizeof(struct rtmsg),
+01743         .co_msgtypes            = {
+01744                                         { RTM_NEWROUTE, "new" },
+01745                                         { RTM_DELROUTE, "delete" },
+01746                                         { RTM_GETROUTE, "get" },
+01747                                         { -1, NULL },
+01748                                   },
+01749         .co_protocol            = NETLINK_ROUTE,
+01750         .co_request_update      = route_request_update,
+01751         .co_msg_parser          = route_msg_parser,
+01752         .co_constructor         = route_constructor,
+01753         .co_free_data           = route_free_data,
+01754         .co_dump[NL_DUMP_BRIEF] = route_dump_brief,
+01755         .co_dump[NL_DUMP_FULL]  = route_dump_full,
+01756         .co_dump[NL_DUMP_STATS] = route_dump_stats,
+01757         .co_dump[NL_DUMP_XML]   = route_dump_xml,
+01758         .co_dump[NL_DUMP_ENV]   = route_dump_env,
+01759         .co_filter              = route_filter,
+01760 };
+01761 
+01762 static void __init route_init(void)
+01763 {
+01764         nl_cache_mngt_register(&rtnl_route_ops);
+01765 }
+01766 
+01767 static void __exit route_exit(void)
+01768 {
+01769         nl_cache_mngt_unregister(&rtnl_route_ops);
+01770 }
+
+定义：
+struct trans_tbl {
+ 73     int i;
+ 74     const char *a;
+ 75 };
+
+#define __ADD(id, name) { .i = id, .a = #name },
+
+使用：
+static struct trans_tbl route_protos[] = {
+01600         __ADD(RTPROT_UNSPEC, unspec)
+01601         __ADD(RTPROT_REDIRECT, redirect)
+01602         __ADD(RTPROT_KERNEL, kernel)
+01603         __ADD(RTPROT_BOOT, boot)
+01604         __ADD(RTPROT_STATIC, static)
+01605 };
+
+
+
+int __str2type(const char *buf, const struct trans_tbl *tbl, size_t tbl_len)
+1020 {
+1021     unsigned long l;
+1022     char *end;
+1023     size_t i;
+1024 
+1025     if (*buf == '\0')
+1026         return -NLE_INVAL;
+1027 
+1028     for (i = 0; i < tbl_len; i++)
+1029         if (!strcasecmp(tbl[i].a, buf))
+1030             return tbl[i].i;
+1031 
+1032     l = strtoul(buf, &end, 0);
+1033     if (l == ULONG_MAX || *end != '\0')
+1034         return -NLE_OBJ_NOTFOUND;
+1035 
+1036     return (int) l;
+1037 }
+
+char *__type2str(int type, char *buf, size_t len,
+ 969          const struct trans_tbl *tbl, size_t tbl_len)
+ 970 {
+ 971     size_t i;
+ 972     for (i = 0; i < tbl_len; i++) {
+ 973         if (tbl[i].i == type) {
+ 974             snprintf(buf, len, "%s", tbl[i].a);
+ 975             return buf;
+ 976         }
+ 977     }
+ 978 
+ 979     snprintf(buf, len, "0x%x", type);
+ 980     return buf;
+ 981 }
+
+char *rtnl_route_table2str(int table, char *buf, size_t size)
+01572 {
+01573         return __type2str(table, buf, size, route_tables,
+01574                           ARRAY_SIZE(route_tables));
+01575 }
+
+
+
+
+

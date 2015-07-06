@@ -1,0 +1,18 @@
+日历时（calendar time）：
+	这个时间记录了从Epoch(1970/1/1 零点)开始到现在一共的“秒”数。这种类型的时间用来记录(比如文件最后的修改时间)。结构体time_t中记录了这种值。
+运行时(process time)：
+	通常也叫做CPU时间，计量单位是“始终滴答（clock ticks）”,他又分“user CPU time”和“system CPU time”,他们有什么区别呢？这很重要！看看
+	网上人家是怎么说的：
+
+1. “The difference is whether the time is spent in user space or kernel space. User CPU time is time spent on the processor running your program's code (or code in libraries); system CPU time is the time spent running code in the operating system kernel on behalf of your program.”
+
+2. “The term ‘user CPU time’ can be a bit misleading at first. To be clear, the total time (real CPU time) is the combination of the amount of time the CPU spends performing some action for a program and the amount of time the CPU spends performing system calls for the kernel on the program’s behalf. When a program loops through an array, it is accumulating user CPU time. Conversely, when a program executes a system call such as exec or fork, it is accumulating system CPU time.”
+
+	现在你应该明白了吧。
+	还有一个叫clock time，这个时间是计量一个程序从开始运行到运行结束一共用了多少ticks。所以，这个时间depents on the number of other processes being
+	run on the system。进程越多了，每个进程分到的时间片就少了，要运行完这个进程的时间就多了呗。
+
+	在结构clock_t中记录了这样的类型的值。
+
+over~
+

@@ -1,0 +1,8 @@
+关于route命令：
+Route manipulates the kernel's IP routing tables. Its primary use is to set 
+up static routes to specific hosts or networks via an interface after it has 
+been configured with the ifconfig program. 
+所以，要配置路由表，你必须先用ifconfig配置好某个interface才行。
+
+参考资料：
+http://linux.die.net/man/8/route

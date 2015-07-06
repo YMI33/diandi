@@ -1,0 +1,17 @@
+来自stackoverflow
+“For #4, you've got it exactly. If you are including a header for code that has C linkage (such as code that was compiled by a C compiler), then you must extern "C" the header -- that way you will be able to link with the library. (Otherwise, your linker would be looking for functions with names like _Z1hic when you were looking for void h(int, char)"
+
+其实用extern "C"的场合是当你发布一个库时，只提供一个.h以及一个二进制.a文件给用户时，不管用户是gcc链接你的库的还是用g++链接你的库的，都可以保证正常工作。
+PS: 你的.a当然是用gcc编的。
+
+如果不加extern "C"， 当你在C++中引用你的.h文件中的函数时候，会链接出错，类似于
+/tmp/ccu32c6B.o: In function `main':
+main_test.c:(.text+0x3d): undefined reference to `add(int, int)'
+
+g++找不到函数原型，其根本原因就是c和c++对于函数符号的处理不同，前面已有说明。
+
+这个实验可以这么做：
+1. 注释掉"he_iksemel.h"中的extern "C"，然后用gcc编：gcc -c he_iksemel.c
+2. 用g++链接main: g++ main_test.c  he_iksemel.o，这时会报错
+
+3. 取消注释extern "C",继续上面的操作，一切正常。

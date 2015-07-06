@@ -1,0 +1,8 @@
+CIDR，是将路由表中的条目汇总，如将多个C类地址汇总为一个B类地址。VLSM，是将一个网划分为多个子网，充分利用网络资源。简单直观的说就是，VLSM 是把一个ip分成几个连续的ip网段;CIDR 是把几个ip地址合并成一个ip在外网显示。
+
+CIDR技术故常用来减小路由表的大小。
+
+
+"What is the difference between CIDR and VLSM?"
+https://supportforums.cisco.com/discussion/10547531/what-difference-between-cidr-and-vlsm
+

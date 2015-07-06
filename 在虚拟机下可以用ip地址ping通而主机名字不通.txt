@@ -1,0 +1,15 @@
+在虚拟机中可以通过“ping 192.168.50.96”ping通我的主机，但是无法通过主机名字ping通
+即“ping rd500”显示找不到主机。
+
+解决方法：
+1. 一个hackish method：
+修改虚拟机下/etc/hosts文件，添加一行
+192.168.50.96 rd500
+之后"ping rd500"就通了，但是这不是长久之计。
+
+2. 修改/etc/nsswitch文件
+在“hosts:”这行后面nds前面添加一个“wins”，之后用apt-get install 安装winbind包。就OK了。
+This tells the system to use WINS in order to lookup netbios. The winbind package has to be installed for this to work.
+
+参考资料：
+http://askubuntu.com/questions/57154/can-not-ping-by-host-name-for-some-computers

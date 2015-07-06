@@ -1,0 +1,14 @@
+WEP是Wired Equivalent Privacy的简称，有线等效保密（WEP）协议是对在两台
+设备间无线传输的数据进行加密的方式，用以防止非法用户窃听或侵入无线网络。
+不过密码分析学家已经找出 WEP 好几个弱点，因此在2003年被 Wi-Fi Protected 
+Access (WPA) 淘汰，又在2004年由完整的 IEEE 802.11i 标准（又称为 WPA2）所取
+代。WEP 虽然有些弱点，但也足以吓阻非专业人士的窥探了。
+
+/usr/sbin/wpa_supplicant -Dnl80211 -iwlan0 -c/etc/conf/wpa_supplicant.conf
+"nl80211" 是驱动名字
+"/etc/conf/wpa_supplicant.conf"就是那个配置文件
+然后，cat /etc/conf/wpa_supplicant.conf发现里面只有这句话：
+ctrl_interface=/var/run/wpa_supplicant
+到/var/run/wpa_supplicant里面看，发现有一个socket文件"wlan0".而这个文件就是
+用来和linux内核与wlan0通信用的！所以-iwlan0就是用来指定这个socket文件的名字的。
+详见：http://challengezcy.blog.163.com/blog/static/69229272201061425629588/

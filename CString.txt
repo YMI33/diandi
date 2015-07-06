@@ -1,0 +1,231 @@
+CString 是一种很有用的数据类型。它们很大程度上简化了MFC中的许多操作，使得MFC在做字符串操作的时候方便了很多。不管怎样，使用CString有很多特殊的技巧，特别是对于纯C背景下走出来的程序员来说有点难以学习。这篇文章就来讨论这些技巧。
+　　使用CString可以让你对字符串的操作更加直截了当。这篇文章不是CString的完全手册，但囊括了大部分常见基本问题。
+　　这篇文章包括以下内容：
+　　CString 对象的连接 
+　　格式化字符串（包括 int 型转化为 CString ） 
+　　CString 型转化成 int 型 
+　　CString 型和 char* 类型的相互转化
+　　char* 转化成 CString 
+　　CString 转化成 char* 之一：使用LPCTSTR强制转化 
+　　CString 转化成 char* 之二：使用CString对象的GetBuffer方法 
+　　CString 转化成 char* 之三: 和控件的接口
+　　CString 型转化成 BSTR 型； 
+　　BSTR 型转化成 CString 型； 
+　　VARIANT 型转化成 CString 型； 
+　　载入字符串表资源； 
+　　CString 和临时对象； 
+　　CString 的效率； 
+　　总结 
+　　下面我分别讨论。
+[编辑本段]
+1、CString 对象的连接
+　　能体现出 CString 类型方便性特点的一个方面就是字符串的连接，使用 CString 类型，你能很方便地连接两个字符串，正如下面的例子：
+　　CString gray("Gray");
+　　CString cat("Cat");
+　　CString graycat = gray + cat;
+　　要比用下面的方法好得多：
+　　char gray[] = "Gray";
+　　char cat[] = "Cat";
+　　char * graycat = malloc(strlen(gray) + strlen(cat) + 1);
+　　strcpy(graycat, gray);
+　　strcat(graycat, cat);
+[编辑本段]
+2、格式化字符串
+　　与其用 sprintf() 函数或 wsprintf() 函数来格式化一个字符串，还不如用 CString 对象的Format()方法：
+　　CString s;
+　　s.Format(_T("The total is %d"), total);
+　　用这种方法的好处是你不用担心用来存放格式化后数据的缓冲区是否足够大，这些工作由CString类替你完成。
+　　格式化是一种把其它不是字符串类型的数据转化为CString类型的最常用技巧，比如，把一个整数转化成CString类型，可用如下方法：
+　　CString s;
+　　s.Format(_T("%d"), total);
+　　我总是对我的字符串使用_T()宏，这是为了让我的代码至少有Unicode的意识，当然，关于Unicode的话题不在这篇文章的讨论范围。_T()宏在8位字符环境下是如下定义的：
+　　#define _T(x) x // 非Unicode版本（non-Unicode version）
+　　而在Unicode环境下是如下定义的：
+　　#define _T(x) L##x // Unicode版本（Unicode version）
+　　所以在Unicode环境下，它的效果就相当于：
+　　s.Format(L"%d", total);
+　　如果你认为你的程序可能在Unicode的环境下运行，那么开始在意用 Unicode 编码。比如说，不要用 sizeof() 操作符来获得字符串的长度，因为在Unicode环境下就会有2倍的误差。我们可以用一些方法来隐藏Unicode的一些细节，比如在我需要获得字符长度的时候，我会用一个叫做DIM的宏，这个宏是在我的dim.h文件中定义的，我会在我写的所有程序中都包含这个文件：
+　　#define DIM(x) ( sizeof((x)) / sizeof((x)[0]) )
+　　这个宏不仅可以用来解决Unicode的字符串长度的问题，也可以用在编译时定义的表格上，它可以获得表格的项数，如下：
+　　class Whatever { ... };
+　　Whatever data[] = {
+　　{ ... },
+　　...
+　　{ ... },
+　　};
+　　for(int i = 0; i < DIM(data); i++) // 扫描表格寻找匹配项。
+　　这里要提醒你的就是一定要注意那些在参数中需要真实字节数的API函数调用，如果你传递字符个数给它，它将不能正常工作。如下：TCHAR data[20];
+　　lstrcpyn(data, longstring, sizeof(data) - 1); // WRONG!
+　　lstrcpyn(data, longstring, DIM(data) - 1); // RIGHT
+　　WriteFile(f, data, DIM(data), &bytesWritten, NULL); // WRONG!
+　　WriteFile(f, data, sizeof(data), &bytesWritten, NULL); // RIGHT
+　　造成以上原因是因为lstrcpyn需要一个字符个数作为参数，但是WriteFile却需要字节数作为参数。
+　　同样需要注意的是有时候需要写出数据的所有内容。如果你仅仅只想写出数据的真实长度，你可能会认为你应该这样做：
+　　WriteFile(f, data, lstrlen(data), &bytesWritten, NULL); // WRONG
+　　但是在Unicode环境下，它不会正常工作。正确的做法应该是这样：
+　　WriteFile(f, data, lstrlen(data) * sizeof(TCHAR), &bytesWritten, NULL); // RIGHT
+　　因为WriteFile需要的是一个以字节为单位的长度。（可能有些人会想"在非Unicode的环境下运行这行代码，就意味着总是在做一个多余的乘1操作，这样不会降低程序的效率吗？"这种想法是多余的，你必须要了解编译器实际上做了什么，没有哪一个C或C++编译器会把这种无聊的乘1操作留在代码中。在Unicode环境下运行的时候，你也不必担心那个乘2操作会降低程序的效率，记住，这只是一个左移一位的操作而已，编肫饕埠芾忠馕阕稣庵痔婊弧＃?br> 使用_T宏并不是意味着你已经创建了一个Unicode的程序，你只是创建了一个有Unicode意识的程序而已。如果你在默认的8-bit模式下编译你的程序的话，得到的将是一个普通的8-bit的应用程序（这里的8-bit指的只是8位的字符编码，并不是指8位的计算机系统）；当你在Unicode环境下编译你的程序时，你才会得到一个Unicode的程序。记住，CString 在 Unicode 环境下，里面包含的可都是16位的字符哦。
+[编辑本段]
+3、CString 型转化成 int 型
+　　把 CString 类型的数据转化成整数类型最简单的方法就是使用标准的字符串到整数转换例程。
+　　虽然通常你怀疑使用_atoi()函数是一个好的选择，它也很少会是一个正确的选择。如果你准备使用 Unicode 字符，你应该用_ttoi()，它在 ANSI 编码系统中被编译成_atoi()，而在 Unicode 编码系统中编译成_wtoi()。你也可以考虑使用_tcstoul()或者_tcstol()，它们都能把字符串转化成任意进制的长整数（如二进制、八进制、十进制或十六进制），不同点在于前者转化后的数据是无符号的（unsigned），而后者相反。看下面的例子：
+　　CString hex = _T("FAB");
+　　CString decimal = _T("4011");
+　　ASSERT(_tcstoul(hex, 0, 16) == _ttoi(decimal));
+[编辑本段]
+4、CString 型和 char* 类型的相互转化
+　　这是初学者使用 CString 时最常见的问题。有了 C++ 的帮助，很多问题你不需要深入的去考虑它，直接拿来用就行了，但是如果你不能深入了解它的运行机制，又会有很多问题让你迷惑，特别是有些看起来没有问题的代码，却偏偏不能正常工作。
+　　比如，你会奇怪为什么不能写像下面这样的代码呢：
+　　CString graycat = "Gray" + "Cat";
+　　或者这样：
+　　CString graycat("Gray" + "Cat");
+　　事实上，编译器将抱怨上面的这些尝试。为什么呢？因为针对CString 和 LPCTSTR数据类型的各种各样的组合，" +" 运算符 被定义成一个重载操作符。而不是两个 LPCTSTR 数据类型，它是底层数据类型。你不能对基本数据（如 int、char 或者 char*）类型重载 C++ 的运算符。你可以象下面这样做：
+　　CString graycat = CString("Gray") + CString("Cat");
+　　或者这样：
+　　CString graycat = CString("Gray") + "Cat";
+　　研究一番就会发现：" +"总是使用在至少有一个 CString 对象和一个 LPCSTR 的场合。
+　　注意，编写有 Unicode 意识的代码总是一件好事，比如：
+　　CString graycat = CString(_T("Gray")) + _T("Cat");
+　　这将使得你的代码可以直接移植。
+　　char* 转化为 CString
+　　现在你有一个 char* 类型的数据，或者说一个字符串。怎么样创建 CString 对象呢？这里有一些例子：
+　　char * p = "This is a test";
+　　或者象下面这样更具有 Unicode 意识：
+　　TCHAR * p = _T("This is a test")
+　　或
+　　LPTSTR p = _T("This is a test");
+　　你可以使用下面任意一种写法：
+　　CString s = "This is a test"; // 8-bit only
+　　CString s = _T("This is a test"); // Unicode-aware
+　　CString s("This is a test"); // 8-bit only
+　　CString s(_T("This is a test")); // Unicode-aware
+　　CString s = p;
+　　CString s(p);
+　　用这些方法可以轻松将常量字符串或指针转换成 CString。需要注意的是，字符的赋值总是被拷贝到 CString 对象中去的，所以你可以象下面这样操作：
+　　TCHAR * p = _T("Gray");
+　　CString s(p);
+　　p = _T("Cat");
+　　s += p;
+　　结果字符串肯定是"GrayCat"。
+　　CString 类还有几个其它的构造函数，但是这里我们不考虑它，如果你有兴趣可以自己查看相关文档。
+　　事实上，CString 类的构造函数比我展示的要复杂，比如：
+　　CString s = "This is a test"; 
+　　这是很草率的编码，但是实际上它在 Unicode 环境下能编译通过。它在运行时调用构造函数的 MultiByteToWideChar 操作将 8 位字符串转换成 16 位字符串。不管怎样，如果 char * 指针是网络上传输的 8 位数据，这种转换是很有用的。
+　　CString 转化成 char* 之一：强制类型转换为 LPCTSTR；
+　　这是一种略微硬性的转换，有关"正确"的做法，人们在认识上还存在许多混乱，正确的使用方法有很多，但错误的使用方法可能与正确的使用方法一样多。
+　　我们首先要了解 CString 是一种很特殊的 C++ 对象，它里面包含了三个值：一个指向某个数据缓冲区的指针、一个是该缓冲中有效的字符记数以及一个缓冲区长度。 有效字符数的大小可以是从0到该缓冲最大长度值减1之间的任何数（因为字符串结尾有一个NULL字符）。字符记数和缓冲区长度被巧妙隐藏。
+　　除非你做一些特殊的操作，否则你不可能知道给CString对象分配的缓冲区的长度。这样，即使你获得了该0缓冲的地址，你也无法更改其中的内容，不能截短字符串，也 绝对没有办法加长它的内容，否则第一时间就会看到溢出。
+　　LPCTSTR 操作符（或者更明确地说就是 TCHAR * 操作符）在 CString 类中被重载了，该操作符的定义是返回缓冲区的地址，因此，如果你需要一个指向 CString 的 字符串指针的话，可以这样做：
+　　CString s("GrayCat");
+　　LPCTSTR p = s;
+　　它可以正确地运行。这是由C语言的强制类型转化规则实现的。当需要强制类型转化时，C++规测容许这种选择。比如，你可以将（浮点数）定义为将某个复数 （有一对浮点数）进行强制类型转换后只返回该复数的第一个浮点数（也就是其实部）。可以象下面这样：
+　　Complex c(1.2f, 4.8f);
+　　float realpart = c;
+　　如果(float)操作符定义正确的话，那么实部的的值应该是1.2。
+　　这种强制转化适合所有这种情况，例如，任何带有 LPCTSTR 类型参数的函数都会强制执行这种转换。 于是，你可能有这样一个函数（也许在某个你买来的DLL中）：
+　　BOOL DoSomethingCool(LPCTSTR s);
+　　你象下面这样调用它：
+　　CString file("c://myfiles//coolstuff")
+　　BOOL result = DoSomethingCool(file);
+　　它能正确运行。因为 DoSomethingCool 函数已经说明了需要一个 LPCTSTR 类型的参数，因此 LPCTSTR 被应用于该参数，在 MFC 中就是返回的串地址。
+　　如果你要格式化字符串怎么办呢？
+　　CString graycat("GrayCat");
+　　CString s;
+　　s.Format("Mew! I love %s", graycat);
+　　注意由于在可变参数列表中的值（在函数说明中是以"..."表示的）并没有隐含一个强制类型转换操作符。你会得到什么结果呢？
+　　一个令人惊讶的结果，我们得到的实际结果串是：
+　　"Mew! I love GrayCat"。
+　　因为 MFC 的设计者们在设计 CString 数据类型时非常小心， CString 类型表达式求值后指向了字符串，所以这里看不到任何象 Format 或 sprintf 中的强制类型转换，你仍然可以得到正确的行为。描述 CString 的附加数据实际上在 CString 名义地址之后。
+　　有一件事情你是不能做的，那就是修改字符串。比如，你可能会尝试用","代替"."（不要做这样的，如果你在乎国际化问题，你应该使用十进制转换的 National Language Support 特性，），下面是个简单的例子：
+　　CString v("1.00"); // 货币金额，两位小数
+　　LPCTSTR p = v;
+　　p[lstrlen(p) - 3] = ,;
+　　这时编译器会报错，因为你赋值了一个常量串。如果你做如下尝试，编译器也会错：
+　　strcat(p, "each");
+　　因为 strcat 的第一个参数应该是 LPTSTR 类型的数据，而你却给了一个 LPCTSTR。
+　　不要试图钻这个错误消息的牛角尖，这只会使你自己陷入麻烦！
+　　原因是缓冲有一个计数，它是不可存取的（它位于 CString 地址之下的一个隐藏区域），如果你改变这个串，缓冲中的字符计数不会反映所做的修改。此外，如果字符串长度恰好是该字符串物理限制的长度（梢后还会讲到这个问题），那么扩展该字符串将改写缓冲以外的任何数据，那是你无权进行写操作的内存（不对吗？），你会毁换坏不属于你的内存。这是应用程序真正的死亡处方。
+　　CString转化成char* 之二：使用 CString 对象的 GetBuffer 方法；
+　　如果你需要修改 CString 中的内容，它有一个特殊的方法可以使用，那就是 GetBuffer，它的作用是返回一个可写的缓冲指针。 如果你只是打算修改字符或者截短字符串，你完全可以这样做：
+　　CString s(_T("File.ext"));
+　　LPTSTR p = s.GetBuffer();
+　　LPTSTR dot = strchr(p, .); // OK, should have used s.Find...
+　　if(p != NULL)
+　　*p = _T(/0);
+　　s.ReleaseBuffer();
+　　这是 GetBuffer 的第一种用法，也是最简单的一种，不用给它传递参数，它使用默认值 0，意思是："给我这个字符串的指针，我保证不加长它"。当你调用 ReleaseBuffer 时，字符串的实际长度会被重新计算，然后存入 CString 对象中。
+　　必须强调一点，在 GetBuffer 和 ReleaseBuffer 之间这个范围，一定不能使用你要操作的这个缓冲的 CString 对象的任何方法。因为 ReleaseBuffer 被调用之前，该 CString 对象的完整性得不到保障。研究以下代码：
+　　CString s(...);
+　　LPTSTR p = s.GetBuffer();
+　　//... 这个指针 p 发生了很多事情
+　　int n = s.GetLength(); // 很糟D!!!!! 有可能给出错误的答案!!!
+　　s.TrimRight(); // 很糟!!!!! 不能保证能正常工作!!!!
+　　s.ReleaseBuffer(); // 现在应该 OK
+　　int m = s.GetLength(); // 这个结果可以保证是正确的。
+　　s.TrimRight(); // 将正常工作。
+　　假设你想增加字符串的长度，你首先要知道这个字符串可能会有多长，好比是声明字符串数组的时候用：
+　　char buffer[1024];
+　　表示 1024 个字符空间足以让你做任何想做得事情。在 CString 中与之意义相等的表示法：
+　　LPTSTR p = s.GetBuffer(1024);
+　　调用这个函数后，你不仅获得了字符串缓冲区的指针，而且同时还获得了长度至少为 1024 个字符的空间（注意，我说的是"字符"，而不是"字节"，因为 CString 是以隐含方式感知 Unicode 的）。
+　　同时，还应该注意的是，如果你有一个常量串指针，这个串本身的值被存储在只读内存中，如果试图存储它，即使你已经调用了 GetBuffer ，并获得一个只读内存的指针，存入操作会失败，并报告存取错误。我没有在 CString 上证明这一点，但我看到过大把的 C 程序员经常犯这个错误。
+　　C 程序员有一个通病是分配一个固定长度的缓冲，对它进行 sprintf 操作，然后将它赋值给一个 CString：
+　　char buffer[256];
+　　sprintf(buffer, "%......", args, ...); // ... 部分省略许多细节
+　　CString s = buffer;
+　　虽然更好的形式可以这么做：
+　　CString s;
+　　s.Format(_T("%...."), args, ...);
+　　如果你的字符串长度万一超过 256 个字符的时候，不会破坏堆栈。
+　　另外一个常见的错误是：既然固定大小的内存不工作，那么就采用动态分配字节，这种做法弊端更大：
+　　int len = lstrlen(parm1) + 13 lstrlen(parm2) + 10 + 100;
+　　char * buffer = new char[len];
+　　sprintf(buffer, "%s is equal to %s, valid data", parm1, parm2);
+　　CString s = buffer;
+　　......
+　　delete [] buffer;
+　　它可以能被简单地写成：
+　　CString s;
+　　s.Format(_T("%s is equal to %s, valid data"), parm1, parm2);
+　　需要注意 sprintf 例子都不是 Unicode 就绪的，尽管你可以使用 tsprintf 以及用 _T() 来包围格式化字符串，但是基本 思路仍然是在走弯路，这这样很容易出错。
+　　CString to char * 之三：和控件的接口；
+　　我们经常需要把一个 CString 的值传递给一个控件，比如，CTreeCtrl。MFC为我们提供了很多便利来重载这个操作，但是 在大多数情况下，你使用"原始"形式的更新，因此需要将墨某个串指针存储到 TVINSERTITEMSTRUCT 结构的 TVITEM 成员中。如下：
+　　TVINSERTITEMSTRUCT tvi;
+　　CString s;
+　　// ... 为s赋一些值。
+　　tvi.item.pszText = s; // Compiler yells at you here
+　　// ... 填写tvi的其他域
+　　HTREEITEM ti = c_MyTree.InsertItem(&tvi);
+　　为什么编译器会报错呢？明明看起来很完美的用法啊！但是事实上如果你看看 TVITEM 结构的定义你就会明白，在 TVITEM 结构中 pszText 成员的声明如下：
+　　LPTSTR pszText;
+　　int cchTextMax;
+　　因此，赋值不是赋给一个 LPCTSTR 类型的变量，而且编译器无法知道如何将赋值语句右边强制转换成 LPCTSTR。好吧，你说，那我就改成这样：
+　　tvi.item.pszText = (LPCTSTR)s; //编译器依然会报错。
+　　编译器之所以依然报错是因为你试图把一个 LPCTSTR 类型的变量赋值给一个 LPTSTR 类型的变量，这种操作在C或C++中是被禁止的。你不能用这种方法 来滥用常量指针与非常量指针概念，否则，会扰乱编译器的优化机制，使之不知如何优化你的程序。比如，如果你这么做：
+　　const int i = ...;
+　　//... do lots of stuff
+　　... = a; // usage 1
+　　// ... lots more stuff
+　　... = a; // usage 2
+　　那么，编译器会以为既然 i 是 const ，所以 usage1和usage2的值是相同的，并且它甚至能事先计算好 usage1 处的 a 的地址，然后保留着在后面的 usage2 处使用，而不是重新计算。如果你按如下方式写的话：
+　　const int i = ...;
+　　int * p = &i;
+　　//... do lots of stuff
+　　... = a; // usage 1
+　　// ... lots more stuff
+　　(*p)++; // mess over compilers assumption
+　　// ... and other stuff
+　　... = a; // usage 2
+　　编译器将认为 i 是常量，从而 a 的位置也是常量，这样间接地破坏了先前的假设。因此，你的程序将会在 debug 编译模式（没有优化）和 release 编译模式（完全优化）中反映出不同的行为，这种情况可不好，所以当你试图把指向 i 的指针赋值给一个 可修改的引用时，会被编译器诊断为这是一种伪造。这就是为什么（LPCTSTR）强制类型转化不起作用的原因。
+　　为什么不把该成员声明成 LPCTSTR 类型呢？因为这个结构被用于读写控件。当你向控件写数据时，文本指针实际上被当成 LPCTSTR，而当你从控件读数据 时，你必须有一个可写的字符串。这个结构无法区分它是用来读还是用来写。
+　　因此，你会常常在我的代码中看到如下的用法：
+　　tvi.item.pszText = (LPTSTR)(LPCTSTR)s;
+　　它把 CString 强制类型转化成 LPCTSTR，也就是说先获得改字符串的地址，然后再强制类型转化成 LPTSTR，以便可以对之进行赋值操作。 注意这只有在使用 Set 或 Insert 之类的方法才有效！如果你试图获取数据，则不能这么做。
+　　如果你打算获取存储在控件中的数据，则方法稍有不同，例如，对某个 CTreeCtrl 使用 GetItem 方法，我想获取项目的文本。我知道这些 文本的长度不会超过 MY_LIMIT，因此我可以这样写：
+　　TVITEM tvi;
+　　// ... assorted initialization of other fields of tvi
+　　tvi.pszText = s.GetBuffer(MY_LIMIT);
+　　tvi.cchTextMax = MY_LIMIT;
+　　c_MyTree.GetItem(&tvi);
+　　s.ReleaseBuffer();
+　　可以看出来，其实上面的代码对所有类型的 Set 方法都适用，但是并不需要这么做，因为所有的类 Set 方法（包括 Insert方法）不会改变字符串的内容。但是当你需要写 CString 对象时，必须保证缓冲是可写的，这正是 GetBuffer 所做的事情。再次强调： 一旦做了一次 GetBuffer 调用，那么在调用 ReleaseBuffer 之前不要对这个 CString 对象做任何操作。

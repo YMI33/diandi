@@ -1,0 +1,3 @@
+组播MAC地址
+组播MAC地址的高24bit为0x01005e，第25bit为0，即高25bit为固定值。MAC地址的低23bit为组播IP地址的低23bit。由于 IP组播地址的前4bit 是1110，代表组播标识，而后28bit 中只有23bit 被映射到MAC 地址，这样IP 地址中就有5bit 信息丢失，导致的结果是出现了32 个IP 组播地址映射到同一MAC 地址上。
+http://baike.baidu.com/view/492256.htm 这张图一看就一目了然了！

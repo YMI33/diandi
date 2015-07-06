@@ -1,0 +1,9 @@
+参考：Is there any particular reason to use Diffie-Hellman over RSA for key exchange?
+
+对于密码交换算法，有两种选择，一个是DH密钥交换算法，一个是RSA算法。
+DH算法是基于离散对数问题的（discrete logarithm）。
+RSA算法是基于因式分解的（integer factorization）。
+
+其实，两种算法的安全性都差不多的，个人感觉。
+
+参考：http://security.stackexchange.com/questions/35471/is-there-any-particular-reason-to-use-diffie-hellman-over-rsa-for-key-exchange

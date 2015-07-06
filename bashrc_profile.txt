@@ -1,0 +1,22 @@
+在登录Linux时要执行文件的过程如下：
+
+在刚登录Linux时，首先启动 /etc/profile 文件，然后再启动用户目录下的 ~/.bash_profile、 ~/.bash_login或 ~/.profile文件中的其中一个，
+执行的顺序为：~/.bash_profile、 ~/.bash_login、 ~/.profile。
+如果 ~/.bash_profile文件存在的话，一般还会执行 ~/.bashrc文件。
+因为在 ~/.bash_profile文件中一般会有下面的代码：
+if [ -f ~/.bashrc ] ; then
+
+. ./bashrc
+
+fi
+
+~/.bashrc中，一般还会有以下代码：
+if [ -f /etc/bashrc ] ; then
+
+. /bashrc
+
+fi
+
+所以，~/.bashrc会调用 /etc/bashrc文件。最后，在退出shell时，还会执行 ~/.bash_logout文件。
+
+执行顺序为：/etc/profile -> (~/.bash_profile | ~/.bash_login | ~/.profile) -> ~/.bashrc -> /etc/bashrc -> ~/.bash_logout

@@ -1,0 +1,51 @@
+CA(certification authority)是用来办法数字证书（digital certificate）的。
+
+
+------------------ 终于有点明白了 -------------------------
+Public-key cryptography can be used to encrypt data communicated between two parties. This can typically happen when a user logs on to any site that implements the HTTP Secure protocol. In this example let us suppose that the user logs on to his bank's homepage www.bank.example to do online banking. When the user opens www.bank.example homepage, he receives a public key along with all the data that his web-browser displays. The public key could be used to encrypt data from the client to the server but the safe procedure is to use it in a protocol that determines a shared symmetric encryption key; messages in such protocol are ciphered with the public key and only the bank server has the private key to read them. The rest of the communication proceeds using the new (disposable) symmetric key, so when the user enters some information to the bank's page and submits the page (sends the information back to the bank) then the data the user has entered to the page will be encrypted by his web browser. Therefore, even if someone can access the (encrypted) data that was communicated from the user to www.bank.example, such eavesdropper cannot read or decipher it.
+
+This mechanism is only safe if the user can be sure that it is the bank that he sees in his web browser. If the user types in www.bank.example, but his communication is hi-jacked and a fake web-site (that pretends to be the bank web-site) sends the page information back to the user's browser, the fake web-page can send a fake public key to the user (for which the fake site owns a matching private key). The user will fill the form with his personal data and will submit the page. The fake web-page will get access to the user's data.
+
+A certificate authority (CA) is an organization that stores public keys and their owners, and every party in a communication trusts this organization (and knows its public key). When the user's web browser receives the public key from www.bank.example it also receives a digital signature of the key (with some more information, in a so-called X.509 certificate). The browser already possesses the public key of the CA and consequently can verify the signature, trust the certificate and the public key in it: since www.bank.example uses a public key that the certification authority certifies, a fake www.bank.example can only use the same public key. Since the fake www.bank.example does not know the corresponding private key, it cannot create the signature needed to verify its authenticity.
+-----------
+
+现在的问题是：
+我（浏览器）有了www.bank.example发给我的证书也就是数字证书，当然还有上面的数字签名，以及所有CA的公钥，我该怎么验证呢？
+答： 服务器先发n多字节，代表数字证书，之后，跟随着m多字节，代表数字签名。首先，浏览器查看数字证书上的签署人，也就是哪个CA签署的，如果浏览器信任该CA，而且知道该CA的公钥，就用该公钥解密那m多字节（数字签名），解密出来的结果为k，如果这个k的字节满足某种格式，则取出最后的20字节，然后对收到的数字证书（就是那n多字节），进行SHA-1哈希摘要，如果得到的20字节和前面那20字节一样，那就说明这张证书以及这个数字签名都是正确的，接下来，我们从数字证书中取出www.bank.example的公钥，然后用这个公钥加密pre-master-key，发给www.bank.example，因为只有它用他的私钥才能解密出这个pre-master-key，然后，双方用两个随机数以及一个pre-master-key产生一个Master Secret，之后双方的通信都用这个secreat利用RC4算法加密/解密，双方通信就建立起来了。
+
+
+为什么如果我知道了一个CA的私钥，我就可以给任何网站颁发证书了呢？
+答： 先构造一个数字证书，写上我网站的名字，我的公钥（当然我知道与之对应的私钥），然后对这个数字证书进行SHA-1哈希摘要，比如得到20字节，然后按照数字签名的格式构造一个数字签名，之后用那个CA的私钥对这个数字签名加密，得到的就是我签署的数字签名啦！之后，把那个证书和签名一起发出去，就伪造成功了！
+
+“Normally a CA has a master key which signs several other keys which are used by trusted authorities that are authorized to sign CSR's for customers.”看起来一个CA有一个根key，还有很多其他的key,这些key是由根key生成的，那什么是根证书呢？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

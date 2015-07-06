@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- saved from url=(0409)https://d3uj6xm91r4200.cloudfront.net/https://www.blogger.com/comment-iframe.g?blogID=5235590154125226279&postID=6558849449399032076&blogspotRpcToken=7658549#%7B%22color%22%3A%22rgb(0%2C%200%2C%200)%22%2C%22backgroundColor%22%3A%22rgb(240%2C%20240%2C%20240)%22%2C%22unvisitedLinkColor%22%3A%22rgb(0%2C%20102%2C%20255)%22%2C%22fontFamily%22%3A%22'Trebuchet%20MS'%2C%20verdana%2C%20sans-serif%22%7D&rwb3498472=1 -->
+<html manifest="../../../rwb/rwb.appcache?hash=bf36550696eb7bc4c340b136f646f478"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+<title>Blogger: 编程随想的博客 - 发表评论 | 免翻墙镜像</title>
+<style>html, body {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	text-align: center;
+}
+
+ul {
+	border: thin solid #ddd;
+	margin: auto;
+	padding: 5px;
+	width: 300px;
+}
+
+li {
+	margin-left: 50px;
+}
+
+h1 {
+	color: #aaa;
+	text-align: center;
+}
+
+div.top {
+	color: #222;
+	font-size: 90%;
+	padding: 5px;
+	text-align: center;
+}
+
+iframe {
+	border: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 100%;
+	padding: 0;
+}</style><script async="" src="analytics.js"></script><script>
+if (top != self && window.name == 'rwb3498472i') {
+	console.log('top != self');
+	top.location = window.location;
+}
+</script>
+</head>
+<body>
+	<div>
+		<p>载入页面...</p>
+		<h1>Blogger: 编程随想的博客 - 发表评论 | 免翻墙镜像</h1>
+		<p>如果本页面无法加载，请访问以下网址获取新镜像或者发邮件到 support@greatfire.org：</p>
+				<ul>
+						<li><a href="https://github.com/greatfire/wiki" target="_blank">https://github.com/greatfire/wiki</a></li>
+						<li><a href="https://bitbucket.org/greatfire/wiki" target="_blank">https://bitbucket.org/greatfire/wiki</a></li>
+					</ul>
+			</div>
+	<iframe frameborder="0" scrolling="no" verticalscrolling="no" name="rwb3498472i" seamless="seamless" height="600px" src="comment-iframe(1).htm"></iframe>
+	<script src="jquery-1.11.1.min.js"></script>
+	<script>
+	var get_param_name = 'rwb3498472';
+	var jsonp_callback_basename = 'jsonpCallback';
+	var output_type_iframe = '1';
+	var output_type_jsonp = '2';
+	if (top != self) {
+		var new_location = window.location.href;
+		new_location += new_location.indexOf('?') == -1 ? '?' : '&';
+		new_location += get_param_name + '=' + output_type_iframe;
+		console.log('changing ' + window.location.href + ' to ' + new_location);
+		window.location = new_location;
+	} else {
+    	window.name = 'rwb3498472';
+    	var alt_base_urls = ["https:\/\/d3uj6xm91r4200.cloudfront.net\/","https:\/\/d22if0ngl5too8.cloudfront.net\/","https:\/\/d2o8j61n9jvv5u.cloudfront.net\/","https:\/\/d18fi1bveml0t5.cloudfront.net\/","https:\/\/pt10.global.ssl.fastly.net\/","https:\/\/pt11.global.ssl.fastly.net\/","https:\/\/pt9.global.ssl.fastly.net\/"];
+    	var done = false;
+		
+		function iframeLoaded($iframe) {
+			if($iframe.data('hasLoaded') === true) {
+				console.log('iframe already loaded');
+				return;
+			}
+			
+			done = true;
+			
+			console.log('iframe loaded');
+			$iframe.data('hasLoaded', true);
+			$('div').html($('div p:nth(1)').text() + $('div li').map(function() { return $(this).html() }).get().join(', '));
+			$('div').addClass('top');
+		
+			manageIframe($iframe);
+			setInterval(function() {
+				try {
+					manageIframe($iframe);
+				} catch (err) {
+				}
+			}, 1000);
+		}
+		
+		function manageIframe($iframe) {	
+			if($iframe.contents().find('title').text()) {
+				document.title = $iframe.contents().find('title').text();
+			}
+		
+			if($iframe.contents().find('head').length > 0 && $iframe.contents().find('head base').length == 0) {
+				$iframe.contents().find('head').prepend($('<head>'));
+			}
+		
+			if($iframe.contents().find('head base').attr('target') != window.name) {
+				$iframe.contents().find('head base').attr('target', window.name);
+			}
+		
+			var targetHeight = $(window).height();
+			if($iframe[0].contentWindow.window != null && $iframe[0].contentWindow.window.document.body != null) {
+				targetHeight = Math.max(
+						targetHeight,
+						$iframe[0].contentWindow.window.document.body.scrollHeight
+				);
+			}
+		
+			var actualHeight = $iframe.height()
+			+ parseInt($iframe.contents().find('body').css('margin-top'))
+			+ parseInt($iframe.contents().find('body').css('padding-top'))
+			+ parseInt($iframe.contents().find('body').css('padding-bottom'))
+			+ parseInt($iframe.contents().find('body').css('margin-bottom'));
+		
+			if(targetHeight > actualHeight || targetHeight < (actualHeight - 100)) {
+				$iframe.height(targetHeight + 10);
+			}
+		}
+		
+		if (!window.console) {
+			console = {	log : function() {}	};
+		}
+		
+		if (typeof String.prototype.startsWith != 'function') {
+			String.prototype.startsWith = function (str){
+				return this.lastIndexOf(str, 0) === 0;
+			};
+		}
+		
+		var base_url = "";
+		var relative_url = "";
+		for(var i in alt_base_urls) {
+			if(window.location.href.startsWith(alt_base_urls[i])) {
+				base_url = alt_base_urls[i];
+				relative_url = window.location.href.substring(alt_base_urls[i].length);
+				break;
+			}
+		}
+		
+		$('iframe').height($(window).height());
+		
+		var ifrInt = setInterval(function() {
+			if($('iframe').contents().find('body *:first').length > 0) {
+				iframeLoaded($('iframe'));
+				clearInterval(ifrInt);
+			}
+		}, 300);
+		
+		setTimeout(function() {
+			if(!done) {
+				console.log('emergency!');
+				$('li a').each(function() {
+					window.location = $(this).attr('href');
+				});
+			}
+		}, 20000);
+		
+		$('iframe').load(function() {
+			iframeLoaded($(this));
+		});
+		
+		for(var i in alt_base_urls) {
+			(function(alt_base_url) {
+				if(window.location.href.startsWith(alt_base_url)) {
+					return;
+				}
+		
+				var alt_url = alt_base_url + relative_url;
+		
+				var alt_url_parser = document.createElement('a');
+				alt_url_parser.href = alt_url;
+				if(alt_url_parser.search) {
+					alt_url += '&';
+				} else {
+					alt_url += '?';
+				}
+				alt_url += get_param_name + '=' + output_type_jsonp + encodeURIComponent(alt_base_url);
+		
+				$.ajax({
+					dataType: 'jsonp',
+					url: alt_url,
+					cache: true,
+					jsonpCallback: jsonp_callback_basename + i
+				}).success(function(data) {
+					if(!done && typeof data.html !== 'undefined') {
+						done = true;
+						console.log(alt_url + ' succeeded');
+						$iframe = $('iframe').clone();
+						$('iframe').remove();
+						$iframe.attr('src', '');
+						$('body').append($iframe);
+		
+						var iframeDoc = $iframe[0].contentDocument || $iframe[0].contentWindow.document;
+						iframeDoc.open();
+						iframeDoc.write(data.html);
+						iframeDoc.close();
+		
+						iframeLoaded($iframe);
+					}
+				});
+			})(alt_base_urls[i]);
+		}
+	}
+	</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-26222920-18', 'auto', {'name': 'wmbp1'});
+  ga('wmbp1.send', 'pageview');
+
+</script>
+</body></html>

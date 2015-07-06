@@ -1,0 +1,24 @@
+1. 用git从github下载goagent源代码
+
+2. 在local文件夹的proxy.ini中更改appid为你从google上注册的appid.
+
+不使用公司代理的情况：
+1. 修改代理为：127.0.0.1 8087
+
+2. 运行local下的proxy.bat。
+
+3. 运行server下的uploader.bat正常情况下会让你输入appid和谷歌账号密码。
+CloverClose3@gmail.com
+mima: 7243587helixiao
+
+4. 等待，如果一切成功会输出“成功”字样。
+
+如果第四步出现goagent AttributeError: can’t set attribute错误，是因为你的google账号安全性问题，只要启动不安全的模式就可以了。
+
+使用公司代理的情况：
+有待研究。
+==========资料===========
+公司使用代理上网，如何使用goagent上网
+在公司是使用代理上网的，但是经常要FQ找那些技术文章，以前一般要用在线代理，但是速度实在是慢，最近发现goagent是可以在代理上网的环境下FQ的。
+
+在goagent/local/proxy.ini里，找到[proxy]，然后将enable的值改为1，并设置好代理上网的ip和端口即可。

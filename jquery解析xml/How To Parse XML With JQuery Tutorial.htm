@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+
+<title>How To Parse XML With JQuery Tutorial</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type='text/javascript' src='http://webhole.net/wp-includes/js/comment-reply.min.js?ver=3.5'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://webtutsdepot.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://webhole.net/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='How To Read JSON Using JQuery' href='http://webtutsdepot.com/2009/11/28/how-to-read-json-with-javascript/' />
+<link rel='next' title='Facebook Connect Tutorial: How to make a sign up form' href='http://webtutsdepot.com/2009/12/19/facebook-api-tutorial-with-php/' />
+<link rel='canonical' href='http://webtutsdepot.com/2009/12/16/how-to-read-xml-with-javascript/' />
+<link rel='shortlink' href='http://webtutsdepot.com/?p=1178' />
+<link rel="shortcut icon" href="http://media.webhole.net/favicon.ico"> 
+<meta name="google-site-verification" content="57M6wvhmlaOIdGR6hOSFSs9bWEi4RDEhZSnOwwTAy00" />
+<meta name="msvalidate.01" content="15918B50B901900FE4E7CA6A559AD241" />
+
+
+<link rel="canonical" href="http://webtutsdepot.com/2009/12/16/how-to-read-xml-with-javascript/" />
+<meta name="description" content="In this post you will learn how to read xml with javascript. Since we are going to be using jquery, it&#8217;s more how to read an xml file with jquery." />
+<meta name="keywords" content="xml, javascript, jquery, xml file, ajax xml" />
+
+<link rel="stylesheet" href="http://webhole.net/wp-content/themes/thesis_16/style.css?110509-63622" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="http://webhole.net/wp-content/themes/thesis_16/custom/layout.css?010813-224016" type="text/css" media="screen, projection" />
+<!--[if lte IE 7]><link rel="stylesheet" href="http://webhole.net/wp-content/themes/thesis_16/lib/css/ie.css?110509-63634" type="text/css" media="screen, projection" /><![endif]-->
+<link rel="stylesheet" href="http://webhole.net/wp-content/themes/thesis_16/custom/custom.css?010813-225249" type="text/css" media="screen, projection" />
+
+<link rel="alternate" type="application/rss+xml" title="WebDevTutsDepot RSS Feed" href="http://bit.ly/9s8WFj" />
+<link rel="pingback" href="http://webtutsdepot.com/xmlrpc.php" />
+
+<link href="http://static.webhole.net/google-code-prettify/prettify-sunburst.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="http://static.webhole.net/google-code-prettify/prettify.js"></script>
+
+</head>
+
+<body class="custom" onload="prettyPrint()">
+<!-- BuySellAds.com Ad Code -->
+<script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+<!-- End BuySellAds.com Ad Code -->
+
+<div id="container">
+<div id="page">
+<ul class="menu">
+<li class="tab tab-home"><a href="http://webtutsdepot.com">Home</a></li>
+<li class="tab tab-1"><a href="http://webtutsdepot.com/good-web-development-books/" title="Some good books we've read and recommend">Recommended Reading</a></li>
+	<li class="cat-item cat-item-27"><a href="http://webtutsdepot.com/category/apis/" title="View all posts filed under APIs">APIs</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://webtutsdepot.com/category/mobile-development/" title="View all posts filed under Mobile Development">Mobile Development</a>
+</li>
+	<li class="cat-item cat-item-50"><a href="http://webtutsdepot.com/category/python/" title="python tuturials">Python</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://webtutsdepot.com/category/scripts/css/" title="View all posts filed under CSS">CSS</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://webtutsdepot.com/category/scripts/jquery/" title="View all posts filed under JQuery">JQuery</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://webtutsdepot.com/category/scripts/php/" title="View all posts filed under PHP">PHP</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://webtutsdepot.com/category/scripts/ruby/" title="View all posts filed under Ruby">Ruby</a>
+</li>
+<li class="rss"><a href="http://bit.ly/9s8WFj" title="WebDevTutsDepot RSS Feed" rel="nofollow">Subscribe</a></li>
+</ul>
+	<div id="header">
+<!--
+<div id="banner">
+
+<div id="logo">
+<a href="http://webhole.net">
+<img src="https://s3.amazonaws.com/WebTutsDepot/design/v1/images/Logo.png" alt="WebHole.net: News, Reviews and Tutorials For Developers" />
+</a>
+</div>
+<div id="leaderboard">
+
+
+
+</div>
+
+</div>
+-->	</div>
+	<div id="content_box">
+		<div id="content" class="hfeed">
+
+			<div class="post-1178 post type-post status-publish format-standard hentry category-jquery category-xml post_box top" id="post-1178">
+				<div class="headline_area">
+					<h1 class="entry-title">How To Read an XML file With Javascript Using JQuery</h1>
+<p><div class="social-bookmarks-strip">
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style">
+<a class="addthis_button_google_plusone" g:plusone:size="medium" g:plusone:count="false"></a>
+<a class="addthis_button_tweet" tw:count="none"></a>
+<a class="addthis_button_facebook_like" fb:like:layout="standard"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=webhole"></script>
+<!-- AddThis Button END -->
+
+</div>
+</p>				</div>
+				<div class="format_text entry-content">
+<!-- google_ad_section_start --><p>Even though JQuery does not provide a native function to read XML like it does for JSON it is still pretty easy to make your own, and that&#8217;s what we are going to do in this post.</p>
+<p>Before we make this function though, you are going to have to learn how JQuery&#8217;s AJAX method works. In a previous post I showed you <a href=&quot;http://webhole.net/2009/11/06/jquery-tutorial-on-ajax/&quot;>how to make AJAX applications</a> using $.get, $.post and $().load, but to parse XML with javascript we need a function that does much more than what these do, we need $.ajax()</p>
+<h2>jQuery.ajax( options ) explained</h2>
+<p>This function has around 20 options and it would require a post all for itself so am just going to talk about the options we need, which are four, and move on.</p>
+<p>To read an XML file we need to tell the function the location of the file, this is called the &quot;url&quot; in the function. We also need to specify the data type (dataType), in our case the data type is &quot;xml&quot;. The last two options we need are &quot;success&quot; and &quot;error&quot;, and these two options identify the functions we want to call upon success or error of reading the file respectively.</p>
+<p>The XML file I will be using will be called &quot;books.xml&quot;, the function we will use to parse the response will be called &quot;parse&quot; and our error function will be nothing more than an annoying alert function. So our $.ajax function set up will be the following.</p>
+<pre>
+$.ajax({
+    url: 'books.xml', // name of file you want to parse
+    dataType: &quot;xml&quot;, // type of file you are trying to read
+    success: parse, // name of the function to call upon success
+	error: function(){alert(&quot;Error: Something went wrong&quot;);}
+  });
+</pre>
+<h2>The XML File We Want To Read</h2>
+<p>The JQuery function we&#8217;ll be making is specific to the XML file you want to read so we have to see the XML file first. Am going to use the XML file I made up and used in the post <a href=&quot;http://webhole.net/2009/07/26/how-to-parse-xml-with-php-part2-xml-with-atrributes/&quot;>How to parse XML with PHP</a> </p>
+<p>Contents of the XML file:</p>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;library&gt;
+	&lt;book isbn10=&quot;1234567890&quot; isbn13=&quot;1234567890123&quot;&gt;
+		&lt;title&gt;PHP and MySQL&lt;/title&gt;
+		&lt;author fname=&quot;miguel&quot; lname=&quot;alvarez&quot;&gt;Miguel Alvarez&lt;/author&gt;
+		&lt;publisher&gt;WebHole&lt;/publisher&gt;
+		&lt;price&gt;1.99&lt;/price&gt;
+	&lt;/book&gt;
+	&lt;book isbn10=&quot;8957468873&quot; isbn13=&quot;0984837828189&quot;&gt;
+		&lt;title&gt;JAVA 123&lt;/title&gt;
+		&lt;author fname=&quot;william&quot; lname=&quot;vega&quot;&gt;WIlliam Vega&lt;/author&gt;
+		&lt;publisher&gt;WebHole&lt;/publisher&gt;
+		&lt;price&gt;2.99&lt;/price&gt;
+	&lt;/book&gt;
+&lt;/library&gt;
+</pre>
+<p>Take a good look at the file before you move on, notice the attributes specially. What am going to do with javascript is display the ISBN10, Title and Author of each book. Now that you&#8217;ve identified these tags let&#8217;s go back to our JQuery script.
+<h2>The XML-reading Javascript Function</h2>
+<p>It&#8217;s time to make our success function (parse). Our $.ajax set up returns the whole xml file as a document object, this means we can make use of a neat function called &quot;find&quot; that can be used to search documents and we will use this function to find the &quot;books&quot; tag. Once we have identified the tag we can use JQuery&#8217;s $.each function to loop through all the books in our file.</p><p style="float: left;"><div style="text-align:center">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9384671740328366";
+/* 300x250, created 4/8/09 */
+google_ad_slot = "8141740411";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></p></p>
+<p>This is how the parse function looks so far.</p>
+<pre>
+function parse(document){
+  $(document).find(&quot;book&quot;).each(function(){
+     // this is where all the reading and writing will happen
+  });
+}
+</pre>
+<p>In your web page make sure you have a division (div) with an id &quot;content&quot; , this is where we will write our results to.</p>
+<pre>
+&lt;div id=&quot;content&quot;&gt;&lt;/div&gt;
+</pre>
+<p>Inside the $.each loop every time we say $(this) we will be referring to the current book tag, it&#8217;s important that you keep this in mind. So in short, $(this) will represent &lt;book&gt;</p>
+<p>To get the isbn10 attribute, which is an attribute for every book tag we would use the following line.</p>
+<pre>
+$(this).attr('isbn10');
+</pre>
+<p>To get the text inside another tag, in our book tag hierarchy , we have to use find first to find the tag. Let&#8217;s say you want to get the book&#8217;s title, this is what you would use.</p>
+<pre>
+$(this).find('title').text();
+// which represents book->title
+</pre>
+<p>And this is what you would use to get the author.</p>
+<pre>
+$(this).find('author').text();
+</pre>
+<p>Now that you get the concepts let&#8217;s see how our whole scripts looks like, remember that the xml file is in the same folder.  We will be making use of the function &quot;append&quot; to append the next to previous book.</p>
+<pre>
+&lt;div id=&quot;content&quot;&gt;&lt;/div&gt;
+
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; 
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+
+
+function parse(document){
+  $(document).find(&quot;book&quot;).each(function(){
+    $(&quot;#content&quot;).append(
+	'&lt;p&gt;ISBN10: '+$(this).attr('isbn10')+
+	'&lt;br /&gt; Title: '+$(this).find('title').text()+
+	'&lt;br /&gt; Author: '+$(this).find('author').text()+
+	'&lt;/p&gt;'
+	);
+  });
+}
+
+
+
+  $.ajax({
+    url: 'books.xml', // name of file you want to parse
+    dataType: &quot;xml&quot;,
+    success: parse,
+	error: function(){alert(&quot;Error: Something went wrong&quot;);}
+  });
+});
+&lt;/script&gt;
+</pre>
+<p>It&#8217;s important to note that $.ajax performs an HTTP GET request, if you want to make a POST request you can use the option &quot;type&quot; , in any case I would recommend reading the full documentation for this great function which can be found <a href="http://docs.jquery.com/Ajax/jQuery.ajax#options">here</a>.</p>
+<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://webtutsdepot.com/2009/12/16/how-to-read-xml-with-javascript/"
+    dc:identifier="http://webtutsdepot.com/2009/12/16/how-to-read-xml-with-javascript/"
+    dc:title="How To Read an XML file With Javascript Using JQuery"
+    trackback:ping="http://webtutsdepot.com/2009/12/16/how-to-read-xml-with-javascript/trackback/" />
+</rdf:RDF> -->
+<!-- google_ad_section_end -->
+
+<div>
+<center>
+<table border="0">
+	<tr>
+		<td>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9384671740328366";
+/* 300x250, created 4/2/09 */
+google_ad_slot = "9215922312";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+		</td>
+
+	</tr>
+</table>
+</center>
+</div>
+
+<table>
+	<tr>
+		<td>
+			<div class="related-posts">
+			<div class="social-bookmarks-strip">
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style">
+<a class="addthis_button_google_plusone" g:plusone:size="medium" g:plusone:count="false"></a>
+<a class="addthis_button_tweet" tw:count="none"></a>
+<a class="addthis_button_facebook_like" fb:like:layout="standard"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=webhole"></script>
+<!-- AddThis Button END -->
+
+</div>
+<span id="related">Related Articles</span><ul>
+<li><a href='http://webtutsdepot.com/2009/07/25/how-to-parse-xml-with-php-part-one/' rel='bookmark' title='Parse XML With PHP : Read XML File From URL'>Parse XML With PHP : Read XML File From URL</a></li>
+<li><a href='http://webtutsdepot.com/2009/11/17/how-to-load-an-external-javascript-file/' rel='bookmark' title='How to Load A Javascript File After The Page Has Loaded'>How to Load A Javascript File After The Page Has Loaded</a></li>
+<li><a href='http://webtutsdepot.com/2009/12/24/how-to-parse-rss-with-php/' rel='bookmark' title='How To Read an RSS File With PHP'>How To Read an RSS File With PHP</a></li>
+<li><a href='http://webtutsdepot.com/2009/11/28/how-to-read-json-with-javascript/' rel='bookmark' title='How To Read JSON Using JQuery'>How To Read JSON Using JQuery</a></li>
+<li><a href='http://webtutsdepot.com/2009/07/26/how-to-parse-xml-with-php-part2-xml-with-atrributes/' rel='bookmark' title='How To Parse XML With PHP : Get The Atrributes'>How To Parse XML With PHP : Get The Atrributes</a></li>
+<ul>			</div>
+		</td>
+	</tr>
+</table>
+
+				</div>
+			</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://webhole.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=webhole">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		</div>
+
+		<div id="sidebars">
+			<div id="sidebar_1" class="sidebar">
+				<ul class="sidebar_list">
+<li class="widget thesis_widget_search" id="search">
+<h3>Search</h3>
+<form method="get" class="search_form" action="http://webtutsdepot.com/">
+	<p>
+		<input class="text_input" type="text" value="To search, type and hit enter" name="s" id="s" onfocus="if (this.value == 'To search, type and hit enter') {this.value = '';}" onblur="if (this.value == '') {this.value = 'To search, type and hit enter';}" />
+		<input type="hidden" id="searchsubmit" value="Search" />
+	</p>
+</form>
+</li>
+<li class="widget widget_text" id="text-2"><h3>Facebook:</h3>			<div class="textwidget"><div id="fb-root"></div>
+<p><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/WebHole/375126724033" width="300" height="600" show_faces="true" border_color="" stream="false" header="true"></fb:like-box></p>
+</div>
+		</li><li class="widget widget_text" id="text-6">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-9384671740328366";
+/* 300x600 12-12-12 */
+google_ad_slot = "2683794559";
+google_ad_width = 300;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+		</li><li class="widget thesis_widget_subscriptions" id="subscriptions">
+<h3>Subscribe</h3>
+<ul>
+	<li class="sub_rss"><a href="http://bit.ly/9s8WFj">RSS</a></li>
+</ul>
+</li>
+<li class="widget widget_categories" id="categories-4"><h3>Tutorial Categories</h3>		<ul>
+	<li class="cat-item cat-item-42"><a href="http://webtutsdepot.com/category/apache/" title="View all posts filed under Apache">Apache</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://webtutsdepot.com/category/apis/" title="View all posts filed under APIs">APIs</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://webtutsdepot.com/category/browsers/" title="View all posts filed under Browsers">Browsers</a>
+</li>
+	<li class="cat-item cat-item-47"><a href="http://webtutsdepot.com/category/electrical/" title="View all posts filed under Electrical">Electrical</a>
+<ul class='children'>
+	<li class="cat-item cat-item-48"><a href="http://webtutsdepot.com/category/electrical/arduino-electrical/" title="View all posts filed under Arduino">Arduino</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://webtutsdepot.com/category/mobile-development/" title="View all posts filed under Mobile Development">Mobile Development</a>
+<ul class='children'>
+	<li class="cat-item cat-item-37"><a href="http://webtutsdepot.com/category/mobile-development/android/" title="View all posts filed under Android">Android</a>
+</li>
+	<li class="cat-item cat-item-52"><a href="http://webtutsdepot.com/category/mobile-development/corona-sdk/" title="Corona SDK is a game development framework that allows developers to make games for both Android and iOS at the same time. This is set of tutorials to help you get started.">Corona SDK</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://webtutsdepot.com/category/news/" title="General news">News</a>
+</li>
+	<li class="cat-item cat-item-50"><a href="http://webtutsdepot.com/category/python/" title="python tuturials">Python</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://webtutsdepot.com/category/quick-fixes/" title="View all posts filed under Quick Fixes">Quick Fixes</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://webtutsdepot.com/category/reviews/" title="View all posts filed under Reviews">Reviews</a>
+<ul class='children'>
+	<li class="cat-item cat-item-12"><a href="http://webtutsdepot.com/category/reviews/software/" title="View all posts filed under Software">Software</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://webtutsdepot.com/category/scripts/" title="View all posts filed under Scripts">Scripts</a>
+<ul class='children'>
+	<li class="cat-item cat-item-45"><a href="http://webtutsdepot.com/category/scripts/asp/" title="View all posts filed under ASP">ASP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://webtutsdepot.com/category/scripts/css/" title="View all posts filed under CSS">CSS</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://webtutsdepot.com/category/scripts/frameworks/" title="View all posts filed under Frameworks">Frameworks</a>
+</li>
+	<li class="cat-item cat-item-51"><a href="http://webtutsdepot.com/category/scripts/html/" title="View all posts filed under HTML">HTML</a>
+</li>
+	<li class="cat-item cat-item-53"><a href="http://webtutsdepot.com/category/scripts/html5/" title="View all posts filed under HTML5">HTML5</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://webtutsdepot.com/category/scripts/jquery/" title="View all posts filed under JQuery">JQuery</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://webtutsdepot.com/category/scripts/php/" title="View all posts filed under PHP">PHP</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://webtutsdepot.com/category/scripts/ruby/" title="View all posts filed under Ruby">Ruby</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://webtutsdepot.com/category/scripts/xml/" title="View all posts filed under xml">xml</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://webtutsdepot.com/category/tips/" title="View all posts filed under Tips">Tips</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://webtutsdepot.com/category/tools/" title="View all posts filed under Tools">Tools</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://webtutsdepot.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://webtutsdepot.com/category/videos/" title="View all posts filed under Videos">Videos</a>
+</li>
+		</ul>
+</li>				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<p>Get smart with the <a href="http://diythemes.com/thesis/">Thesis WordPress Theme</a> from DIYthemes.</p>
+	</div>
+</div>
+</div>
+<!--[if lte IE 7]>
+<div id="ie_clear"></div>
+<![endif]-->
+<!-- add this -->
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=webhole"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$("pre").addClass("prettyprint");
+});
+</script>
+<!-- add this end -->
+<!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9106251-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
+<!-- Dynamic page generated in 0.470 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2015-03-01 02:55:04 -->

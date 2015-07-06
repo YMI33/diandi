@@ -1,0 +1,48 @@
+/* CSS Document */
+body{ margin:0; padding:0;-webkit-text-size-adjust:none;font-family:"微软雅黑", Verdana, arial, "宋体"; }
+h1,h2,h3,h4,h5{ margin:0; padding:0;}
+dl,dd,dt,ul,li{ list-style-type:none; margin:0; padding:0;_vertical-align:top}
+td, th {display: table-cell;}
+textarea{ color:#444}
+.margintop10{ margin-top:10px;}
+.margintop20{ margin-top:20px;}
+form{ margin:0; padding:0;}
+cite{ font-style:normal}
+a,a:visited{ color:#005800; text-decoration:none}
+a:hover{ color:#ff5800; text-decoration:underline}
+.clear{ clear:both; overflow:hidden; height:0}
+
+.bgNone{ background:none !important}
+.borderNone{ border:none !important}
+.disBlock{ display:block}
+.disNone{ display: none}
+a.red,a.red:visited{ color:#ff0000 !important}
+a.green,a.green:visited{ color:#005800  !important}
+a.orange, a.orange:visited,.orange{ color:#ff6000  !important}
+a.blue, a.blue:visited{ color:#006e8d  !important}
+a.ft12, a.ft12:visited{ font-size:12px  !important}
+a.ft14, a.ft14:visited{ font-size:14px !important}
+a.ft16, a.ft16:visited{ font-size:16px  !important}
+
+
+a.f10, a.ft10:visited{ font-size:10px  !important;color:#005800  !important}
+a.f11, a.ft11:visited{ font-size:11px  !important;color:#ff6000 !important}
+a.f12, a.ft12:visited{ font-size:12px !important;color:#005800  !important}
+a.f13, a.ft13:visited{ font-size:13px  !important;color:#006e8d  !important}
+a.f14, a.ft14:visited{ font-size:14px  !important;color:#005800  !important}
+a.f15, a.ft15:visited{ font-size:15px !important;color:#ff6000 !important}
+a.f16, a.ft16:visited{ font-size:16px  !important;color:#ff0000 !important}
+a.f17, a.ft17:visited{ font-size:17px  !important;color:#006e8d  !important}
+a.f18, a.ft18:visited{ font-size:18px !important;color:#ff6000 !important}
+a.f19, a.ft19:visited{ font-size:19px  !important;color:#ff0000 !important}
+a.f20, a.ft20:visited{ font-size:20px  !important;color:#ff0000 !important}
+a.f21, a.ft21:visited{ font-size:21px !important;color:#006e8d  !important}
+a.f22, a.ft22:visited{ font-size:22px  !important;color:#005800  !important}
+a.f23, a.ft23:visited{ font-size:23px !important;color:#ff6000 !important}
+a.f24, a.ft24:visited{ font-size:24px !important;color:#ff0000 !important}
+
+
+.ftbold{ font-weight:bold} 
+
+.line24{ line-height:24px;}
+.font12{ font-size:12px;}

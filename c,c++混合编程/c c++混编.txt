@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/3789340/combining-c-and-c-how-does-ifdef-cplusplus-work
+
+http://yosefk.com/c++fqa/mixing.html
+
+C++支持函数重载，而C不支持，两者的编译规则也不一样。函数被C++编译后在符号库中的名字与C语言的不同。例如，假设某个函数的原型为： void foo( int x, int y ); 该函数被C编译器编译后在符号库中的名字可能为_foo，而C++编译器则会产生像_foo_int_int之类的名字（不同的编译器可能生成的名字不 同，但是都采用了相同的机制，生成的新名字称为“mangled name”）。_foo_int_int这样的名字包含了函数名、函数参数数量及类型信息，C++就是靠这种机制来实现函数重载的。下面以例子说明，如何 在C++中使用C的函数

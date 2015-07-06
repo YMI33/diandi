@@ -1,0 +1,244 @@
+NL80211使用笔记
+Posted on 2012 年 04 月 18 日 by sqbing
+最近在做一个项目，需要通过NL80211和驱动打交道。
+
+以前没用过，走了不少弯路，因此做个笔记，方便自己，当然如果能够帮助别人更好。
+
+无线网卡驱动主要有两个“标准”（这样的形容并不准确！）：
+
+WEXT（Wireless Extension）：使用WEXT的工具通过ioctl和驱动通信，典型工具ifconfig等;
+NL80211（Netlink 80211）：使用NL80211的工具通过一个特殊的socket和驱动打通信，典型工具包括IW、iwconfig等。
+这里的NL80211仅仅是netlink工具在无线驱动方面的一个应用，其实它的应用很广泛，也很基础。Netlink提供了一种通信方式，通信双方可以是用户态或内核态，关于这方面的介绍，直接看libnl（netlink的一个实现）的网站（http://www.infradead.org/~tgr/libnl/），讲解的很详细。目前使用netlink主要是通过libnl来做，当然也可以自己拼凑和解析消息。
+
+这里提供一个我编译的libnl动态库，使用的是Google提供的ANDROID-NDK-R7，理论上可用于android 3.2以上的系统。http://115.com/file/e789tu6y#libnltest.so
+
+下面是我使用的一些代码，是安卓的JNI接口，用于在连接上AP后获取信号强度。主要参考了iw和wpa_supplicant的相关实现。
+
+int GetSignalPower(const unsigned char *addr, char *signal)    // 消息函数
+{
+struct nl_sock *l_nl_handle = NULL;
+struct nl_cache *l_nl_cache = NULL;
+struct genl_family *l_nl_family = NULL;
+struct nl_cb *l_nl_cb = NULL;
+int ret = 0;
+int err = 1;
+struct nl_msg *l_msg = NULL;
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Enter GetSignalPower”);
+if(signal == NULL)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to get signal power, bad params.”);
+return -1;
+}
+*signal = 0;
+//char signal = 0;
+//unsigned char addr[6] = {0×00, 0x1D, 0x0F, 0x3F, 0×43, 0x3E};
+l_nl_cb = nl_cb_alloc(NL_CB_DEFAULT);    // 创建回调
+if(l_nl_cb == NULL)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to alloc cb.”);
+printf(“Failed to alloc cb.\n”);
+ret = -1;
+goto error_catch;
+}
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Succeed to alloc callback.”);
+l_nl_handle = nl_socket_alloc_cb(l_nl_cb);    // 根据回调创建netlink socket
+if(l_nl_handle == NULL)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to alloc a netlink socket.”);
+printf(“Failed to alloc a netlink socket.\n”);
+ret = -1;
+goto error_catch;
+}
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Succeed to alloc socket.”);
+
+ret = genl_connect(l_nl_handle);    // 连接内核
+if(ret != 0)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to connect to generic socket, error code is %d.\n”, ret);
+printf(“Failed to connect to generic socket, error code is %d.\n”, ret);
+goto error_catch;
+}
+
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Succeed to connect generic socket.”);
+
+ret = genl_ctrl_alloc_cache(l_nl_handle, &l_nl_cache);    // 创建cache，我也不清楚这个操作必要性
+if(ret < 0)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to alloc cache.”);
+printf(“Failed to alloc cache.\n”);
+goto error_catch;
+}
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Succeed to genl_ctrl_alloc_cache.”);
+l_nl_family = genl_ctrl_search_by_name(l_nl_cache, “nl80211″);    // 查找NL80211簇
+if (l_nl_family == NULL)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “nl80211: ‘nl80211′ generic netlink not found.”);
+printf(“nl80211: ‘nl80211′ generic netlink not found.\n”);
+ret = -1;
+goto error_catch;
+}
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Succeed to genl_ctrl_search_by_name.”);
+
+l_msg = nlmsg_alloc();    // 创建netlink message
+if (l_msg == NULL)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to alloc message.”);
+printf(“Failed to alloc message.\n”);
+ret = -1;
+goto error_catch;
+}
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Succeed to nlmsg_alloc.”);
+genlmsg_put(l_msg, 0, 0, genl_family_get_id(l_nl_family), 0,
+0, NL80211_CMD_GET_STATION, 0);    // 填充消息，这里的“NL80211_CMD_GET_STATION”是一条NL80211的命令，具体作用参考nl80211.h
+nla_put(l_msg, NL80211_ATTR_MAC, ETH_ALEN, addr);    // 填充消息，这里的MAC地址是AP的MAC
+nla_put_u32(l_msg, NL80211_ATTR_IFINDEX, if_nametoindex(“wlan0″));    // 填充消息，很明显，这里指定了要查询的网卡
+
+nl_cb_set(l_nl_cb, NL_CB_FINISH, NL_CB_CUSTOM, finish_handler, &err);    // 设置回调，这里的“NL_CB_FINISH”等是libnl定义的一些回调类型，Google一下就知道用处和用法
+nl_cb_set(l_nl_cb, NL_CB_ACK, NL_CB_CUSTOM, ack_handler, &err);
+nl_cb_err(l_nl_cb, NL_CB_CUSTOM, error_handler, &err);
+nl_cb_set(l_nl_cb, NL_CB_VALID, NL_CB_CUSTOM, get_sta_handler, signal);
+
+ret = nl_send_auto_complete(l_nl_handle, l_msg);    // 发送消息
+if (ret < 0)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to send msg.”);
+printf(“Failed to send msg.\n”);
+ret = -1;
+goto error_catch;
+}
+
+do{
+nl_recvmsgs(l_nl_handle, l_nl_cb);    // 注意！这里要重复读取直到我们的回调函数被调用
+sleep(1);
+}while(err>0);
+
+error_catch:    // 一些释放工作
+if(l_nl_family != NULL)
+{
+genl_family_put(l_nl_family);
+l_nl_family = NULL;
+}
+if(l_nl_cache != NULL)
+{
+nl_cache_free(l_nl_cache);
+l_nl_cache = NULL;
+}
+if(l_nl_handle != NULL)
+{
+nl_socket_free(l_nl_handle);
+l_nl_handle = NULL;
+}
+if(l_nl_cb != NULL)
+{
+nl_cb_put(l_nl_cb);
+l_nl_cb = NULL;
+}
+if(l_msg != NULL)
+{
+nlmsg_free(l_msg);
+l_msg = NULL;
+}
+
+__android_log_print(ANDROID_LOG_DEBUG, NL80211_LOG, “Exit GetSignalPower”);
+
+if(*signal == 0)
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “signal 0.”);
+return -1;
+}
+else
+{
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “signal %d.”, *signal);
+return 0;
+}
+}
+
+static int error_handler(struct sockaddr_nl *nla, struct nlmsgerr *err,
+void *arg)    // 错误回调函数
+{
+int *ret = (int *)arg;
+*ret = err->error;
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “nl80211 Error handle!”);
+printf(“Error handle\n”);
+return NL_SKIP;
+}
+
+static int finish_handler(struct nl_msg *msg, void *arg)    // 结束回调函数
+{
+int *ret = (int *)arg;
+*ret = 0;
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “nl80211 Finish handle!”);
+printf(“Finish!\n”);
+return NL_SKIP;
+}
+
+static int ack_handler(struct nl_msg *msg, void *arg)    // 确认回调函数
+{
+int *ret = (int *)arg;
+*ret = 0;
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “nl80211 ACK handle!”);
+printf(“ACK!\n”);
+return NL_STOP;
+}
+
+static int get_sta_handler(struct nl_msg *msg, void *arg)    // 这里是我们真正读取消息的地方！！
+{
+struct nlattr *tb[NL80211_ATTR_MAX + 1];
+struct nlattr *tb_nested[NL80211_STA_INFO_MAX + 1];
+struct genlmsghdr *gnlh = (struct genlmsghdr *)nlmsg_data(nlmsg_hdr(msg));
+struct _ap_status *data = (struct _ap_status *)arg;
+char signal;
+
+if( 0 != nla_parse(tb, NL80211_ATTR_MAX, genlmsg_attrdata(gnlh, 0),
+genlmsg_attrlen(gnlh, 0), NULL))    // 解析消息，第一次解析，这里的“NL80211_ATTR_MAX”等的用处和用法参考nl80211.h
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to parse nl attrs.!”);
+printf(“Failed to parse nl attrs.\n”);
+return NL_SKIP;
+}
+else
+{
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “Succeeded to parse nl attrs!”);
+printf(“Succeeded to parse nl attrs.\n”);
+}
+
+if (tb[NL80211_ATTR_STA_INFO])
+{
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “We have NL80211_ATTR_STA_INFO!”);
+printf(“We have NL80211_ATTR_STA_INFO\n”);
+if(nla_parse_nested(tb_nested, NL80211_STA_INFO_MAX, tb[NL80211_ATTR_STA_INFO],  NULL) != 0)    // 解析消息，第二次解析
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “Failed to parse nl attrs nested.”);
+
+printf(“Failed to parse nl attrs nested.\n”);
+return NL_SKIP;
+}
+else
+{
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “Succeeded to parse attrs nested.”);
+printf(“Succeeded to parse attrs nested.\n”);
+}
+if(tb_nested[NL80211_STA_INFO_SIGNAL])
+{
+signal = nla_get_u8(tb_nested[NL80211_STA_INFO_SIGNAL]);
+if(arg != NULL)
+{
+(*(char *)arg) = signal;
+}
+__android_log_print(ANDROID_LOG_INFO, NL80211_LOG, “ap signal is %d\n”, *(char *)arg);
+printf(“ap signal is %d\n”, signal);
+}
+//        if(tb_nested[NL80211_STA_INFO_SIGNAL_AVG])
+//        {
+//            signal = nla_get_u8(tb_nested[NL80211_STA_INFO_SIGNAL_AVG]);
+//            printf(“ap avg signal is %d\n”, signal);
+//        }
+}
+else
+{
+__android_log_print(ANDROID_LOG_ERROR, NL80211_LOG, “No NL80211_ATTR_STA_INFO.”);
+printf(“No NL80211_ATTR_STA_INFO\n”);
+}
+
+return NL_SKIP;
+}

@@ -1,0 +1,61 @@
+pidgin-2.7.9 编译问题
+
+ 
+1.configure: error: The intltool scripts were not found. Please install intltool.
+intltool
+
+2.You must have GLib 2.12.0 or newer development headers installed to build.
+libglib2.0-dev
+
+3.You must have GTK+ 2.10.0 or newer development headers installed to compile Pidgin
+libgtk2.0-dev
+
+4.XScreenSaver extension development headers not found
+libxss-dev
+
+5.Startup notification development headers not found
+libstartup-notification0-dev
+
+6.GtkSpell development headers not found
+libgtkspell-dev
+
+7.You must have libxml2 >= 2.6.0 development headers installed to build
+libxml2-dev
+
+8.GStreamer development headers not found
+libgstreamer0.10-dev
+
+9.Install the necessary gstreamer and farsight packages first
+libgstfarsight0.10-dev
+libgstreamer-plugins-base0.10-dev
+
+10.GNU Libidn development headers not found
+libidn11-dev
+
+11.Meanwhile development headers not found
+libmeanwhile-dev
+
+12.avahi development headers not found
+libavahi-client-dev
+libavahi-glib-dev
+
+13.D-Bus development headers not found
+libdbus-1-dev
+libdbus-glib-1-dev
+
+14.NetworkManager development headers not found
+network-manager-dev
+
+15.Perl development headers not found
+libperl-dev
+
+16.Neither GnuTLS or NSS SSL development headers found
+libgnutls-dev
+
+17.Tcl development headers not found
+tcl8.5-dev
+
+18.Tk development headers not found
+tk8.4-d
+
+19.卸载系统的"network-manager"，否则登录不上MSN

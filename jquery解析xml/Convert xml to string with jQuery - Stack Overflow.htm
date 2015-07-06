@@ -1,0 +1,2593 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    
+    <title>Convert xml to string with jQuery - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico?v=00a326f96f68">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Convert xml to string with jQuery" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I&#39;m loading an xml file with jQuery ajax loader, and need to convert it to a string so that I can save it out again using PHP post variables.  What is the best way to do this?
+
+&amp;lt;script " />
+    <meta property="og:url" content="http://stackoverflow.com/questions/6507293/convert-xml-to-string-with-jquery"/>
+    <link rel="canonical" href="http://stackoverflow.com/questions/6507293/convert-xml-to-string-with-jquery" />
+
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sstatic.net/Js/stub.en.js?v=f79ea677275d"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=21e2177a80d8">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Convert xml to string with jQuery&#39;" href="/feeds/question/6507293">
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/6507293/convert-xml-to-string-with-jquery" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/6507293/convert-xml-to-string-with-jquery" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/6507293/convert-xml-to-string-with-jquery">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:8,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:6507293});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '6507293');
+            
+                    });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1425204996,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"c20343434a290522e3f02646758bd1a2","isAnonymous":true,"ab":{"next_answer_hook":{"v":"a","g":2}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"87f20631f47a","js/moderator.en.js":"3cdb19b2c791","js/full-anon.en.js":"c5525e7a9906","js/full.en.js":"3cc5fd385969","js/wmd.en.js":"282041077a84","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"d96cd4adc9de","js/help.en.js":"b5f40fd81205","js/tageditor.en.js":"3a2a3f54b3e3","js/tageditornew.en.js":"cc317fe6c48f","js/inline-tag-editing.en.js":"48f13b102998","js/revisions.en.js":"8e050c5bb5cd","js/review.en.js":"f1c330c67f2e","js/tagsuggestions.en.js":"44b9e82a8064","js/post-validation.en.js":"6c43d75a921c","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"b8dadb80a850","js/keyboard-shortcuts.en.js":"136b80fdf69d","js/external-editor.en.js":"333f2972598f","js/external-editor.en.js":"333f2972598f","js/snippet-javascript.en.js":"410aced69c52","js/snippet-javascript-codemirror.en.js":"acd1d40324cf"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="//stackoverflow.com">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="//stackoverflow.com"
+       class="current-site-link site-link js-gps-track"
+       data-id="1"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com"
+       class="site-link js-gps-track"
+       data-id="552"
+       data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track"
+                       href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider"
+                            data-gps-track="site_switcher.click({ item_type:9 })"
+>
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f6507293%2fconvert-xml-to-string-with-jquery" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f6507293%2fconvert-xml-to-string-with-jquery" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="//stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="//stackexchange.com"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 137 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+                            <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f6507293%2fconvert-xml-to-string-with-jquery" class="login-link">sign up</a>
+                            <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f6507293%2fconvert-xml-to-string-with-jquery" class="login-link">log in</a>
+                            <a href="/tour">tour</a>
+
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="//meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="//careers.stackoverflow.com?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+	<link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="/questions/6507293/convert-xml-to-string-with-jquery" class="question-hyperlink">Convert xml to string with jQuery</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="6507293"  id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk369192720",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk369192720">
+            </div>    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="6507293">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>6</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>I'm loading an xml file with jQuery ajax loader, and need to convert it to a string so that I can save it out again using PHP post variables.  What is the best way to do this?</p>
+
+<pre><code>&lt;script type='text/javascript'&gt;
+
+jQuery.ajax({
+    type: "GET",
+    url: "data.xml",
+    dataType: "xml",
+    success: parseXML
+    });
+
+
+function parseXML(xml) {
+
+    var xml_string = jQuery(xml).text();  // (This doesn't work- returns tagless, unformatted text) 
+    alert(xml_string);
+
+}
+
+&lt;/script&gt;
+</code></pre>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/jquery" class="post-tag" title="show questions tagged 'jquery'" rel="tag">jquery</a> <a href="/questions/tagged/xml" class="post-tag" title="show questions tagged 'xml'" rel="tag">xml</a> <a href="/questions/tagged/xml-serialization" class="post-tag" title="show questions tagged 'xml-serialization'" rel="tag">xml-serialization</a> <a href="/questions/tagged/tostring" class="post-tag" title="show questions tagged 'tostring'" rel="tag">tostring</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/q/6507293" title="short permalink to this question" class="short-link" id="link-post-6507293">share</a><span class="lsep">|</span><a href="/posts/6507293/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2011-06-28 13:34:45Z" class="relativetime">Jun 28 '11 at 13:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/165673/yarin"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e43e620f96a26bf6ee7fa70750c0302a?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/165673/yarin">Yarin</a><br>
+        <span class="reputation-score" title="reputation score 24839" dir="ltr">24.8k</span><span title="55 gold badges"><span class="badge1"></span><span class="badgecount">55</span></span><span title="192 silver badges"><span class="badge2"></span><span class="badgecount">192</span></span><span title="298 bronze badges"><span class="badge3"></span><span class="badgecount">298</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-6507293" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="3"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-7656005" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">What about <code>jQuery(xml).html()</code>? Or just <code>xml</code>?</span>
+                &ndash;&nbsp;
+                    <a href="/users/108796/blindy"
+                       title="28753 reputation"
+                       class="comment-user">Blindy</a>
+                <span class="comment-date" dir="ltr"><span title="2011-06-28 13:41:08Z" class="relativetime-clean">Jun 28 '11 at 13:41</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-7656028" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Are you looking to extract specific strings from the xml, or simply get the xml string that is returned from the AJAX request?</span>
+                &ndash;&nbsp;
+                    <a href="/users/428972/ryan-gross"
+                       title="4053 reputation"
+                       class="comment-user">Ryan Gross</a>
+                <span class="comment-date" dir="ltr"><span title="2011-06-28 13:42:06Z" class="relativetime-clean">Jun 28 '11 at 13:42</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-7656123" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Ryan- the former- although I will be saving off the entire xml doc, I need to perform manipulations on it first, so I need to bring it in as xml</span>
+                &ndash;&nbsp;
+                    <a href="/users/165673/yarin"
+                       title="24839 reputation"
+                       class="comment-user owner">Yarin</a>
+                <span class="comment-date" dir="ltr"><span title="2011-06-28 13:46:40Z" class="relativetime-clean">Jun 28 '11 at 13:46</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-7656177" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Blindy- You can&#39;t use .html() on xml, and just xml returns = [object Document]</span>
+                &ndash;&nbsp;
+                    <a href="/users/165673/yarin"
+                       title="24839 reputation"
+                       class="comment-user owner">Yarin</a>
+                <span class="comment-date" dir="ltr"><span title="2011-06-28 13:49:48Z" class="relativetime-clean">Jun 28 '11 at 13:49</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-7656834" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If you don&#39;t need to parse the XML and just get the text, change the dataType to &#39;text&#39;</span>
+                &ndash;&nbsp;
+                    <a href="/users/398939/ahmed-nuaman"
+                       title="3118 reputation"
+                       class="comment-user">Ahmed Nuaman</a>
+                <span class="comment-date" dir="ltr"><span title="2011-06-28 14:22:05Z" class="relativetime-clean">Jun 28 '11 at 14:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-6507293" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href=# onclick="">show <b>3</b> more comments</a>
+            </div>
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								9 Answers
+                                <span style="display:none;" itemprop="answerCount">9</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="/questions/6507293/convert-xml-to-string-with-jquery?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/6507293/convert-xml-to-string-with-jquery?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="/questions/6507293/convert-xml-to-string-with-jquery?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="6507766"></a>
+<div id="answer-6507766" class="answer accepted-answer" data-answerid="6507766"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="6507766">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">32</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Here it is:</p>
+
+<pre><code>&lt;script type='text/javascript'&gt;
+
+function xmlToString(xmlData) { 
+
+    var xmlString;
+    //IE
+    if (window.ActiveXObject){
+        xmlString = xmlData.xml;
+    }
+    // code for Mozilla, Firefox, Opera, etc.
+    else{
+        xmlString = (new XMLSerializer()).serializeToString(xmlData);
+    }
+    return xmlString;
+}   
+
+&lt;/script&gt;
+</code></pre>
+
+<p>Taken from <a href="http://www.mail-archive.com/jquery-en@googlegroups.com/msg27059.html">here</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/6507766" title="short permalink to this answer" class="short-link" id="link-post-6507766">share</a><span class="lsep">|</span><a href="/posts/6507766/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature owner">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-06-28 14:07:47Z" class="relativetime">Jun 28 '11 at 14:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/165673/yarin"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/e43e620f96a26bf6ee7fa70750c0302a?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/165673/yarin">Yarin</a><br>
+        <span class="reputation-score" title="reputation score 24839" dir="ltr">24.8k</span><span title="55 gold badges"><span class="badge1"></span><span class="badgecount">55</span></span><span title="192 silver badges"><span class="badge2"></span><span class="badgecount">192</span></span><span title="298 bronze badges"><span class="badge3"></span><span class="badgecount">298</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-6507766" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-11283770" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Firefox shows &quot;Security error&quot; in XMLSerializer() line.</span>
+                &ndash;&nbsp;
+                    <a href="/users/575657/marines"
+                       title="1579 reputation"
+                       class="comment-user">marines</a>
+                <span class="comment-date" dir="ltr"><span title="2012-01-25 12:29:52Z" class="relativetime-clean">Jan 25 '12 at 12:29</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-13745716" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I noticed I got a security error in Firefox when passing a jQuery object to this function, but it seemed to work fine when passing in an XML object.</span>
+                &ndash;&nbsp;
+                    <a href="/users/101258/justin-ethier"
+                       title="62276 reputation"
+                       class="comment-user">Justin Ethier</a>
+                <span class="comment-date" dir="ltr"><span title="2012-05-15 21:22:28Z" class="relativetime-clean">May 15 '12 at 21:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-17782840" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>NS_ERROR_XPC_BAD_CONVERT_JS: Could not convert JavaScript argument arg 0 [nsIDOMSerializer.serializeToString]</code> error on firefox, does not work on IE either</span>
+                &ndash;&nbsp;
+                    <a href="/users/977466/spacedust"
+                       title="3307 reputation"
+                       class="comment-user">Spacedust_</a>
+                <span class="comment-date" dir="ltr"><span title="2012-10-26 13:17:42Z" class="relativetime-clean">Oct 26 '12 at 13:17</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-28263478" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">does not work in chrome....!!!!!!!</span>
+                &ndash;&nbsp;
+                    <a href="/users/970785/asha-koshti"
+                       title="456 reputation"
+                       class="comment-user">Asha Koshti</a>
+                <span class="comment-date" dir="ltr"><span title="2013-10-01 11:13:31Z" class="relativetime-clean">Oct 1 '13 at 11:13</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-6507766" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk655970846",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk655970846">
+            </div>
+  
+<a name="15885505"></a>
+<div id="answer-15885505" class="answer" data-answerid="15885505"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="15885505">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">12</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>this works around the .innerHtml problem.</p>
+
+<pre><code>$('&lt;div&gt;').append(xmlObj).html()
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/15885505" title="short permalink to this answer" class="short-link" id="link-post-15885505">share</a><span class="lsep">|</span><a href="/posts/15885505/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-04-08 17:43:37Z" class="relativetime">Apr 8 '13 at 17:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2127907/gojko-adzic"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/b4dc322d8c136d4a8f85a0f89ccf2bad?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2127907/gojko-adzic">Gojko Adzic</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">366</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15885505" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-23483018" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This simple this helped me while working in phantomjs.</span>
+                &ndash;&nbsp;
+                    <a href="/users/669001/sudipto"
+                       title="1908 reputation"
+                       class="comment-user">sudipto</a>
+                <span class="comment-date" dir="ltr"><span title="2013-05-05 12:55:27Z" class="relativetime-clean">May 5 '13 at 12:55</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-25137800" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This is good, but it kills the casing on the tags.  (Particularly noticeable on SOAP requests.)  &lt;LogOnResponse&gt; because &lt;logonresponse&gt;</span>
+                &ndash;&nbsp;
+                    <a href="/users/425809/richard"
+                       title="2526 reputation"
+                       class="comment-user">Richard</a>
+                <span class="comment-date" dir="ltr"><span title="2013-06-26 19:50:56Z" class="relativetime-clean">Jun 26 '13 at 19:50</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31901375" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">If you have only lowercase tags in your DOM tree, this one is better than the Serializer approach as the Serializer may modify the tags with its own namespace at will. In my particular case the Serializer approach did not return the correct xml string but the $.html approach did.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1534184/michael-gollmick"
+                       title="111 reputation"
+                       class="comment-user">Michael Gollmick</a>
+                <span class="comment-date" dir="ltr"><span title="2014-01-17 14:04:33Z" class="relativetime-clean">Jan 17 '14 at 14:04</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-34556942" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Michael can u please explain the $.html struggling a lot with case sensitive</span>
+                &ndash;&nbsp;
+                    <a href="/users/1093576/laxminarayana-challagonda"
+                       title="116 reputation"
+                       class="comment-user">Laxminarayana Challagonda</a>
+                <span class="comment-date" dir="ltr"><span title="2014-03-27 09:32:11Z" class="relativetime-clean">Mar 27 '14 at 9:32</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-15885505" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="11260653"></a>
+<div id="answer-11260653" class="answer" data-answerid="11260653"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="11260653">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Had the same problem - xmlString was returning an empty string.
+Adding [0] to jQuery selector helped to address XML-type object:</p>
+
+<p>Your Javascript:</p>
+
+<pre><code>&lt;script type='text/javascript'&gt;
+function xmlToString(xmlData) 
+{
+    var xmlString;
+    //IE
+    if (window.ActiveXObject){
+        xmlString = xmlData.xml;
+    }
+    // code for Mozilla, Firefox, Opera, etc.
+    else{
+        xmlString = (new XMLSerializer()).serializeToString(xmlData[0]);
+    }
+    return xmlString;
+}   
+&lt;/script&gt;
+</code></pre>
+
+<p>jQuery:</p>
+
+<pre><code>&lt;script&gt;
+$(function(){ 
+  xmlData = "&lt;tag&gt;just a sample here&lt;/tag&gt;"; 
+  xmlData= $(xmlData); 
+  if (window.ActiveXObject){ 
+    var xmlString = xmlData.xml; 
+  } else {
+    var oSerializer = new XMLSerializer(); 
+    var xmlString = oSerializer.serializeToString(xmlData[0]);
+  } 
+  console.log(xmlString); 
+})
+&lt;/script&gt;
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/11260653" title="short permalink to this answer" class="short-link" id="link-post-11260653">share</a><span class="lsep">|</span><a href="/posts/11260653/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-06-29 11:05:26Z" class="relativetime">Jun 29 '12 at 11:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1491006/andy-widdess"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/bfd9232ac3def53c8cbac9a9f00bfeae?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1491006/andy-widdess">Andy Widdess</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">31</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11260653" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-44782159" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Actually, to properly parse XML with jQuery you want to use <code>jQuery.parseXML(xml)</code>.</span>
+                &ndash;&nbsp;
+                    <a href="/users/212378/alexis-wilke"
+                       title="4880 reputation"
+                       class="comment-user">Alexis Wilke</a>
+                <span class="comment-date" dir="ltr"><span title="2015-01-29 07:01:49Z" class="relativetime-clean">Jan 29 at 7:01</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-11260653" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="13269484"></a>
+<div id="answer-13269484" class="answer" data-answerid="13269484"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="13269484">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Spent much time for this problem.
+With IE 9 above functions should work in another way.
+Because in IE9 <code>xmlData[0].xml</code> doesn't work (IE still likes jokes). And we must use <code>XMLSerializer</code> with IE v9 and higher (?!)</p>
+
+<pre><code>function xmlToString(xmlData) { // this functions waits jQuery XML 
+
+    var xmlString = undefined;
+
+    if (window.ActiveXObject){
+        xmlString = xmlData[0].xml;
+    }
+
+    if (xmlString === undefined)
+    {
+        var oSerializer = new XMLSerializer();
+        xmlString = oSerializer.serializeToString(xmlData[0]);
+    }
+
+    return xmlString;
+}
+</code></pre>
+
+<p>And example of using it with jQuery 1.8.2 (1.6.4 works too).</p>
+
+<pre><code>   $.ajax(
+        {
+            type: type,
+            url: url,
+            data: values,
+            dataType: 'html', //get response in plain text
+            success: function(response) {    
+
+                //transform it to jQuery XML DOM
+                var xmlDoc = jQuery.parseXML(response);
+                var xml = $(xmlDoc);
+
+                //do some search and so on
+                var divtag = xml.find('div[id="content"]');
+                var divtxt = xmlToString(divtag);
+
+                //consume it
+                alert(divtxt);
+                $('#main-content').html(divtxt);
+
+            }
+        });
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/13269484" title="short permalink to this answer" class="short-link" id="link-post-13269484">share</a><span class="lsep">|</span><a href="/posts/13269484/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/13269484/revisions" title="show all edits to this post">edited <span title="2015-01-29 07:03:35Z" class="relativetime">Jan 29 at 7:03</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/212378/alexis-wilke"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/185aae2d842026d2eefa7528b00b394b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/212378/alexis-wilke">Alexis Wilke</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,880</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="34 bronze badges"><span class="badge3"></span><span class="badgecount">34</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-11-07 12:07:49Z" class="relativetime">Nov 7 '12 at 12:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1622427/michael-t"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/fee740fe494c6b73c456ee9a82d3240f?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1622427/michael-t">Michael T</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">438</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-13269484" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-37754823" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">good man! this code <code>var Serializer = new XMLSerializer(); xmlString = oSerializer.serializeToString(xmlData[0]);</code> parses XML to string in IE9</span>
+                &ndash;&nbsp;
+                    <a href="/users/2059998/juancho"
+                       title="80 reputation"
+                       class="comment-user">Juancho</a>
+                <span class="comment-date" dir="ltr"><span title="2014-06-25 10:55:57Z" class="relativetime-clean">Jun 25 '14 at 10:55</span></span>
+                    <span class="edited-yes" title="this comment was edited 4 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-13269484" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="16928607"></a>
+<div id="answer-16928607" class="answer" data-answerid="16928607"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="16928607">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This worked for me (credit: <a href="http://www.ibm.com/developerworks/xml/tutorials/x-processxmljquerytut/section3.html" rel="nofollow">http://www.ibm.com/developerworks/xml/tutorials/x-processxmljquerytut/section3.html</a>):</p>
+
+<pre><code> function getXmlAsString(xmlDom){
+      return (typeof XMLSerializer!=="undefined") ? 
+           (new window.XMLSerializer()).serializeToString(xmlDom) : 
+           xmlDom.xml;
+ }          
+</code></pre>
+
+<p>Here's an example that retrieves information about a column from a SharePoint list:</p>
+
+<pre><code>var soapEnv =
+    "&lt;soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'&gt; \
+        &lt;soapenv:Body&gt; \
+             &lt;GetList xmlns='http://schemas.microsoft.com/sharepoint/soap/'&gt; \
+                &lt;rowLimit&gt;0&lt;/rowLimit&gt; \
+                &lt;listName&gt;Announcements&lt;/listName&gt; \
+            &lt;/GetList&gt; \
+        &lt;/soapenv:Body&gt; \
+    &lt;/soapenv:Envelope&gt;";
+
+
+jQuery.support.cors = true; 
+$.ajax({
+    url: "http://sharepoint/_vti_bin/lists.asmx",
+    type: "POST",
+    dataType: "xml",
+    data: soapEnv,
+    contentType: "text/xml; charset=\"utf-8\"",
+    complete: function(xData){
+        var xmlDoc = $.parseXML(xData.responseText), $xml = $(xmlDoc)           
+        $Fields = $xml.find("Field");
+        $field = $Fields.filter("Field[Name='Title']")[0];
+
+        //Show the xml
+        alert(getXmlAsString( xmlDoc ));
+        alert(getXmlAsString( $field ));
+    }
+});
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/16928607" title="short permalink to this answer" class="short-link" id="link-post-16928607">share</a><span class="lsep">|</span><a href="/posts/16928607/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-06-04 22:31:58Z" class="relativetime">Jun 4 '13 at 22:31</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/473886/ben"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/4e4c4cedd04a4bbbce5073c3d7c4a704?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/473886/ben">Ben</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">59</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16928607" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-16928607" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="15062977"></a>
+<div id="answer-15062977" class="answer" data-answerid="15062977"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="15062977">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You can use following function:</p>
+
+<pre><code>function getXmlString($xmlObj)
+{   
+    var xmlString="";
+    $xmlObj.children().each(function(){
+        xmlString+="&lt;"+this.nodeName+"&gt;";
+        if($(this).children().length&gt;0){
+            xmlString+=getXmlString($(this));
+        }
+        else
+            xmlString+=$(this).text();
+        xmlString+="&lt;/"+this.nodeName+"&gt;";
+    });
+    return xmlString;
+}
+</code></pre>
+
+<p>Pass jquery xml object to this function</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/15062977" title="short permalink to this answer" class="short-link" id="link-post-15062977">share</a><span class="lsep">|</span><a href="/posts/15062977/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-02-25 08:38:33Z" class="relativetime">Feb 25 '13 at 8:38</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/1808996/sujan-shrestha"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/ac473723fd8c4a7aab295ab348290a9b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/1808996/sujan-shrestha">Sujan Shrestha</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">131</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15062977" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-25937173" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">this will have terrible performance with large trees. If you insist on serializing yourself the you should push the text fragments into an array and only <code>.join(&#39;&#39;)</code> once at the end.</span>
+                &ndash;&nbsp;
+                    <a href="/users/25412/epeleg"
+                       title="2692 reputation"
+                       class="comment-user">epeleg</a>
+                <span class="comment-date" dir="ltr"><span title="2013-07-22 07:22:36Z" class="relativetime-clean">Jul 22 '13 at 7:22</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-15062977" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="24742164"></a>
+<div id="answer-24742164" class="answer" data-answerid="24742164"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="24742164">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>An old post I know but thought I would suggest this:</p>
+
+<pre><code>xml[0].outerHTML
+</code></pre>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/24742164" title="short permalink to this answer" class="short-link" id="link-post-24742164">share</a><span class="lsep">|</span><a href="/posts/24742164/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/24742164/revisions" title="show all edits to this post">edited <span title="2015-01-29 08:54:30Z" class="relativetime">Jan 29 at 8:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/212378/alexis-wilke"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/185aae2d842026d2eefa7528b00b394b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/212378/alexis-wilke">Alexis Wilke</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,880</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="34 bronze badges"><span class="badge3"></span><span class="badgecount">34</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-07-14 17:19:56Z" class="relativetime">Jul 14 '14 at 17:19</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/228665/mr-ah"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/1fcg9.png?s=32&g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/228665/mr-ah">Mr AH</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">456</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="7 silver badges"><span class="badge2"></span><span class="badgecount">7</span></span><span title="18 bronze badges"><span class="badge3"></span><span class="badgecount">18</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-24742164" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-44785403" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Why would an XML document have a field named <code>outerHTML</code>?</span>
+                &ndash;&nbsp;
+                    <a href="/users/212378/alexis-wilke"
+                       title="4880 reputation"
+                       class="comment-user">Alexis Wilke</a>
+                <span class="comment-date" dir="ltr"><span title="2015-01-29 08:55:01Z" class="relativetime-clean">Jan 29 at 8:55</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-24742164" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="20855968"></a>
+<div id="answer-20855968" class="answer" data-answerid="20855968"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="20855968">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Just access xml as attribute value of jQuery object. as simple as that.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/20855968" title="short permalink to this answer" class="short-link" id="link-post-20855968">share</a><span class="lsep">|</span><a href="/posts/20855968/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/20855968/revisions" title="show all edits to this post">edited <span title="2015-01-29 08:55:20Z" class="relativetime">Jan 29 at 8:55</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/212378/alexis-wilke"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/185aae2d842026d2eefa7528b00b394b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/212378/alexis-wilke">Alexis Wilke</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,880</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="34 bronze badges"><span class="badge3"></span><span class="badgecount">34</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-12-31 10:39:00Z" class="relativetime">Dec 31 '13 at 10:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/3149078/purushotham-racharla"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/06cffdb5b0b6b7286cb9a78b1f4676e0?s=32&d=identicon&r=PG&f=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/3149078/purushotham-racharla">Purushotham Racharla</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20855968" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31287382" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Should be a comment, as simple as that. If you answer, at least, give an example.</span>
+                &ndash;&nbsp;
+                    <a href="/users/1276306/flawyte"
+                       title="2207 reputation"
+                       class="comment-user">Flawyte</a>
+                <span class="comment-date" dir="ltr"><span title="2013-12-31 10:57:49Z" class="relativetime-clean">Dec 31 '13 at 10:57</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-20855968" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="19046177"></a>
+<div id="answer-19046177" class="answer" data-answerid="19046177"  itemscope itemtype="http://schema.org/Answer">
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="19046177">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In my case</p>
+
+<pre><code>if(window.ActiveXObject){
+    xmlString = xmlData.xml;
+}
+</code></pre>
+
+<p>Is not working. This is issue with <strong>IE10</strong>.</p>
+
+<p>So I am able to fix this issue as follows:</p>
+
+<pre><code>if(window.ActiveXObject){
+    xmlString = xmlData.attr('xml');
+}
+</code></pre>
+
+<p>And working fine with any browser.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/19046177" title="short permalink to this answer" class="short-link" id="link-post-19046177">share</a><span class="lsep">|</span><a href="/posts/19046177/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="/posts/19046177/revisions" title="show all edits to this post">edited <span title="2015-01-29 08:56:36Z" class="relativetime">Jan 29 at 8:56</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/212378/alexis-wilke"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/185aae2d842026d2eefa7528b00b394b?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/212378/alexis-wilke">Alexis Wilke</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,880</span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="34 bronze badges"><span class="badge3"></span><span class="badgecount">34</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-27 08:27:38Z" class="relativetime">Sep 27 '13 at 8:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="/users/2086752/ajeet-kumar-singh"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/de46508e697a68ceb66b28f08e43d105?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="/users/2086752/ajeet-kumar-singh">Ajeet Kumar Singh</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-19046177" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-19046177" data-rep=50 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href=# onclick=""></a>
+            </div>
+    </td>
+</tr>    </table>
+</div>
+									<a name='new-answer'></a>
+						<form id="post-form" action="/questions/6507293/answer/submit" method="post"  class="post-form">
+						    <input type="hidden" id="post-id" value="6507293" />
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" />
+                            <input type="hidden" name="referrer" value=""/>
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="c20343434a290522e3f02646758bd1a2">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item dno new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="/users/login?returnurl=%2fquestions%2f6507293%2fconvert-xml-to-string-with-jquery%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid" />
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false" />
+                    <input type="hidden" name="use-google" class="use-google" value="false" />
+                    <input type="button" class="submit-openid" value="Submit" style="display:none" />
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f6507293%2fconvert-xml-to-string-with-jquery%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href='http://stackexchange.com/legal/privacy-policy' target='_blank'>privacy policy</a> and <a href='http://stackexchange.com/legal/terms-of-service' target='_blank'>terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1" />								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/jquery" class="post-tag" title="show questions tagged 'jquery'" rel="tag">jquery</a> <a href="/questions/tagged/xml" class="post-tag" title="show questions tagged 'xml'" rel="tag">xml</a> <a href="/questions/tagged/xml-serialization" class="post-tag" title="show questions tagged 'xml-serialization'" rel="tag">xml-serialization</a> <a href="/questions/tagged/tostring" class="post-tag" title="show questions tagged 'tostring'" rel="tag">tostring</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2011-06-28 13:34:45Z"><b>3 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>42454 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2015-01-29 08:56:36Z">1 month ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+						
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk2144208440",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk2144208440">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags","theme"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+            
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="/q/13534945" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/13534945/use-jquery-to-load-xml-file-edit-it-then-save-to-server-again-with-php" class="question-hyperlink">Use jquery to load xml file, edit it, then save to server again with php</a>
+</div><div class="spacer">
+	<a href="/q/9552085" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-1</div>
+	</a>
+	<a href="/questions/9552085/how-to-get-xul-element-using-jquery-and-print-xul-dom-tree-as-string" class="question-hyperlink">How To Get XUL Element Using jQuery and Print XUL DOM Tree As String?</a>
+</div><div class="spacer">
+	<a href="/q/11892118" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="/questions/11892118/jquery-parsexml-and-print" class="question-hyperlink">JQuery parseXML and Print</a>
+</div><div class="spacer">
+	<a href="/q/12867329" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="/questions/12867329/how-to-see-an-xml-object-in-firefox-console" class="question-hyperlink">How to see an xml object in firefox console</a>
+</div><div class="spacer">
+	<a href="/q/10608007" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="/questions/10608007/use-jquery-object-as-a-data-source-for-jqgrid" class="question-hyperlink">Use jQuery object as a data source for jqGrid</a>
+</div><div class="spacer">
+	<a href="/q/11897760" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="/questions/11897760/not-able-to-post-xml-data-with-jquery-to-server-sidephp" class="question-hyperlink">Not able to post xml data with jquery to server side(php)</a>
+</div><div class="spacer">
+	<a href="/q/20795565" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="/questions/20795565/xml-to-jquery-to-string" class="question-hyperlink">XML to jQuery to String?</a>
+</div><div class="spacer">
+	<a href="/q/26257713" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="/questions/26257713/how-to-find-and-replace-xml-node-value-in-jquery" class="question-hyperlink">How to find and replace xml node value in JQuery</a>
+</div><div class="spacer">
+	<a href="/q/23705980" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="/questions/23705980/pass-xml-to-php-for-all-versions-of-ie" class="question-hyperlink">Pass XML to PHP for all versions of IE</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/1149703" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">492
+    </div>
+</a><a href="/questions/1149703/how-can-i-convert-a-stack-trace-to-a-string" class="question-hyperlink">How can I convert a stack trace to a string?</a>
+</div>
+<div class="spacer">
+<a href="/q/2528182" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/2528182/convert-xml-as-string" class="question-hyperlink">Convert xml as string</a>
+</div>
+<div class="spacer">
+<a href="/q/3187444" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">40
+    </div>
+</a><a href="/questions/3187444/convert-xml-string-to-object" class="question-hyperlink">Convert XML String to Object</a>
+</div>
+<div class="spacer">
+<a href="/q/5612787" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes large">270
+    </div>
+</a><a href="/questions/5612787/converting-an-object-to-a-string" class="question-hyperlink">Converting an object to a string</a>
+</div>
+<div class="spacer">
+<a href="/q/7817962" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="/questions/7817962/converting-class-to-xml-to-string" class="question-hyperlink">Converting Class to XML to string</a>
+</div>
+<div class="spacer">
+<a href="/q/9898698" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">9
+    </div>
+</a><a href="/questions/9898698/convert-xml-to-string-and-append-to-page" class="question-hyperlink">Convert XML to String and append to page</a>
+</div>
+<div class="spacer">
+<a href="/q/10398469" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="/questions/10398469/converting-string-to-xml-in-android" class="question-hyperlink">Converting string to XML in android?</a>
+</div>
+<div class="spacer">
+<a href="/q/13477988" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="/questions/13477988/how-to-use-jquery-to-manipulate-and-save-out-a-xml-document" class="question-hyperlink">How to use jQuery to manipulate and save out a XML Document</a>
+</div>
+<div class="spacer">
+<a href="/q/14994391" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted extra-large">3980
+    </div>
+</a><a href="/questions/14994391/thinking-in-angularjs-if-i-have-a-jquery-background" class="question-hyperlink">&ldquo;Thinking in AngularJS&rdquo; if I have a jQuery background?</a>
+</div>
+<div class="spacer">
+<a href="/q/17273110" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="/questions/17273110/convert-an-xml-jquery-object-to-string" class="question-hyperlink">convert an XML jQuery Object to String</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="//stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-scicomp" title="Computational Science Stack Exchange"></div><a href="http://scicomp.stackexchange.com/questions/19020/applying-the-runge-kutta-method-to-second-order-odes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:363 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Applying the Runge-Kutta method to second order ODEs
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/82442/why-do-people-risk-death-by-joining-starfleet-if-not-for-money-or-preservation-o" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do people risk death by joining Starfleet if not for money or preservation of their homes?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/51788/a-ukrainian-model-30-years-his-junior-his-junior" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    a Ukrainian model 30 years his junior -- &quot;his junior&quot;?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-cstheory" title="Theoretical Computer Science Stack Exchange"></div><a href="http://cstheory.stackexchange.com/questions/30624/problems-with-big-open-complexity-gaps" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:114 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Problems with big open complexity gaps
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/82653/how-come-professor-mcgonagall-never-noticed-that-harry-potters-hogsmeade-permis" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How come Professor McGonagall never noticed that Harry Potter&#39;s Hogsmeade permission form was signed by Sirius Black?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1166798/inequality-from-chapter-5-of-the-book-how-to-think-like-a-mathematician" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Inequality from Chapter 5 of the book *How to Think Like a Mathematician*
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/20603/why-did-native-americans-die-from-european-diseases-while-europeans-didnt-catch" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why did Native Americans die from European diseases while Europeans didn&#39;t catch serious diseases from the New World?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/49000/how-can-the-dress-optical-illusion-be-accurately-reproduced-on-other-images" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can the &quot;dress&quot; optical illusion be accurately reproduced on other images?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-vi" title="Vi and Vim Stack Exchange"></div><a href="http://vi.stackexchange.com/questions/2286/what-does-bar-mean" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:599 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does `&lt;Bar&gt;` mean?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/139384/random-walk-on-the-edges-of-a-cube" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Random walk on the edges of a cube
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/57436/can-you-make-a-sword-out-of-ivory" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you make a sword out of Ivory?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/43977/whats-the-courtesy-wipe-off-the-wash-basin" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What&#39;s the courtesy: wipe off the wash basin?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1169907/what-is-the-word-for-set-containing-other-sets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the word for set containing other sets?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/28783077/what-can-the-javascript-prototype-system-do-beyond-mimicking-a-classical-class-s" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What can the JavaScript prototype system do beyond mimicking a classical class system?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/43660/traveling-in-europe-solo-18-years-old-feasible" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Traveling in Europe Solo - 18 years old. Feasible?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/231049/is-there-a-suitable-antonym-for-achilles-heel" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a suitable antonym for &#39;Achilles heel&#39;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/274732/bad-sign-if-nobody-can-comprehend-ones-code" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bad sign if nobody can comprehend one&#39;s code?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/9691/find-the-missing-number" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Find the missing number
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1168043/why-can-you-chose-how-to-align-infinitely-long-equations-when-adding-them" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why can you chose how to align infinitely long equations when adding them?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/41941/do-i-need-to-act-happy-all-the-time-even-if-im-not-really" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do I need to act happy all the time even if I&#39;m not really?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/44946/will-a-credit-card-issuer-cancel-an-account-if-it-never-incurs-interest" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Will a credit card issuer cancel an account if it never incurs interest?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-webmasters" title="Webmasters Stack Exchange"></div><a href="http://webmasters.stackexchange.com/questions/77665/how-can-i-determine-the-background-color-of-a-site" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:45 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I determine the background color of a site?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/208170/steam-is-forcing-me-to-pay-for-a-game-that-was-shared-with-me-via-family-share-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Steam is forcing me to pay for a game that was shared with me via Family Share in order to play it. Why?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/18811/should-you-pick-a-baby-up-everytime-it-cries" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should you pick a baby up everytime it cries?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="/feeds/question/6507293" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/6507293/ivc/8c5f');});
+</script>
+<noscript>
+    <div><img src="/posts/6507293/ivc/8c5f" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-xml</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/tour">tour</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackoverflow.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="//stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="//serverfault.com" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="//superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="//webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="//askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="//webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="//gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="//tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="//unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="//apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="//wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="//gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="//electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="//android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="//security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="//dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="//drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="//sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="//ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="//mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="//salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="//scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="//graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="//cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="//diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="//money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="//academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="//skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="//judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="//travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="//christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="//gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="//bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="//rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="//stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="//cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="//physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="//mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="//stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="//meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="//area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="//careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.2.26.2347
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('jquery,xml,xml-serialization,tostring');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|jquery|xml|xml-serialization|tostring|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+    </body>
+</html>

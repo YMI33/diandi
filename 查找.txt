@@ -1,0 +1,14 @@
+1. 在当前目录下查找所有txt后缀文件
+    find . -name *.txt
+
+2. 递归删除当前文件夹下所有的.o文件：
+    find . -name "*.o"  | xargs rm -f
+
+3. grep 排除目录
+grep -nr --exclude-dir=doc 'Kinton' .
+
+4. grep 排除二进制文件
+使用-I选项
+
+5. grep 指定文件类型中查找
+grep -nr --include \*.h 'uint8_t' .

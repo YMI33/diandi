@@ -1,0 +1,10 @@
+GUID
+
+Short for Globally Unique Identifier, a unique 128-bit number that is produced by the Windows OS or by some Windows applications to identify a particular component, application, file, database entry, and/or user. For instance, a Web site may generate a GUID and assign it to a user's browser to record and track the session. A GUID is also used in a Windows registry to identify COM DLLs. Knowing where to look in the registry and having the correct GUID yields a lot information about a COM object (i.e., information in the type library, its physical location, etc.). Windows also identifies user accounts by a username (computer/domain and username) and assigns it a GUID. Some database administrators even will use GUIDs as primary key values in databases.
+GUIDs can be created in a number of ways, but usually they are a combination of a few unique settings based on specific point in time (e.g., an IP address, network MAC address, clock date/time, etc.).
+
+程序中的findCOM()的逻辑如下：
+首先，根据“Ports”这个名字生成系统中所有的串口的GUID数组（通过SetupDiClassGuidsFromName这个函数），每个串口都拥有一个特定的GUID，
+程序再根据这个GUID，获取这个串口的info（通过SetupDiGetClassDevs这个函数，返回一个HDEVINFO对象），
+之后，再抽取该对象中的friendly_name，也就是我们期望的“USB-SERIAL CH341 (COM 8)”这个字符串。
+最后抽出我们要的‘8’返回。
